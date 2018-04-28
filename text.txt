@@ -1,0 +1,49 @@
+rehome_kucing.php {
+  # SELECT USERNAME FROM $_SESSION['username'];  V
+  # INSERT ALL DATA INTO TABLE KUCING V
+  # INSERT CAT IMG INTO /userData/$username/kucing/ ,and create new folder img1, img2, img3 V
+  # AFTER ALL FORM IS FILLED, AND VERIFICATION IS SUCCESSFUL, REDIRECT TO OTHER PAGE, FILL BIO KUCING AND IMG2, IMG3 IF USER WANT V
+}
+
+profile.php {
+  -- Ada Info --
+  # Kucing1, Kucing2, Kucing3 beserta fotonya V
+  # Update Profil {
+    * Edit info V
+    * Edit Kucing V
+  }
+  # Info Pemilik Kucing V
+  # Edit DP, Edit Sampul V
+  # Jika ganti dp atau sampul, maka isi folder dp, sampul juga diubah V
+}
+
+settings.php {
+}
+
+admin.php {
+  # FORM CONFIRM kucing
+}
+
+#new
+# alamat lengkap V
+# warna notif login berhasil V
+# pesan peringatan upload cat img -3 (harus) V
+# wa ganti gmail V
+
+profil.php
+# favorit kucing favorit, simpan di profil (sistem baru)
+# edit alamat backend (next) V
+tampilkan_kucing.php
+# info lebih detail ex: makanan favorit, pasir garis baru kebutuhan khusus, atau riwayat penyakit V
+
+rehome.php
+# tambah textarea info kucing V
+#
+profil.php
+# bagian img view blom V
+# isi alamat lengkap V
+
+new
+# Settings, Ganti username dan password
+# Fitur Bookmars Kucing Favorit
+# Search Berdasarkan Lokasi

@@ -1,0 +1,64 @@
+.container-select-input {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  position: relative;
+}
+.container-select-input .grid {
+  cursor: pointer;
+  grid-template-columns: 93% auto;
+}
+.teks {
+  /* width: 90%; */
+  z-index: 1;
+  background-color: rgba(0,0,0,0);
+}
+.chevron {
+  background-color: #DCDAD5;
+  text-align: center;
+  font-size: 1.5em;
+  /* line-height: 2; */
+  cursor: pointer;
+  position: relative;
+}
+.chevron:hover {
+  background-color: #f3f3f3;
+}
+.chevron .fa-chevron-down {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+input[type='submit'] {
+  font-weight: bold;
+  cursor: pointer;
+}
+.isi-select-input {
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  display: none;
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+.isi-select-input ul {
+  list-style: none;
+  background-color: #efefef;
+  border: 1px solid #ddd;
+}
+.isi-select-input li {
+  padding: 7px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+.isi-select-input li:hover {
+  background-color: #fff;
+}
+.text-filter.form-control.teks {
+  position: absolute;
+  color: #666;
+  font-size: 1.2em;
+  padding: 1vw;
+}

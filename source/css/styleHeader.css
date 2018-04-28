@@ -1,0 +1,156 @@
+@media only screen and (max-width: 902px) {
+    .logo, .nav-head {
+      display: none;
+    }
+    div.nav-head-min {
+      display: block;
+    }
+    div.burger-menu {
+      display: block;
+    }
+}
+@media only screen and (min-width: 903px) {
+  .menu-nav-min {
+    display: none !important;
+  }
+}
+.container-header {
+  position: relative;
+}
+/* nav min */
+.nav-head-min {
+  display: none;
+  position: relative;
+}
+.nav-head-min .min-logo {
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+}
+.burger-menu {
+  text-align: right;
+  cursor: pointer;
+  display: none;
+}
+.menu-nav-min {
+  background-color: #f8f8f8;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  display: none;
+  top: 9vh;
+}
+.menu-nav-min a {
+  text-decoration: none;
+  color: #000d;
+  font-size: 2.2vw;
+  padding: 10px;
+  display: block;
+}
+.menu-nav-min a:hover {
+  background-color: #686161;
+  color: #fff;
+}
+.menu-nav-min li {
+  text-align: center;
+  list-style: none;
+}
+/* nav */
+header {
+  display: grid;
+  grid-template-columns: 10% auto;
+  padding: 25px;
+  background-color: #FFFFFF80;
+  transition-duration: 1s;
+}
+header .logo {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+}
+nav.nav-head {
+  position: relative;
+}
+nav.nav-head ul {
+  list-style: none;
+  position: absolute;
+  right: 0;
+  bottom: 0.5vh;
+}
+nav.nav-head li {
+  display: inline-block;
+  color: #00000090;
+  padding: 0 15px;
+  font-size: 1.2em;
+}
+nav.nav-head li:hover {
+  color: #000;
+}
+/*  */
+.header-after {
+  position: fixed;
+  width: 96.3%;
+  z-index: 2;
+  background-color: #00000090;
+}
+.warna-putih {
+  color: #fff !important;
+}
+.dp_header {
+  width: 3.5vw;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  top: 2.5vh;
+}
+.click-dp {
+  height: 40px;
+  width: 50px;
+}
+.dp_header img {
+  border-radius: 50%;
+}
+
+
+.menu_dp_header {
+  position: absolute;
+  right: -25px;
+  width: 8vw;
+  text-align: center;
+  z-index: 5;
+  top: 8.8vh;
+  padding-bottom: 2vh;
+  background-color: #fff;
+  display: none;
+}
+.menu_dp_header ul {
+  position: relative !important;
+}
+.menu_dp_header a {
+  padding: 1vh 0;
+  display: block;
+}
+.dp_header_min {
+  width: 100%;
+  background-color: #fff;
+}
+.dp_header_min .click-dp {
+  margin-left: 46vw;
+}
+.dp_header_min ul {
+  display: none;
+}
+.pesanE {
+  cursor: pointer;
+}
+.pesanE h1 {
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  top: 25%;
+  background-color: #e47c7c;
+  padding: 5% 0px;
+  color: #fffc;
+  z-index: 9;
+}

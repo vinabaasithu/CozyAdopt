@@ -1,0 +1,266 @@
+/* sampul */
+.sampul {
+  min-height: 90vh;
+  /* background-color: #f8f8f8; */
+  position: relative;
+}
+.bio-kucing {
+  background-color: #0006;
+  padding: 5px;
+  padding-left: 5px;
+  padding-left: 30px;
+  width: 92%;
+  color: #fff;
+  font-size: 1.1em;
+  font-family: courgette;
+  display:none;
+  position: absolute;
+  bottom:0;
+  transition-duration: 2s;
+}
+.sampul5 .bio-kucing, .sampul4 .bio-kucing {
+  top:0;
+}
+.sampul-isi:hover .bio-kucing {
+  display: block;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 70% auto;
+}
+.sampul-background {
+  background-image: url("../img/sampul.jpg");
+  background-repeat: no-repeat;
+  background-position: 100% bottom;
+  height: 100vh;
+  color: #000000cc;
+}
+.text-sampul {
+  padding: 2em;
+  height: 80vh;
+  border: 1px solid #ddd;
+  z-index: 1;
+  background-color: #f8f8f8;
+  color: rgba(0, 0, 0, 0.6);
+}
+.text-sampul p:hover {
+  color: #000;
+}
+.fa-paw {
+  cursor: pointer;
+  font-size: 1.5em;
+}
+.fa-paw:hover {
+  color: #000;
+}
+.btn-text-sampul {
+  font-size: 1.2em;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  color: rgba(0, 0, 0, 0.5);
+  border: 3px solid #ccc;
+  font-weight: bold;
+  cursor: pointer;
+}
+.btn-text-sampul:hover {
+  color: #000;
+  border: 3px solid #000;
+}
+
+/* look-at-me */
+
+@keyframes move {
+  from {z-index: 0; transform: scale(1); }
+  to {z-index: 4; transform: scale(1.1); }
+}
+.look-at-me {
+  min-height: 100vh;
+}
+.look-at-me-grid {
+  display: grid;
+  grid-template-columns: 28% auto;
+}
+.text-look-at-me {
+  padding: 25px;
+  background-color: #f8f8f8;
+}
+.text-look-at-me > p {
+  text-align: justify;
+}
+.look-container {
+  position: relative;
+}
+.sampul-isi {
+  width:30vw;
+  height: 60vh;
+  position: absolute;
+  cursor: pointer;
+}
+.sampul-isi-relative {
+  position: relative;
+}
+.sampul1 {
+  right: 5vw;
+  top: 5vh;
+}
+.sampul2 {
+  right: 20vw;
+  top: 25vh;
+  z-index: 1;
+}
+.sampul3 {
+  right: 40vw;
+  top: 20vh;
+}
+.sampul4 {
+  right: 30vw;
+  top: 7vh;
+}
+.sampul5 {
+  right: 3vw;
+  top: 25vh;
+}
+.sampul1:hover, .sampul2:hover, .sampul3:hover, .sampul4:hover, .sampul5:hover {
+  animation: move 1s;
+  animation-fill-mode: forwards;
+}
+
+/* tentang-kami */
+.tentang-kami {
+  min-height: 100vh;
+  background-color: #c7c2bf;
+  display: grid;
+  grid-template-columns: 50% auto;
+}
+.tentang-kami-rel {
+  position: relative;
+}
+.helloCat {
+  height: 80vh;
+  width: 50vw;
+  position: absolute;
+  bottom: 0;
+  background-image: url("../img/helloCat.png");
+  background-size: 50vw 80vh;
+  background-repeat: no-repeat;
+}
+.helloCat img {
+  width: 100%;
+  height: 100%;
+}
+.tentang-kami-text {
+  height: 70%;
+  margin: 10%;
+  background-color: #fff;
+  padding: 5%;
+}
+.tentang-kami-text > p {
+  text-align: justify;
+}
+/* kontak */
+.kontak {
+  min-height: 100vh;
+}
+.form-kontak {
+  width: 50%;
+  margin: auto;
+}
+label {
+  display: inline-block;
+  margin: 5px;
+}
+label, input[type='submit'] {
+  cursor: pointer;
+  font-weight: bold;
+}
+.form-kontak input, .form-kontak textarea {
+  border: 1px solid #ddd;
+  padding: 5px;
+  width: 100%;
+  padding: 10px;
+}
+.form-kontak input[type='submit'] {
+  width: 103%;
+}
+.form-kontak, .form-kontak input {
+  font-size: 1em;
+}
+ .form-kontak textarea {
+   font-size: 1.3em;
+ }
+.more-kontak span {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+}
+.more-kontak span img {
+  width: 100%;
+  height: 100%;
+}
+.keatas {
+  position: fixed;
+  bottom: 3vw;
+  right: 6vh;
+  background-color: #fff;
+  padding: 15px;
+  font-size: 2em;
+  border-radius: 50%;
+  border: 2px solid #000;
+  cursor: pointer;
+  color: #000;
+  display: none;
+}
+.folUs {
+  cursor: pointer;
+}
+.hoverFollow-container {
+  min-height: 19px;
+}
+.hoverFollow {
+  display: none;
+}
+
+@media only screen and (max-width: 910px) {
+  div.helloCat {
+    background-attachment: unset !important;
+  }
+}
+
+@media only screen and (max-width: 848px) {
+    .form-kontak {
+      width: 80%;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .sampul .grid-container {
+      display: block;
+    }
+    .look-at-me-grid {
+      display: block;
+    }
+    .look-container {
+      display: none;
+    }
+}
+
+@media only screen and (max-width: 711px) {
+  .tentang-kami {
+    display: block;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+  }
+  .helloCat {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 513px) {
+  div.grid-col.sampul-background p.h1 {
+    display: none;
+  }
+  .sampul-background {
+    background-position: center;
+  }
+}

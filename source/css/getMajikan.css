@@ -1,0 +1,89 @@
+.getMajikan {
+  position: fixed;
+  background: #000c;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.cont-get-majikan {
+  background: #fff;
+  width: 32%;
+  height: 90vh;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.getMajikan .rel {
+  position: relative;
+  height: 100%;
+}
+.getMajikan .sampul {
+  height: 50%;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+  background-image: url("../../userData/sampul_dummy.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.getMajikan .dp {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 51%;
+  /* bottom: 0; */
+  /* top: 0; */
+}
+.getMajikan .dp img {
+  border-radius: 50%;
+}
+.getMajikan .nama {
+  padding: 0;
+  margin: 0;
+  margin-top: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #000c;
+  font-family: "courgette";
+}
+.getMajikan .nama:hover {
+  color: #000;
+}
+.isimjkn {
+  padding: 25px;
+}
+.isimjkn span {
+  display: inline-block;
+}
+.grid-mjkn {
+  display: grid;
+  grid-template-columns: 25% auto 65%;
+  margin: 10px 0;
+}
+.grid-mjkn:first-child {
+  margin-top: 20px;
+}
+.cat {
+  color: #f89b9b;
+}
+@media only screen and (max-width: 1080px) {
+  .cont-get-majikan {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 735px) {
+  .cont-get-majikan {
+    height: auto;
+    width: 75%;
+    overflow-y: scroll;
+  }
+}

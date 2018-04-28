@@ -1,0 +1,99 @@
+hr {
+  border-color: #ddd;
+}
+.pelihara-container {
+  background-color: #12121299;
+  z-index: 2;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  display: none;
+}
+.pelihara {
+  background-color: #fff;
+  position: fixed;
+  height: 100vh;
+  width: 90vw;
+  margin: auto;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow-y: scroll;
+}
+.isi_pelihara {
+  padding: 5vw;
+}
+.data-pelihara {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-bottom: 4vw;
+}
+.data-kucing li {
+  padding: 3%;
+  list-style: none;
+  font-size: 1.3vw;
+  color: #222;
+  font-weight: bold;
+}
+
+.data-kucing-title {
+
+}
+
+.data-kucing {
+    margin-left: 2vw;
+}
+.bio-kucing {
+    text-align: justify;
+}
+.bio-kucing button {
+  border: 1px solid #ddd;
+  font-size: 1.2em;
+  padding: 1vw;
+  font-weight: bold;
+  background-color: #0e50c8dd;
+  color: #fffd;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.bio-kucing button:hover {
+  color: #fff;
+  background-color: #0e50c8;
+}
+.exit {
+  margin: 1vw;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  top: 1vh;
+  right: 1vw;
+}
+.close-container {
+  display: inline-block;
+  height: 2em;
+  width: 2.5em;
+  position: absolute;
+  z-index: -1;
+  right: 2px;
+  top: 1vh;
+}
+.fa-window-close {
+  font-size: 3em;
+}
+.exit:hover .close-container {
+  background-color: #000;
+}
+.exit:hover .fa-window-close {
+  color: #ddd;
+}
+
+
+@media only screen and (max-width: 695px) {
+  .data-pelihara {
+    display: block;
+    margin-top: 3em;
+  }
+}

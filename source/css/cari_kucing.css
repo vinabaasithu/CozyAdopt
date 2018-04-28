@@ -1,0 +1,33 @@
+.container-cari {
+  display:grid;
+  grid-template-columns: auto auto auto;
+  margin: 12vh 0;
+}
+.isi-con-cari {
+  position: relative;
+  padding: 5%;
+  cursor: pointer;
+}
+.isi-con-cari img {
+  opacity: 0.7;
+}
+.isi-con-cari:hover img {
+  opacity: 1;
+}
+.isi-con-cari img, .isi-con-cari .text-kucing {
+  transition: 1s;
+}
+.text-kucing {
+  position: absolute;
+  bottom: 5%;
+  text-align: center;
+  width: 90%;
+  color: #fff;
+  background-color: #0009;
+}
+.text-kucing:hover {
+  background-color: #000;
+}
+.text-kucing p {
+  margin: 2%;
+}

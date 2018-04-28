@@ -1,0 +1,55 @@
+body {
+  background: #CC95C0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.container {
+  width: 70%;
+  padding: 5%;
+  margin: auto;
+  min-height: 100vh;
+  background-color: #fff;
+}
+.img-upl-con {
+  position: relative;
+}
+.img-upl-front {
+  position: absolute;
+  background-color: #dcdad5;
+  /* width: 15vw; */
+  text-align: center;
+  font-weight: bold;
+}
+.img-upl-front .grid{
+  display: inline-block;
+  line-height: 3;
+  width: 150px;
+  background-color: #3e95f6;
+  color: #fff;
+  text-align: center;
+}
+.fa-arrow-up {
+  display: inline-block;
+  text-align: center;
+}
+.img-upl-front .grid span {
+  display: inline-block;
+  height: 3.5%;
+  line-height: 37px;
+}
+input[type='file'] {
+  opacity: 0;
+  border: none;
+  width: 130px;
+  position: absolute;
+  left: 0;
+}
+.img-preview {
+  padding-top: 55px;
+}
+#view-img {
+  display: none;
+}
+input[type="checkbox"] {
+  border: 1px solid #ddd;
+}

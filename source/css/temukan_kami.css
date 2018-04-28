@@ -1,0 +1,72 @@
+.con-color {
+  background: #DAD299;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #B0DAB9, #DAD299);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #B0DAB9, #DAD299); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.form-cari-kucing-con {
+  width: 50%;
+  margin: auto;
+  background-color: #f8f8f8;
+  box-shadow: 0px 0px 5px #bbb;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+.form-cari-kucing-con h2 {
+  color: rgba(0, 0, 0, 0.7);
+}
+.form-cari-kucing {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.form-cari-kucing select, .form-cari-kucing-con button {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  background-color: #fff9;
+  font-size: 1.1em;
+  font-weight: 300;
+}
+.form-cari-kucing select {
+
+}
+.form-cari-kucing-con button {
+  padding: 10px 25px;
+  width: 90%;
+}
+.img-con {
+  width: 22vw;
+  position: absolute;
+  bottom: -20px;
+  z-index: 1;
+}
+.img-con1 {
+  left: -20vw;
+  transform: rotateY(180deg);
+}
+.img-con2 {
+  right: -20vw;
+}
+.ground {
+  height: 150px;
+  width: 150%;
+  background-color: brown;
+  position: absolute;
+  bottom: -50px;
+  left: -50%;
+  z-index: 0;
+  background-color: #a89e9e;
+}
+.form-cari-con {
+  position: relative;
+}
+@media only screen and (max-width: 800px) {
+  .form-cari-kucing select {
+    display: block;
+    width: 95%;
+  }
+  .form-cari-kucing {
+    display: block;
+  }
+}

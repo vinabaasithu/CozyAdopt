@@ -1,0 +1,74 @@
+.pesan {
+  cursor: pointer;
+}
+.pesan h1 {
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  top: 25%;
+  background-color: #e47c7c;
+  padding: 5% 0px;
+  color: #fffc;
+  z-index: 10;
+}
+.container, body {
+  background: #50C9C3;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #96DEDA, #50C9C3);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #96DEDA, #50C9C3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  min-height: 100vh;
+}
+.container-header {
+  padding-bottom: 5vh;
+}
+.cont {
+  /* position: absolute; */
+  width: 50vw;
+  /* left: 0; */
+  /* right: 0; */
+  /* top: 14vh; */
+  /* bottom: 0; */
+  margin: auto;
+  background-color: #fff;
+  padding: 2em 3em;
+  /* margin-top: 2.5vh; */
+}
+.cont .text-center.h1 {
+  margin: 0;
+  margin-bottom: 35px;
+}
+input {
+  border: 1px solid #ddd;
+  width: 96%;
+  font-size: 1.2em;
+  padding: 2%;
+}
+input[type='submit'] {
+  width: 100%;
+  cursor: pointer;
+  font-weight: bold;
+}
+input[type='checkbox'] {
+  width: 5px;
+  border: 1px solid black;
+}
+#password {
+  margin-bottom: 5px;
+}
+label {
+  cursor: pointer;
+}
+label[for='show-password'] {
+  cursor: pointer;
+  position: absolute;
+  top: -5px;
+  width: 150px;
+  color: #555;
+  font-weight: bold;
+  font-style: italic;
+}
+.show-pass {
+  position: relative;
+}
+input[type='checkbox'] {
+  cursor: pointer;
+}
