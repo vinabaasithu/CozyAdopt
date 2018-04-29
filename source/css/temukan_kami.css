@@ -61,6 +61,35 @@
 .form-cari-con {
   position: relative;
 }
+/* select by location */
+.form-cari-kucing-con .form-group > p , .form-cari-kucing-con .form-group.margin-none, .form-cari-kucing-con label[for='tempat-kucing']{
+    display: none;
+}
+.searchloc {
+  padding-top: 2.5px;
+  padding-bottom: 0;
+}
+.searchloc_strong, .use_profil_loc {
+  cursor: pointer;
+}
+.searchloc_strong:hover, .use_profil_loc:hover {
+  text-decoration: underline;
+  color: #266074;
+}
+.chev {
+  transition-duration: 2s;
+}
+.f-sel-in {
+  display: none;
+}
+.use_profil_loc, .use_profil_loc_con, .use_profil_loc_con p {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+label[for="use-profil-loc"] {
+  /* font-size: small; */
+  font-size: inherit;
+}
 @media only screen and (max-width: 800px) {
   .form-cari-kucing select {
     display: block;

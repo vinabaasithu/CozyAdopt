@@ -129,6 +129,20 @@
     header("Location: index.php?pesan=Terjadi Kesalahan");
   }
 ?>
+<script type="text/javascript">
+var id_prov = '<?php if(isset($id_prov)) echo $id_prov ?>';
+var id_kab = '<?php if(isset($id_kab)) echo $id_kab ?>';
+var id_kec = '<?php if(isset($id_kec)) echo $id_kec ?>';
+var id_kel = '<?php if(isset($id_kel)) echo $id_kel ?>';
+
+
+var nama_prov = '<?php if(isset($nama_prov)) echo $nama_prov ?>';
+var nama_kab = '<?php if(isset($nama_kab)) echo $nama_kab ?>';
+var nama_kec = '<?php if(isset($nama_kec)) echo $nama_kec ?>';
+var nama_kel = '<?php if(isset($nama_kel)) echo $nama_kel ?>';
+var alamat_lengkap = '<?php if(isset($alamat_lengkap)) echo $alamat_lengkap ?>';
+
+</script>
 <div class="container">
   <p class="h1 text-center">Isi Data Kucing</>
   <form class="" action="source/etc/edit_profil_kucing_saya.php" method="post" enctype="multipart/form-data">
@@ -237,6 +251,7 @@
         <option valid='Lebat' value="Lebat" <?php if($bulu_kucing === "Lebat") echo "selected"; ?>>Lebat</option>
       </select>
     </div>
+
     <?php include 'select_input.php'; ?>
 
     <div class="form-group">
@@ -275,16 +290,6 @@
 <script type="text/javascript">
   $(".kucing_saya_container p.h1.text-center").text("Ganti Data Kucing");
   $(".kucing_saya_container .submitrehome").val("Ganti Data Kucing");
-  var id_prov = '<?php if(isset($id_prov)) echo $id_prov ?>';
-  var id_kab = '<?php if(isset($id_kab)) echo $id_kab ?>';
-  var id_kec = '<?php if(isset($id_kec)) echo $id_kec ?>';
-  var id_kel = '<?php if(isset($id_kel)) echo $id_kel ?>';
-
-  var nama_prov = '<?php if(isset($nama_prov)) echo $nama_prov ?>';
-  var nama_kab = '<?php if(isset($nama_kab)) echo $nama_kab ?>';
-  var nama_kec = '<?php if(isset($nama_kec)) echo $nama_kec ?>';
-  var nama_kel = '<?php if(isset($nama_kel)) echo $nama_kel ?>';
-  var alamat_lengkap = '<?php if(isset($alamat_lengkap)) echo $alamat_lengkap ?>';
 
   $("input[name='id_prov']").attr("value", id_prov);
   $("input[name='id_kab']").attr("value", id_kab);

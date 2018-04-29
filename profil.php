@@ -54,6 +54,7 @@
     <link rel="stylesheet" href="source/css/styleHeader.css">
     <link rel="stylesheet" href="source/css/styleProfil.css">
     <link rel="stylesheet" href="source/css/select_input.css">
+    <link rel="stylesheet" href="source/css/bookmarks.css">
   </head>
   <body>
   <?php include 'source/etc/header.php'; ?>
@@ -189,6 +190,7 @@
   <script src="source/js/header.js" charset="utf-8"></script>
   <script src="source/js/img_preview.js" charset="utf-8"></script>
   <script src="source/js/select_input.js" charset="utf-8"></script>
+  <script src="source/js/bookmarks.js" charset="utf-8"></script>
   <script type="text/javascript">
     var sampul = '<?php echo $sampul; ?>';
     $(".dp-dan-sampul").css("background-image", "url('"+sampul+"')");
@@ -203,13 +205,20 @@
       }, function(e){
         $(".ganti-dp").fadeOut(800);
       });
-      $("#upl").change(function(){
-        $(".modal").css("height", "auto");
-        $(".img-upl-front .grid").html("<span>Ganti</span>");
-        $(".img-upl-front .grid").css("margin-bottom", "50px");
-        $(this).attr("type", "button");
-        $(this).attr("class", "form-control upl-changed");
-      });
+
+    });
+
+    $(document).on("change", "#upl", function(){
+      $(".modal").css("height", "auto");
+      $(".img-upl-front .grid").html("<span>Ganti</span>");
+      $(".img-upl-front .grid").css("margin-bottom", "50px");
+      $(this).attr("class", "form-control upl-changed");
+      var dis = this;
+        setTimeout(function(){
+          if($(".img-upl-front .grid").text() === "Ganti") {
+            $(dis).attr("type", "button");
+          }
+        }, 500)
     });
 
     $(document).on("click", ".upl-changed", function(){
@@ -260,10 +269,12 @@
     });
     $(document).on("mouseenter", ".kucing_saya_container", function(){
       $(this).find(".edit-kucing").fadeIn(800);
+      $(this).find(".bookmarks.bookmarks-in-profil").animate({"right":"100px"});
     });
 
     $(document).on("mouseleave", ".kucing_saya_container", function(){
       $(this).find(".edit-kucing").fadeOut(800);
+      $(this).find(".bookmarks.bookmarks-in-profil").animate({"right":"34px"});
     });
 
     $(document).on({

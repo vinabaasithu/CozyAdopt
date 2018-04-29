@@ -27,7 +27,7 @@ hr {
 }
 .data-pelihara {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 70% auto;
   margin-bottom: 4vw;
 }
 .data-kucing li {

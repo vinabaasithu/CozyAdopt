@@ -45,5 +45,7 @@ profil.php
 
 new
 # Settings, Ganti username dan password
-# Fitur Bookmars Kucing Favorit
-# Search Berdasarkan Lokasi
+# Fitur Bookmars Kucing Favorit, di Index dan profil
+# Search Berdasarkan Lokasi V
+# Urut Berdasarkan
+# Click Event On Kucing Saya ~ profil.php

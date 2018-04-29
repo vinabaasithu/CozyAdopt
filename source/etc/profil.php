@@ -73,59 +73,82 @@
       $stmt->bind_param("s", $r);
       $stmt->execute();
       $stmt->bind_result($nama_kucing, $img_kucing1, $img_kucing2, $img_kucing3, $jenis_kucing, $umur_kucing, $jk_kucing, $bulu_kucing, $id_kucing);
+      $ia = 0;
+      $arrSel = array();
       while ($stmt->fetch()) {
-        if (substr($img_kucing1, 0, 6) === "../../") {
-          $img_kucing1 = substr($img_kucing1, 6);
-        } else if(!$img_kucing1) {
-          $img_kucing1 = "userData/image_not_available.png";
-        }
-
-        if (substr($img_kucing2, 0, 6) === "../../") {
-          $img_kucing2 = substr($img_kucing2, 6);
-        } else if(!$img_kucing2) {
-          $img_kucing2 = "userData/image_not_available.png";
-        }
-
-        if (substr($img_kucing3, 0, 6) === "../../") {
-          $img_kucing3 = substr($img_kucing3, 6);
-        } else if(!$img_kucing3) {
-          $img_kucing3 = "userData/image_not_available.png";
-        }
-        ?>
-        <div class="kucing_saya_container">
-          <?php
-            if (isset($_SESSION["username"])) {
-              if($_SESSION["username"] === $r) {
-                ?>
-                <div class="edit-kucing">
-                  <i class="fas fa-edit" val="<?php echo $id_kucing ?>"></i>
-                </div>
-                <?php
-              }
-            }
-
-          ?>
-          <p class="h1"><?php echo $nama_kucing ?></p> <hr> <br><br>
-          <div class="grid-3-true">
-            <div>
-              <img src="<?php echo $img_kucing1 ?>" alt="">
-            </div>
-            <div>
-              <img src="<?php echo $img_kucing2 ?>" alt="">
-            </div>
-            <div>
-              <img src="<?php echo $img_kucing3 ?>" alt="">
-            </div>
-          </div>  <br> <br> <hr>
-          <div class="background5f999b">
-            <p class="h1 em12"><?php echo $nama_kucing. ", ". $jenis_kucing. ", ". $umur_kucing ?></p>
-            <p class="h1 em12"><?php echo $nama_kucing. " adalah kucing ". strtolower($jk_kucing). " dan berbulu ". strtolower($bulu_kucing)  ?></p>
-          </div>
-        </div>
-
-        <?php
+        $arrSel[$ia]["nama_kucing"] = $nama_kucing;
+        $arrSel[$ia]["img_kucing1"] = $img_kucing1;
+        $arrSel[$ia]["img_kucing2"] = $img_kucing2;
+        $arrSel[$ia]["img_kucing3"] = $img_kucing3;
+        $arrSel[$ia]["jenis_kucing"] = $jenis_kucing;
+        $arrSel[$ia]["umur_kucing"] = $umur_kucing;
+        $arrSel[$ia]["jk_kucing"] = $jk_kucing;
+        $arrSel[$ia]["bulu_kucing"] = $bulu_kucing;
+        $arrSel[$ia]["id_kucing"] = $id_kucing;
+        $ia++;
       }
       $stmt->close();
+      for ($ia=0; $ia < count($arrSel); $ia++) {
+          if (substr($arrSel[$ia]["img_kucing1"], 0, 6) === "../../") {
+            $arrSel[$ia]["img_kucing1"] = substr($arrSel[$ia]["img_kucing1"], 6);
+          } else if(!$arrSel[$ia]["img_kucing1"]) {
+            $arrSel[$ia]["img_kucing1"] = "userData/image_not_available.png";
+          }
+
+          if (substr($arrSel[$ia]["img_kucing2"], 0, 6) === "../../") {
+            $arrSel[$ia]["img_kucing2"] = substr($arrSel[$ia]["img_kucing2"], 6);
+          } else if(!$arrSel[$ia]["img_kucing2"]) {
+            $arrSel[$ia]["img_kucing2"] = "userData/image_not_available.png";
+          }
+
+          if (substr($arrSel[$ia]["img_kucing3"], 0, 6) === "../../") {
+            $arrSel[$ia]["img_kucing3"] = substr($arrSel[$ia]["img_kucing3"], 6);
+          } else if(!$arrSel[$ia]["img_kucing3"]) {
+            $arrSel[$ia]["img_kucing3"] = "userData/image_not_available.png";
+          }
+          ?>
+          <div class="kucing_saya_container">
+          <?php
+              $bookmarked = "";
+              if (isset($_SESSION["username"])) {
+                $stmt = $mysqli->prepare("SELECT username FROM bookmarks WHERE username = ? && id_kucing = ?");
+                $stmt->bind_param("ss", $_SESSION["username"], $arrSel[$ia]["id_kucing"]);
+                $stmt->execute();
+                $stmt->bind_result($uname_bookmarks);
+                $stmt->fetch();
+                $stmt->close();
+                if ($uname_bookmarks === $_SESSION["username"]) {
+                  $bookmarked = "bookmarked";
+                }
+              }
+           ?>
+            <div class="bookmarks bookmarks-in-profil">
+               <i class="fas fa-star <?php echo $bookmarked ?>" val="<?php echo $arrSel[$ia]["id_kucing"] ?>"></i>
+            </div>
+            <div class="edit-kucing">
+              <i class="fas fa-edit" val="<?php echo $arrSel[$ia]["id_kucing"] ?>"></i>
+            </div>
+
+            <p class="h1"><?php echo $arrSel[$ia]["nama_kucing"] ?></p> <hr> <br><br>
+            <div class="grid-3-true">
+              <div>
+                <img src="<?php echo $arrSel[$ia]["img_kucing1"] ?>" alt="">
+              </div>
+              <div>
+                <img src="<?php echo $arrSel[$ia]["img_kucing2"] ?>" alt="">
+              </div>
+              <div>
+                <img src="<?php echo $arrSel[$ia]["img_kucing3"] ?>" alt="">
+              </div>
+            </div>  <br> <br> <hr>
+            <div class="background5f999b">
+              <p class="h1 em12"><?php echo $arrSel[$ia]["nama_kucing"]. ", ". $arrSel[$ia]["jenis_kucing"]. ", ". $arrSel[$ia]["umur_kucing"] ?></p>
+              <p class="h1 em12"><?php echo $arrSel[$ia]["nama_kucing"]. " adalah kucing ". strtolower($arrSel[$ia]["jk_kucing"]). " dan berbulu ". strtolower($arrSel[$ia]["bulu_kucing"])  ?></p>
+            </div>
+          </div>
+          <?php
+      }
+
     }
   }
  ?>

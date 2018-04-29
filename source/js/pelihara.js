@@ -1,8 +1,13 @@
 $(document).on('click', '.fa-window-close', function(){
   $(".pelihara-container").hide(800);
 });
-$(document).on('click', '.isi-con-cari', function(){
-  kucingajax($(this));
+$(document).on('click', '.isi-con-cari', function(e){
+  // console.log(e.target.parentElement.attributes["val"].nodeValue);
+  if (e.target.tagName === "path") {
+    return false;
+  } else {
+    kucingajax($(this));
+  }
 });
 // data from index
 $(document).ready(function(){

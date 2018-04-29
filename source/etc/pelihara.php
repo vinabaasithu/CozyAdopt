@@ -11,10 +11,10 @@
     $warna_kucing = $_POST['warna_kucing'];
     $bulu_kucing = $_POST['bulu_kucing'];
     $jk_kucing = $_POST['jk_kucing'];
-    $stmt = $mysqli->prepare("SELECT info_kucing, info_khusus_kucing FROM kucing WHERE id_kucing = ?");
+    $stmt = $mysqli->prepare("SELECT k.info_kucing, k.info_khusus_kucing, prov.nama, kab.nama, kec.nama, kel.nama, k.alamat_lengkap FROM kucing k INNER JOIN provinsi_daerah prov ON k.id_prov = prov.id_prov INNER JOIN kabupaten_daerah kab ON k.id_kab = kab.id_kab INNER JOIN kecamatan_daerah kec ON k.id_kec = kec.id_kec INNER JOIN kelurahan_daerah kel ON k.id_kel = kel.id_kel WHERE id_kucing = ?");
     $stmt->bind_param("s", $id_kucing);
     $stmt->execute();
-    $stmt->bind_result($info_kucing, $info_khusus_kucing);
+    $stmt->bind_result($info_kucing, $info_khusus_kucing, $nama_prov, $nama_kab, $nama_kec, $nama_kel, $alamat_lengkap);
     $stmt->fetch();
     $stmt->close();
     switch($umur_kucing) {
@@ -41,7 +41,7 @@
       <div class="data-kucing">
         <div class="head-data-kucing">
           <p class="text-center h1"><?php echo $nama_kucing ?></p>
-          <p class="text-justify"><strong>Lokasinya</strong></p>
+          <p class="text-justify"><strong><?php echo "$nama_prov, $nama_kab, $nama_kec, $nama_kel, $alamat_lengkap" ?></strong></p>
           <p class="text-justify"><strong><?php echo $jenis_kucing. " . ". $jk_kucing . " . ". $warna_kucing?></strong></p>
           <hr>
           <p class="text-center h1">Tentang <?php echo $nama_kucing ?></p>

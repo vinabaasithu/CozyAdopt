@@ -1,0 +1,31 @@
+.bookmarks {
+  font-size: 5vw;
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+}
+.bookmarks .fa-star {
+  color: #fffa;
+}
+.bookmarked {
+  color: #f8ef8e !important;
+}
+.bookmarks .fa-star:hover {
+  color: #fff;
+}
+.bookmarks.bookmarks-in-profil {
+  font-size: 2em;
+  position: absolute;
+  /* right: 100px; */
+  right: 34px;
+  top: 34px;
+  /* color: #000; */
+  background-color: #0009 !important;
+  padding: 0.1em !important;
+  margin: 0 !important;
+  cursor: pointer;
+  bottom: unset;
+}
+.bookmarks.bookmarks-in-profil .bookmarked {
+  color: #f8ef8e !important;
+}

@@ -86,6 +86,7 @@
         $stmt->execute();
         $affected_rows = $mysqli->affected_rows;
         $stmt->close();
+        header("Location: index.php?pesan=Data $nama_kucing berhasil di upload, Semoga $nama_kucing Cepat mendapat rumah baru..");
       }
 
     }

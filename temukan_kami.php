@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="source/css/cari_kucing.css">
     <link rel="stylesheet" href="source/css/pelihara.css">
     <link rel="stylesheet" href="source/css/getMajikan.css">
+    <link rel="stylesheet" href="source/css/select_input.css">
+    <link rel="stylesheet" href="source/css/bookmarks.css">
   </head>
   <body>
     <?php
@@ -89,6 +91,26 @@
               <option value="Laki-laki">Laki-laki</option>
             </select>
           </div>
+
+          <!--  -->
+
+          <div class="form-group searchloc">
+            <div>
+              <p><strong class="searchloc_strong" val="down"><em>Atau Cari Berdasarkan Lokasi</em> <i class="fas fa-chevron-down chev"></i> </strong> </p>
+            </div>
+          </div>
+          <div class="f-sel-in">
+            <?php include 'source/etc/select_input.php'; ?>
+            <div class="form-group use_profil_loc_con">
+              <div>
+                <p><strong class="use_profil_loc"><em><label for="use-profil-loc">Gunakan Lokasi Profil Saya</label></em> <input type="checkbox" name="" value="" id="use-profil-loc"> </strong> </p>
+              </div>
+              <div class="in-hid">
+
+              </div>
+            </div>
+          </div>
+
           <div class="text-center">
             <button class="text-center" type="button" name="cari-kucing" id="cari-kucing">Cari</button>
           </div>
@@ -114,6 +136,8 @@
     <script src="source/js/fontawesome-all.min.js" charset="utf-8"></script>
     <script src="source/js/header.js" charset="utf-8"></script>
     <script src="source/js/pelihara.js" charset="utf-8"></script>
+    <script src="source/js/select_input.js" charset="utf-8"></script>
+    <script src="source/js/bookmarks.js" charset="utf-8"></script>
     <script type="text/javascript">
         $(document).on('click', '#cari-kucing', function(){
           var jenis_kucing = $(".jenis-kucing").val();
@@ -121,15 +145,19 @@
           var bulu_kucing = $(".bulu-kucing").val();
           var warna_kucing = $(".warna-kucing").val();
           var jk_kucing = $(".jk-kucing").val();
+          var id_prov = $("#hidden_id_prov").val();
+          var id_kab = $("#hidden_id_kab").val();
+          var id_kec = $("#hidden_id_kec").val();
+          var id_kel = $("#hidden_id_kel").val();
           var cari = "true";
           $.ajax({
           url: "source/etc/cari_kucing.php",
           method: "POST",
-          data: {jenis_kucing:jenis_kucing, umur_kucing:umur_kucing, bulu_kucing:bulu_kucing, warna_kucing:warna_kucing, jk_kucing:jk_kucing, cari:cari},
+          data: {jenis_kucing:jenis_kucing, umur_kucing:umur_kucing, bulu_kucing:bulu_kucing, warna_kucing:warna_kucing, jk_kucing:jk_kucing, cari:cari, id_prov:id_prov, id_kab:id_kab, id_kec:id_kec, id_kel:id_kel},
           dataType: "html",
           success: function(response){
             $("#tampil").html(response);
-            // footerChange();
+            $('html, body').animate({scrollTop: 570}, 'slow');
           }
           });
         });
@@ -167,6 +195,88 @@
           setTimeout(function(){
             $(".getmj").empty();
           }, 900);
+        }
+      });
+    </script>
+    <script type="text/javascript">
+      // Select By Location
+      $(document).ready(function(){
+        $(".form-cari-kucing-con label[for='tempat-kucing']").hide();
+        // SmoothScroll
+        $('a[href^="#"]').click(function(){
+        var the_id = $(this).attr("href");
+            $('html, body').animate({
+                scrollTop:$(the_id).offset().top
+            }, 'slow');
+        return false;
+        });
+      });
+      $(document).on("click", ".searchloc_strong", function() {
+        var val = $(this).attr("val");
+        if (val === "down") {
+          $(this).attr("val", "up");
+          // $(this).find(".chev").attr("class", "fas fa-chevron-up chev");
+          $(this).find(".chev").css("transform", "rotate(180deg)");
+          $(".f-sel-in").show(800);
+          setTimeout(function(){
+            $('html, body').animate({scrollTop:115}, 'slow');
+          }, 350)
+        } else if (val === "up"){
+          $(this).attr("val", "down");
+          // $(this).find(".chev").attr("class", "fas fa-chevron-down chev");
+          $(this).find(".chev").css("transform", "rotate(360deg)");
+          $(".f-sel-in").hide(800);
+          $('html, body').animate({scrollTop:0}, 'slow');
+        }
+      });
+      // checked use profil location
+      $(document).on("click", "#use-profil-loc", function(){
+        var uname = '<?php echo $_SESSION["username"] ?>';
+        var checked = $(this).attr("checked");
+        if(checked === "checked") {
+          $(this).removeAttr("checked");
+          // alert("unchecked");
+          $(".container-select-input #hidden_id_prov").val("");
+          $(".container-select-input input[type='text'][val='prov']").val("");
+          $(".container-select-input #hidden_id_kab").val("");
+          $(".container-select-input input[type='text'][val='kab']").val("");
+          $(".container-select-input #hidden_id_kec").val("");
+          $(".container-select-input input[type='text'][val='kec']").val("");
+          $(".container-select-input #hidden_id_kel").val("");
+          $(".container-select-input input[type='text'][val='kel']").val("");
+          $("#alamat_lengkap").val("");
+        } else {
+          $(this).attr("checked", "checked");
+          // alert("checked");
+          $.ajax({
+            url: "source/etc/isiAlamatAuto.php",
+            method: "POST",
+            data: {uname:uname},
+            dataType: "html",
+            success: function(response){
+              $(".in-hid").html(response);
+
+              var id_prov = $("#id_prov_p").attr("val");
+              var nama_prov = $("#nama_prov_p").attr("val");
+              var id_kab = $("#id_kab_p").attr("val");
+              var nama_kab = $("#nama_kab_p").attr("val");
+              var id_kec = $("#id_kec_p").attr("val");
+              var nama_kec = $("#nama_kec_p").attr("val");
+              var id_kel = $("#id_kel_p").attr("val");
+              var nama_kel = $("#nama_kel_p").attr("val");
+              var alamat_lengkap = $("#alamat_lengkap_p").attr("val");
+
+              $(".container-select-input #hidden_id_prov").val(id_prov);
+              $(".container-select-input input[type='text'][val='prov']").val(nama_prov);
+              $(".container-select-input #hidden_id_kab").val(id_kab);
+              $(".container-select-input input[type='text'][val='kab']").val(nama_kab);
+              $(".container-select-input #hidden_id_kec").val(id_kec);
+              $(".container-select-input input[type='text'][val='kec']").val(nama_kec);
+              $(".container-select-input #hidden_id_kel").val(id_kel);
+              $(".container-select-input input[type='text'][val='kel']").val(nama_kel);
+              $("#alamat_lengkap").val(alamat_lengkap);
+            }
+          });
         }
       });
     </script>

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="source/css/styleUniversal.css">
     <link rel="stylesheet" href="source/css/styleIndex.css">
     <link rel="stylesheet" href="source/css/styleHeader.css">
+    <link rel="stylesheet" href="source/css/bookmarks.css">
   </head>
   <body>
     <?php include 'source/etc/header.php'; ?>
@@ -46,30 +47,61 @@
         <div class="look-container">
           <?php
           $i = 1;
-          $stmt = $mysqli->prepare("SELECT k.nama_kucing, k.img_kucing1, j_k.jenis_kucing, k.umur_kucing, w_k.warna_kucing, k.bulu_kucing, k.jk_kucing, k.id_kucing FROM kucing k INNER JOIN jenis_kucing j_k ON k.id_jenis_kucing = j_k.id_jenis_kucing INNER JOIN warna_kucing w_k ON k.id_warna_kucing = w_k.id_warna_kucing LIMIT 5");
+          $stmt = $mysqli->prepare("SELECT k.nama_kucing, k.img_kucing1, j_k.jenis_kucing, k.umur_kucing, w_k.warna_kucing, k.bulu_kucing, k.jk_kucing, k.id_kucing, k.username FROM kucing k INNER JOIN jenis_kucing j_k ON k.id_jenis_kucing = j_k.id_jenis_kucing INNER JOIN warna_kucing w_k ON k.id_warna_kucing = w_k.id_warna_kucing LIMIT 5");
           $stmt->execute();
-          $stmt->bind_result($nama_kucing, $img_kucing1, $jenis_kucing, $umur_kucing, $warna_kucing, $bulu_kucing, $jk_kucing, $id_kucing);
+          $stmt->bind_result($nama_kucing, $img_kucing1, $jenis_kucing, $umur_kucing, $warna_kucing, $bulu_kucing, $jk_kucing, $id_kucing, $k_username);
+          $ia = 0;
+          $arrSel = array();
           while ($stmt->fetch()) {
-
-            if (substr($img_kucing1, 0, 6) === "../../") {
-              $img_kucing1 = substr($img_kucing1, 6);
-            }
-            ?>
-            <a href="temukan_kami.php?nm=<?php echo $nama_kucing ?>&jk=<?php echo $jenis_kucing ?>&uk=<?php echo $umur_kucing ?>&wk=<?php echo $warna_kucing ?>&bk=<?php echo $bulu_kucing ?>&kuc=<?php echo $id_kucing ?>&jkel=<?php echo $jk_kucing ?>&img=<?php echo $img_kucing1 ?>">
-              <div class="sampul<?php echo $i; ?> sampul-isi">
-                <div class="sampul-isi-relative">
-                  <div class="bio-kucing">
-                    <p><?php echo $nama_kucing; ?> </p>
-                    <p><?php echo $jenis_kucing. ", ". $umur_kucing; ?></p>
-                  </div>
-                  <img src="<?php echo $img_kucing1; ?>" alt="<?php echo $nama_kucing ?>">
-                </div>
-                </div>
-            </a>
-            <?php
-            $i++;
+            $arrSel[$ia]["nama_kucing"] = $nama_kucing;
+            $arrSel[$ia]["img_kucing1"] = $img_kucing1;
+            $arrSel[$ia]["jenis_kucing"] = $jenis_kucing;
+            $arrSel[$ia]["umur_kucing"] = $umur_kucing;
+            $arrSel[$ia]["warna_kucing"] = $warna_kucing;
+            $arrSel[$ia]["bulu_kucing"] = $bulu_kucing;
+            $arrSel[$ia]["jk_kucing"] = $jk_kucing;
+            $arrSel[$ia]["id_kucing"] = $id_kucing;
+            $arrSel[$ia]["k_username"] = $k_username;
+            $ia++;
           }
           $stmt->close();
+
+          for ($ia=0; $ia < count($arrSel); $ia++) {
+              if (substr($arrSel[$ia]["img_kucing1"], 0, 6) === "../../") {
+                $arrSel[$ia]["img_kucing1"] = substr($arrSel[$ia]["img_kucing1"], 6);
+              }
+              ?>
+              <a class="klik-to-temukan" href="temukan_kami.php?nm=<?php echo $arrSel[$ia]["nama_kucing"] ?>&jk=<?php echo $arrSel[$ia]["jenis_kucing"] ?>&uk=<?php echo $arrSel[$ia]["umur_kucing"] ?>&wk=<?php echo $arrSel[$ia]["warna_kucing"] ?>&bk=<?php echo $arrSel[$ia]["bulu_kucing"] ?>&kuc=<?php echo $arrSel[$ia]["id_kucing"] ?>&jkel=<?php echo $arrSel[$ia]["jk_kucing"] ?>&img=<?php echo $arrSel[$ia]["img_kucing1"] ?>">
+                <div class="sampul<?php echo $i; ?> sampul-isi">
+                  <div class="sampul-isi-relative">
+                    <div class="bio-kucing">
+                      <p><strong><?php echo $arrSel[$ia]["nama_kucing"]. ", " .$arrSel[$ia]["jenis_kucing"]. ", ". $arrSel[$ia]["umur_kucing"]; ?> </strong></p>
+                      <p><?php echo "Uploaded By ".$arrSel[$ia]["k_username"] ?></p>
+                      <?php
+                          $bookmarked = "";
+                          if (isset($_SESSION["username"])) {
+                            $stmt = $mysqli->prepare("SELECT username FROM bookmarks WHERE username = ? && id_kucing = ?");
+                            $stmt->bind_param("ss", $_SESSION["username"], $arrSel[$ia]["id_kucing"]);
+                            $stmt->execute();
+                            $stmt->bind_result($uname_bookmarks);
+                            $stmt->fetch();
+                            $stmt->close();
+                            if ($uname_bookmarks === $_SESSION["username"]) {
+                              $bookmarked = "bookmarked";
+                            }
+                          }
+                       ?>
+                      <div class="bookmarks">
+                        <i class="fas fa-star <?php echo $bookmarked ?>" val="<?php echo $arrSel[$ia]["id_kucing"] ?>"></i>
+                      </div>
+                    </div>
+                    <img src="<?php echo $arrSel[$ia]["img_kucing1"]; ?>" alt="<?php echo $arrSel[$ia]["nama_kucing"] ?>">
+                  </div>
+                  </div>
+              </a>
+              <?php
+              $i++;
+          }
            ?>
         </div>
       </div>
@@ -124,6 +156,7 @@
     <script src="source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
     <script src="source/js/fontawesome-all.min.js" charset="utf-8"></script>
     <script src="source/js/header.js" charset="utf-8"></script>
+    <script src="source/js/bookmarks.js" charset="utf-8"></script>
     <script type="text/javascript">
       // detect scroll
       $(window).scroll(function() {
@@ -171,6 +204,18 @@
         });
 
       })
+    </script>
+    <script type="text/javascript">
+      // bookmarks
+      $(document).ready(function(){
+        $(".klik-to-temukan").click(function(e){
+          if (e.target.attributes["fill"].nodeValue === "currentColor") {
+            var cbookmarks = $(this).find(".bookmarks");
+            bookmarks(cbookmarks);
+            return false;
+          }
+        });
+      });
     </script>
   </body>
 </html>

@@ -211,7 +211,7 @@ footer {
   color: #000;
 }
 .edit-kucing .fa-edit {
-  font-size: 3vw;
+  font-size: 2em;
   color: #0009;
 }
 div.grid-3-true {
@@ -223,6 +223,8 @@ div.grid-3-true {
 div.grid-3-true div {
   padding: 0 20px;
   margin: 0 20px;
+  padding: 0;
+  margin: 0 10px;
 }
 .background5f999b {
   background-color: #5f999b !important;
@@ -340,9 +342,16 @@ input[type="file"], #upl {
   }
 }
 
-
 @media only screen and (max-width: 825px) {
   div.grid-3 {
     display: block;
+  }
+}
+@media only screen and (max-width: 825px) {
+  div.grid-3-true {
+    display: block;
+  }
+  div.grid-3-true div {
+    margin: 20px 10px;
   }
 }
