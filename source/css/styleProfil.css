@@ -56,8 +56,11 @@
   text-align: center;
   color: #38453f;
   position: absolute;
-  width: 100%;
+  width: 90vw;
   bottom: -13vh;
+  left: -50vw;
+  right: -50vw;
+  margin: auto;
 }
 .ganti-dp {
   position: absolute;
@@ -335,6 +338,47 @@ input[type="file"], #upl {
   height: 3vw;
   top: 0.4vw;
   right: 0.5vw;
+}
+div.isi-con-cari-profil {
+  padding: 0;
+  cursor: pointer;
+}
+div.isi-con-cari-profil:hover {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #ddd;
+}
+div.isi-info {
+  padding: 0;
+  margin: 16px 0;
+}
+div.isi-info > span:first-child {
+  display: grid;
+  /* grid-template-columns: auto auto auto auto; */
+  grid-template-columns: 20% 5% auto;
+}
+div.griddl {
+  display: grid;
+  grid-template-columns: 20% 5% auto;
+  padding: 0;
+  margin: 10px 0;
+}
+div.griddl2 {
+  display: grid;
+  grid-template-columns: 25% 30% 5% 30% auto;
+  padding: 0;
+  margin: 10px 0;
+}
+span .isi-edit {
+  display: none;
+}
+.isi-click-grid {
+  display: grid;
+  display: none;
+  grid-template-columns: 20% 5% 50% 10% 10%;
+}
+.form-group.griddl label {
+  font-size: 1em;
 }
 @media only screen and (max-width: 905px) {
   div.menu {

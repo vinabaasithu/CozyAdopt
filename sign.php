@@ -124,7 +124,7 @@
          });
          if (a === "Login Berhasil") {
            setTimeout(function(){
-             window.location = "index.php";
+             window.location = "profil.php?r="+userses;
            }, 2000);
          }
        });

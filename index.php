@@ -2,6 +2,17 @@
   session_start();
   $index = true;
   include 'source/etc/db.php';
+  if (isset($_POST["send-email"])) {
+    $_GET["pesan"] = "Terimakasih.. Pesan Anda Sudah Terkirim :)";
+    $to      = 'jabbarujang@gmail.com';
+    $subject = 'the subject';
+    $message = 'hello';
+    $headers = 'From: webmaster@example.com' . "\r\n" .
+          'Reply-To: webmaster@example.com' . "\r\n" .
+          'X-Mailer: PHP/' . phpversion();
+
+    mail($to, $subject, $message, $headers);
+  }
  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -19,16 +30,16 @@
     <div class="sampul" id="home">
       <div class="grid-container">
         <div class="grid-col sampul-background"><br><br>
-          <p class="h1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet</p>
-          <p class="h1 text-center"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; consectetur adipisicing elit</p>
+          <p class="h1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CozyAdopt Site</p>
+          <p class="h1 text-center"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Temukan Kucing Peliharaanmu Di Sini</p>
           <br><br><br><br><br><br><br><br><br>
           <p class="h1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Meow...</p>
         </div>
         <div class="grid-col text-sampul text-center">
           <h1><i class="fas fa-paw"></i></h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+          <p>Cari, temukan, dan adopsi Kucing peliharaanmu di sini. Dengan semua fitur yang ada di <a href="index.php"><strong>CozyAdopt</strong></a>, pastinya akan memudahkan kamu menemukan Kucing idamanmu atau menemukan rumah baru untuk Kucing Peliharaanmu di sini</p>
           <p>
-            <a href="temukan_kami.php">
+            <a href="adopt_kucing.php">
               <button class="btn-text-sampul" type="button" name="button">Adopt Kucing</button>
             </a>
           </p>
@@ -36,13 +47,13 @@
       </div>
     </div>
     <div class="look-at-me" id="find">
-      <p class="text-center h1">Look At Me</p>
+      <p class="text-center h1">Adopt Kucing atau Rehome Kucing Peliharaanmu Di sini</p>
       <div class="look-at-me-grid">
         <div class="text-look-at-me">
-          <p><strong>TITLE</strong></p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p><strong>TITLE</strong></p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p><strong>Cara Penggunaan Untuk Pengadopt</strong></p>
+          <p>Bagi pengadopt akan terasa mudah untuk mencari peliharaanmu di sini. Kamu bisa menggunakan fitur <a href="adopt_kucing.php"><strong>Adopt Kucing</strong></a>. Setelah sampai di laman Adopt Kucing silahkan pilih filter pencarian yang sesuai untuk mencari Kucing peliharaanmu. Lalu tekan tombol cari. Setelah foto-foto kucing tampil, pilih kucing yang anda inginkan. Klik pada foto tersebut, lalu klik <strong>Rawat dan Pelihara</strong>. Maka akan muncul popup yang berisi profil pemilik kucing, dan Kamu bisa menghubungi pemilik tersebut untuk bernegosiasi lebih lanjut.</p>
+          <p><strong>Cara Penggunaan Untuk Perehome</strong></p>
+          <p>Untuk Kamu yang ingin mencari pemilik atau rumah baru untuk kucing peliharaanmu (rehome). Kamu bisa mengikuti langkah berikut untuk merehome kucing kesayanganmu di sini. Silahkan lakukan <a href="sign.php?r=reg"><strong>Register</strong></a> jika Kamu belum memiliki akun CozyAdopt. Setelah Kamu sudah memiliki akun CozyAdopt Silahkan <a href="sign.php"><strong>login</strong></a> lalu masuk ke laman <a href="rehome_kucing"><strong>Rehome Kucing</strong></a> dan daftarkan kucing kamu di CozyAdopt, tunggu permintaan dari Pengadopt dan kucingmu akan mendapatkan rumah barunya</p>
         </div>
         <div class="look-container">
           <?php
@@ -71,7 +82,7 @@
                 $arrSel[$ia]["img_kucing1"] = substr($arrSel[$ia]["img_kucing1"], 6);
               }
               ?>
-              <a class="klik-to-temukan" href="temukan_kami.php?nm=<?php echo $arrSel[$ia]["nama_kucing"] ?>&jk=<?php echo $arrSel[$ia]["jenis_kucing"] ?>&uk=<?php echo $arrSel[$ia]["umur_kucing"] ?>&wk=<?php echo $arrSel[$ia]["warna_kucing"] ?>&bk=<?php echo $arrSel[$ia]["bulu_kucing"] ?>&kuc=<?php echo $arrSel[$ia]["id_kucing"] ?>&jkel=<?php echo $arrSel[$ia]["jk_kucing"] ?>&img=<?php echo $arrSel[$ia]["img_kucing1"] ?>">
+              <a class="klik-to-temukan" nm="<?php echo $arrSel[$ia]["nama_kucing"]  ?>" href="adopt_kucing.php?nm=<?php echo $arrSel[$ia]["nama_kucing"] ?>&jk=<?php echo $arrSel[$ia]["jenis_kucing"] ?>&uk=<?php echo $arrSel[$ia]["umur_kucing"] ?>&wk=<?php echo $arrSel[$ia]["warna_kucing"] ?>&bk=<?php echo $arrSel[$ia]["bulu_kucing"] ?>&kuc=<?php echo $arrSel[$ia]["id_kucing"] ?>&jkel=<?php echo $arrSel[$ia]["jk_kucing"] ?>&img=<?php echo $arrSel[$ia]["img_kucing1"] ?>">
                 <div class="sampul<?php echo $i; ?> sampul-isi">
                   <div class="sampul-isi-relative">
                     <div class="bio-kucing">
@@ -113,14 +124,14 @@
         </div>
       </div>
       <div class="tentang-kami-text">
-        <h1>We are ...</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h1>Tentang CozyAdopt</h1>
+        <p>CozyAdopt adalah website yang yang memiliki fitur pencarian kucing bagi kamu-kamu yang ingin mengadopsi kucing-kucing yang lucu. Di sini kamu bisa dengan mudah mencari kucing yang ingin kamu pelihara sesuai dengan keinginanmu. Untuk mencari kucing peliharaan yang sesuai dengan keinginanmu, Kamu bisa menggunakan fitur <a href="adopt_kucing.php"><strong>Adopt Kucing</strong></a>. Di CozyAdopt, baik fitur pencarian Kucing berdasarkan lokasi, jenis kucing, karakteristik kucing, serta detail kebutuhan-nya sudah tersedia disini. Jadi semoga cepat bertemu dengan peliharaan barumu :)</p>
+        <p>Atau bagi kamu yang ingin mendapatkan rumah baru untuk Kucing peliharaan-mu di rumah, CozyAdopt juga menyediakan fitur <a href="rehome_kucing.php"><strong>Rehome Kucing</strong></a>. Di sini kamu bisa menemukan majikan baru untuk kucingmu yang tentunya akan dengan senang hati merawat peliharaan kesayanganmu. Untuk <a href="rehome_kucing.php"><strong>Rehome Kucing</strong></a> peliharaanmu. Kamu bisa <a href="sign.php"><strong>login</strong></a> dan klik <a href="rehome_kucing.php"><strong>Rehome Kucing</strong></a> untuk mendaftarkan peliharaanmu disini. </p>
       </div>
     </div>
     <div class="kontak" id="kontak">
       <p class="h1 text-center">Kontak</p>
-      <form class="form-kontak" action="index.html" method="post">
+      <form class="form-kontak" action="" method="post">
         <h2 class="text-center">Anda dapat menghubungi kami via Email di bawah ini.</h2>
         <div class="form-group">
           <label for="nama_lengkap">Nama :</label>

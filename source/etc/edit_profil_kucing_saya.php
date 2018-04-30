@@ -145,7 +145,7 @@ var alamat_lengkap = '<?php if(isset($alamat_lengkap)) echo $alamat_lengkap ?>';
 </script>
 <div class="container">
   <p class="h1 text-center">Isi Data Kucing</>
-  <form class="" action="source/etc/edit_profil_kucing_saya.php" method="post" enctype="multipart/form-data">
+  <form class="" id="edit_profil_kucing_saya_form" action="source/etc/edit_profil_kucing_saya.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id_kucing" value="<?php echo $val ?>">
     <div class="form-group">
       <label for="nama-kucing">Nama Kucing :</label>
@@ -300,4 +300,55 @@ var alamat_lengkap = '<?php if(isset($alamat_lengkap)) echo $alamat_lengkap ?>';
   $("input[type='text'][val='kec']").val(nama_kec);
   $("input[type='text'][val='kel']").val(nama_kel);
   $("textarea#alamat_lengkap").val(alamat_lengkap);
+</script>
+<script type="text/javascript">
+// vali form
+
+  $("#edit_profil_kucing_saya_form").submit(function(e){
+    var fank = function(teks) {
+      $("body").append("<div class='pesanE'><h1></h1></div>");
+      $(".pesanE h1").text(teks);
+      $(".pesanE").fadeIn(800);
+      setTimeout(function(){
+        $(".pesanE").fadeOut(800);
+      }, 1000);
+    }
+    var err = 0;
+    // SELECT
+    // INPUT
+    // TEXTAREA
+    var inptext = $("#edit_profil_kucing_saya_form input[type='text']");
+    for(var i = 0; i < inptext.length; i++) {
+      if (i === 1 || i === 2) {
+        continue;
+      } else if(!inptext[i].value) {
+        e.preventDefault();
+        fank("Ganti Data Kucing Gagal, Harap Lengkapi Form");
+        err = 1;
+        break;
+      }
+    }
+    if (!err) {
+      var teksarea = $("#edit_profil_kucing_saya_form textarea");
+      for(var i = 0; i < teksarea.length; i++) {
+        if (!teksarea[i].value) {
+          e.preventDefault();
+          fank("Ganti Data Kucing Gagal, Harap Lengkapi Form");
+          err = 1;
+          break;
+        }
+      }
+    }
+    if (!err) {
+      var inpfile = "view-img";
+      for (var i = 1; i <= 3; i++) {
+        if (!$("#view-img"+i).attr("src")) {
+          e.preventDefault();
+          fank("Ganti Data Kucing Gagal, Harap Lengkapi Form");
+          err = 1;
+          break;
+        }
+      }
+    }
+  });
 </script>

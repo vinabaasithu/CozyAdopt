@@ -53,6 +53,9 @@
   font-weight: bold;
   color: #000c;
   font-family: "courgette";
+  position: absolute;
+  left: -14vw;
+  right: -14vw;
 }
 .getMajikan .nama:hover {
   color: #000;

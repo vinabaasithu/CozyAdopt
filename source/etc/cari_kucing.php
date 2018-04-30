@@ -12,6 +12,7 @@
     $id_kab = $_POST['id_kab'];
     $id_kec = $_POST['id_kec'];
     $id_kel = $_POST['id_kel'];
+    $urut = $_POST['urut'];
 
     $jenis_kucing = !$jenis_kucing ? "%%" : $jenis_kucing;
     $umur_kucing = !$umur_kucing ? "%%" : $umur_kucing;
@@ -22,8 +23,10 @@
     $id_kab = !$id_kab ? "%%" : $id_kab;
     $id_kec = !$id_kec ? "%%" : $id_kec;
     $id_kel = !$id_kel ? "%%" : $id_kel;
+    $urut = !$urut ? "" : "ORDER BY $urut DESC";
+
     $uname_bookmarks = "asdawd2n1ldn12kdb32kbbacb2321";
-    $stmt = $mysqli->prepare("SELECT k.nama_kucing, k.img_kucing1, j_k.jenis_kucing, k.umur_kucing, w_k.warna_kucing, k.bulu_kucing, k.jk_kucing, k.id_kucing, k.username FROM kucing k INNER JOIN jenis_kucing j_k ON k.id_jenis_kucing = j_k.id_jenis_kucing INNER JOIN warna_kucing w_k ON k.id_warna_kucing = w_k.id_warna_kucing WHERE k.id_jenis_kucing LIKE ? && k.umur_kucing LIKE ? && k.id_warna_kucing LIKE ? && k.bulu_kucing LIKE ? && k.jk_kucing LIKE ? && k.id_prov LIKE ? && k.id_kab LIKE ? && k.id_kec LIKE ? && k.id_kel LIKE ?");
+    $stmt = $mysqli->prepare("SELECT k.nama_kucing, k.img_kucing1, j_k.jenis_kucing, k.umur_kucing, w_k.warna_kucing, k.bulu_kucing, k.jk_kucing, k.id_kucing, k.username FROM kucing k INNER JOIN jenis_kucing j_k ON k.id_jenis_kucing = j_k.id_jenis_kucing INNER JOIN warna_kucing w_k ON k.id_warna_kucing = w_k.id_warna_kucing WHERE k.id_jenis_kucing LIKE ? && k.umur_kucing LIKE ? && k.id_warna_kucing LIKE ? && k.bulu_kucing LIKE ? && k.jk_kucing LIKE ? && k.id_prov LIKE ? && k.id_kab LIKE ? && k.id_kec LIKE ? && k.id_kel LIKE ? $urut");
     $stmt->bind_param("sssssssss", $jenis_kucing, $umur_kucing, $warna_kucing, $bulu_kucing, $jk_kucing, $id_prov, $id_kab, $id_kec, $id_kel);
     $stmt->execute();
     $stmt->store_result();

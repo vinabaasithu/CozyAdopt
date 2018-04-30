@@ -17,13 +17,6 @@ profile.php {
   # Jika ganti dp atau sampul, maka isi folder dp, sampul juga diubah V
 }
 
-settings.php {
-}
-
-admin.php {
-  # FORM CONFIRM kucing
-}
-
 #new
 # alamat lengkap V
 # warna notif login berhasil V
@@ -31,8 +24,9 @@ admin.php {
 # wa ganti gmail V
 
 profil.php
-# favorit kucing favorit, simpan di profil (sistem baru)
+# favorit kucing favorit, simpan di profil (new sys) V
 # edit alamat backend (next) V
+
 tampilkan_kucing.php
 # info lebih detail ex: makanan favorit, pasir garis baru kebutuhan khusus, atau riwayat penyakit V
 
@@ -44,9 +38,14 @@ profil.php
 # isi alamat lengkap V
 
 new
-# Settings, Ganti username dan password
-# Fitur Bookmars Kucing Favorit, di Index dan profil
+# Fitur Bookmars Kucing Favorit, di Index dan profil V
 # Search Berdasarkan Lokasi V
-# Urut Berdasarkan
-# Click Event On Kucing Saya ~ profil.php
-asdsads
+# Urut Berdasarkan V
+# Click Event On Kucing Saya ~ profil.php V
+# profil.php/settings, Ganti username dan password, bug (auto isi alamat) V
+# profil.php Ganti Password (NEW) V
+
+
+admin.php {
+  # FORM CONFIRM kucing
+}

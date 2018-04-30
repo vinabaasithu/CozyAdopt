@@ -41,6 +41,11 @@
   }
   // Login
   else if(isset($_POST['login'])) {
+
+    if (isset($_GET["pesan"])) {
+      $_GET["pesan"] = null;
+    }
+    
     $username = $_POST['username_log'];
     $password = $_POST['password_log'];
     $stmt = $mysqli->prepare("SELECT password FROM users WHERE username = ?");

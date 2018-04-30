@@ -14,65 +14,143 @@
         $kab = substr($kab, 0, 6).substr($kabn, 6);
         ?>
         <?php $edit = "";
+        $username = "";
           if (isset($_SESSION["username"])) {
             if ($r === $_SESSION["username"]) {
               $edit = "<i class='fas fa-edit'></i></span>";
+              $username = $_SESSION["username"];
             }
           }
          ?>
-        <form class="" action="" method="post">
-          <p>
-            <span val="fname"><span class="spanw">Nama </span> : <?php echo $fname. " <span class='isi-edit' vale='fname'>" .$edit. "</span>"; ?></span>
-            <span class="isi-clicked" val="fname-clicked"><span class="spanw">Nama </span> :
-              <input class="textinput-isi" type="text" name="isi" placeholder="<?php echo $fname ?>">
-              <input type="hidden" name="col" value="fullname">
-              <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
-              <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="fname" >
-            </span>
-          </p>
-        </form>
-        <form class="" action="" method="post">
-          <p>
-            <span val="email"><span class="spanw">Email</span> : <?php echo $email. " <span class='isi-edit' vale='email'>" .$edit. "</span>";  ?></span>
-            <span class="isi-clicked" val="email-clicked"><span class="spanw">Email</span> :
-              <input class="textinput-isi" type="email" name="isi" placeholder="<?php echo $email ?>">
-              <input type="hidden" name="col" value="email">
-              <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
-              <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="email" >
-            </span>
-          </p>
-        </form>
-        <form class="" action="" method="post">
-          <p>
-            <span val="no-hp"><span class="spanw">Nomor HP</span> : <?php echo $no_hp. " <span class='isi-edit' vale='no-hp'>" .$edit. "</span>";  ?></span>
-            <span class="isi-clicked" val="no-hp-clicked"><span class="spanw">Nomor HP</span> :
-              <input class="textinput-isi" type="text" name="isi" placeholder="<?php echo $no_hp ?>">
-              <input type="hidden" name="col" value="no_hp">
-              <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
-              <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="no-hp">
-            </span>
-          </p>
-        </form>
-        <form class="" action="" method="post">
-          <p>
-            <span val="alamat"><span class="spanw">Alamat</span> : <?php echo "$prov, $kab, $kec, $kel, $ualamat_lengkap". " <span class='isi-edit' vale='alamat'>" .$edit. "</span>"; ?>
-            </span>
-            <div class="isi-clicked" val="alamat-clicked">
-              <br>
-              <?php include 'select_input.php'; ?>
-              <p class="text-center">
-                <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
-                <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="alamat">
-              </p>
-            </div>
-          </p>
-        </form>
+
+         <!-- new -->
+
+           <form class="" action="" method="post">
+             <div class="isi-info">
+               <span val="fname">
+                 <span class="spanw">Nama </span> <span> : </span> <span><?php echo $fname. " <span class='isi-edit' vale='fname'>" .$edit. "</span></span>"; ?>
+               </span>
+               <span class="isi-clicked isi-click-grid" val="fname-clicked">
+                 <span class="spanw">Nama </span> :
+                 <input class="textinput-isi" type="text" name="isi" placeholder="<?php echo $fname ?>">
+                 <input type="hidden" name="col" value="fullname">
+                 <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
+                 <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="fname" >
+               </span>
+             </div>
+           </form>
+           <form class="" action="" method="post">
+             <div class="isi-info">
+               <span val="email">
+                 <span class="spanw">Email </span> <span> : </span> <span><?php echo $email. " <span class='isi-edit' vale='email'>" .$edit. "</span></span>";  ?>
+               </span>
+               <span class="isi-clicked isi-click-grid" val="email-clicked"><span class="spanw">Email</span> :
+                 <input class="textinput-isi" type="email" name="isi" placeholder="<?php echo $email ?>">
+                 <input type="hidden" name="col" value="email">
+                 <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
+                 <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="email" >
+               </span>
+             </div>
+           </form>
+           <form class="" action="" method="post">
+             <div class="isi-info">
+               <span val="no-hp">
+                 <span class="spanw">Nomor HP </span><span> : </span><span><?php echo $no_hp. " <span class='isi-edit' vale='no-hp'>" .$edit. "</span></span>";  ?>
+               </span>
+               <span class="isi-clicked isi-click-grid" val="no-hp-clicked"><span class="spanw">Nomor HP</span> :
+                 <input class="textinput-isi" type="text" name="isi" placeholder="<?php echo $no_hp ?>">
+                 <input type="hidden" name="col" value="no_hp">
+                 <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
+                 <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="no-hp">
+               </span>
+             </div>
+           </form>
+           <form class="" action="" method="post">
+             <div class="isi-info">
+               <span val="alamat isi-click-grid">
+                 <span class="spanw">Alamat </span><span> : </span><span><?php echo "$prov, $kab, $kec, $kel, $ualamat_lengkap". "  <span class='isi-edit' vale='alamat'>" .$edit. "</span></span>"; ?>
+               </span>
+               <input type="hidden" name="isi" value="alamat">
+               <div class="isi-clicked" val="alamat-clicked">
+                 <br>
+                 <?php include 'select_input.php'; ?>
+                 <p class="text-center">
+                   <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
+                   <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="alamat">
+                 </p>
+               </div>
+             </div>
+           </form>
+           <?php if ($username === $r): ?>
+             <form class="" action="" method="post">
+               <div class="isi-info">
+                 <span val="username">
+                   <span class="spanw">Username </span> <span> : </span> <span><?php echo $username. " <span class='isi-edit' vale='username'>" .$edit. "</span></span>";  ?>
+                 </span>
+                 <span class="isi-clicked isi-click-grid" val="username-clicked">
+                   <span class="spanw">Username</span> :
+                   <input class="textinput-isi" type="text" name="isi" placeholder="<?php echo $username ?>">
+                   <input type="hidden" name="col" value="username">
+                   <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
+                   <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="username">
+                 </span>
+               </div>
+             </form>
+
+             <form class="" action="" method="post">
+               <div class="isi-info">
+                 <span val="password">
+                   <span class="spanw">Password</span> <span> : </span> <span><?php echo "***************". " <span class='isi-edit' vale='password'>" .$edit. "</span></span>";  ?>
+                 </span>
+                 <span class="isi-clicked" val="password-clicked">
+                   <div class="isi-click-grid">
+                     <span class="spanw">Password </span> :
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                   </div>
+                   <p>
+                     <strong><u>Ganti Password</u></strong>
+                   </p>
+                     <div class="form-group griddl">
+                         <label for="passlama">Password Lama </label> <span>:</span>
+                         <input class="textinput-isi" id="passlama" type="password" name="isi" placeholder="Password Lama">
+                     </div>
+                     <div class="form-group griddl">
+                         <label for="passbaru">Password Baru </label><span>:</span>
+                         <input class="textinput-isi" id="passbaru" type="password" name="pass" placeholder="Password Baru">
+                     </div>
+                     <div class="form-group griddl">
+                         <label for="repasslama">Ketik Ulang Password Lama </label><span>:</span>
+                         <input class="textinput-isi" id="repasslama" type="password" name="repass" placeholder="Ketik Ulang Password Baru">
+                     </div>
+                     <div class="form-group griddl2">
+                         <input type="hidden" name="col" value="password">
+                         <span></span>
+                         <input class="edit_isi_submit text-center" type="submit" name="edit_isi_submit" value="Edit">
+                         <span></span>
+                         <input class="edit_isi_submit text-center" type="reset" name="reset_isi_submit" value="Cancel" val="password">
+                         <span></span>
+                     </div>
+
+                 </span>
+               </div>
+             </form>
+           <?php endif; ?>
+         <!-- new -->
+
       <?php
-    } else if ($id === "kucing_saya") {
-      $stmt = $mysqli->prepare("SELECT k.nama_kucing, k.img_kucing1, k.img_kucing2, k.img_kucing3, j_k.jenis_kucing, k.umur_kucing, k.jk_kucing, k.bulu_kucing, k.id_kucing FROM kucing k INNER JOIN jenis_kucing j_k ON k.id_jenis_kucing = j_k.id_jenis_kucing INNER JOIN warna_kucing w_k ON k.id_warna_kucing = w_k.id_warna_kucing WHERE username = ? ");
+    } else if ($id === "kucing_saya" || $id === "favorit_saya") {
+      if ($id === "favorit_saya") {
+        $query = "SELECT k.nama_kucing, k.img_kucing1, k.img_kucing2, k.img_kucing3, j_k.jenis_kucing, k.umur_kucing, k.jk_kucing, k.bulu_kucing, k.id_kucing, w_k.warna_kucing FROM kucing k INNER JOIN jenis_kucing j_k ON k.id_jenis_kucing = j_k.id_jenis_kucing INNER JOIN warna_kucing w_k ON k.id_warna_kucing = w_k.id_warna_kucing INNER JOIN bookmarks b ON b.username = k.username && b.id_kucing = k.id_kucing WHERE b.username = ?";
+      } else if ($id === "kucing_saya") {
+        $query = "SELECT k.nama_kucing, k.img_kucing1, k.img_kucing2, k.img_kucing3, j_k.jenis_kucing, k.umur_kucing, k.jk_kucing, k.bulu_kucing, k.id_kucing, w_k.warna_kucing FROM kucing k INNER JOIN jenis_kucing j_k ON k.id_jenis_kucing = j_k.id_jenis_kucing INNER JOIN warna_kucing w_k ON k.id_warna_kucing = w_k.id_warna_kucing WHERE username = ? ";
+      }
+      $stmt = $mysqli->prepare($query);
       $stmt->bind_param("s", $r);
       $stmt->execute();
-      $stmt->bind_result($nama_kucing, $img_kucing1, $img_kucing2, $img_kucing3, $jenis_kucing, $umur_kucing, $jk_kucing, $bulu_kucing, $id_kucing);
+      $stmt->bind_result($nama_kucing, $img_kucing1, $img_kucing2, $img_kucing3, $jenis_kucing, $umur_kucing, $jk_kucing, $bulu_kucing, $id_kucing, $warna_kucing);
       $ia = 0;
       $arrSel = array();
       while ($stmt->fetch()) {
@@ -85,6 +163,7 @@
         $arrSel[$ia]["jk_kucing"] = $jk_kucing;
         $arrSel[$ia]["bulu_kucing"] = $bulu_kucing;
         $arrSel[$ia]["id_kucing"] = $id_kucing;
+        $arrSel[$ia]["warna_kucing"] = $warna_kucing;
         $ia++;
       }
       $stmt->close();
@@ -121,29 +200,48 @@
                   $bookmarked = "bookmarked";
                 }
               }
+              $inwhere = "";
+              if ($id === "favorit_saya") {
+                $inwhere = "fav";
+              }
            ?>
-            <div class="bookmarks bookmarks-in-profil">
+            <div class="bookmarks bookmarks-in-profil" val="<?php echo $inwhere ?>">
                <i class="fas fa-star <?php echo $bookmarked ?>" val="<?php echo $arrSel[$ia]["id_kucing"] ?>"></i>
             </div>
-            <div class="edit-kucing">
-              <i class="fas fa-edit" val="<?php echo $arrSel[$ia]["id_kucing"] ?>"></i>
+            <?php
+              if(isset($_SESSION["username"])) {
+                if($_SESSION["username"] === $r) {
+                  ?>
+                  <div class="edit-kucing">
+                   <i class="fas fa-edit" val="<?php echo $arrSel[$ia]["id_kucing"] ?>"></i>
+                  </div>
+                  <?php
+                }
+              }
+
+             ?>
+
+             <div class="isi-con-cari-profil" nm="<?php echo $arrSel[$ia]["nama_kucing"] ?>" img="<?php echo "../../../".$arrSel[$ia]["img_kucing1"] ?>" jk="<?php echo $arrSel[$ia]["jenis_kucing"] ?>" uk="<?php echo $arrSel[$ia]["umur_kucing"] ?>" wk="<?php echo $arrSel[$ia]["warna_kucing"] ?>" bk="<?php echo $arrSel[$ia]["bulu_kucing"] ?>" kuc="<?php echo $arrSel[$ia]["id_kucing"] ?>" jkel="<?php echo $arrSel[$ia]["jk_kucing"] ?>" >
+              <p class="h1 nm-kucing-profil"><?php echo $arrSel[$ia]["nama_kucing"] ?></p> <hr> <br><br>
             </div>
 
-            <p class="h1"><?php echo $arrSel[$ia]["nama_kucing"] ?></p> <hr> <br><br>
             <div class="grid-3-true">
-              <div>
+              <div class="isi-con-cari-profil" nm="<?php echo $arrSel[$ia]["nama_kucing"] ?>" img="<?php echo "../../../".$arrSel[$ia]["img_kucing1"] ?>" jk="<?php echo $arrSel[$ia]["jenis_kucing"] ?>" uk="<?php echo $arrSel[$ia]["umur_kucing"] ?>" wk="<?php echo $arrSel[$ia]["warna_kucing"] ?>" bk="<?php echo $arrSel[$ia]["bulu_kucing"] ?>" kuc="<?php echo $arrSel[$ia]["id_kucing"] ?>" jkel="<?php echo $arrSel[$ia]["jk_kucing"] ?>" >
                 <img src="<?php echo $arrSel[$ia]["img_kucing1"] ?>" alt="">
               </div>
-              <div>
+              <div class="isi-con-cari-profil" nm="<?php echo $arrSel[$ia]["nama_kucing"] ?>" img="<?php echo "../../../".$arrSel[$ia]["img_kucing1"] ?>" jk="<?php echo $arrSel[$ia]["jenis_kucing"] ?>" uk="<?php echo $arrSel[$ia]["umur_kucing"] ?>" wk="<?php echo $arrSel[$ia]["warna_kucing"] ?>" bk="<?php echo $arrSel[$ia]["bulu_kucing"] ?>" kuc="<?php echo $arrSel[$ia]["id_kucing"] ?>" jkel="<?php echo $arrSel[$ia]["jk_kucing"] ?>" >
                 <img src="<?php echo $arrSel[$ia]["img_kucing2"] ?>" alt="">
               </div>
-              <div>
+              <div class="isi-con-cari-profil" nm="<?php echo $arrSel[$ia]["nama_kucing"] ?>" img="<?php echo "../../../".$arrSel[$ia]["img_kucing1"] ?>" jk="<?php echo $arrSel[$ia]["jenis_kucing"] ?>" uk="<?php echo $arrSel[$ia]["umur_kucing"] ?>" wk="<?php echo $arrSel[$ia]["warna_kucing"] ?>" bk="<?php echo $arrSel[$ia]["bulu_kucing"] ?>" kuc="<?php echo $arrSel[$ia]["id_kucing"] ?>" jkel="<?php echo $arrSel[$ia]["jk_kucing"] ?>" >
                 <img src="<?php echo $arrSel[$ia]["img_kucing3"] ?>" alt="">
               </div>
             </div>  <br> <br> <hr>
-            <div class="background5f999b">
-              <p class="h1 em12"><?php echo $arrSel[$ia]["nama_kucing"]. ", ". $arrSel[$ia]["jenis_kucing"]. ", ". $arrSel[$ia]["umur_kucing"] ?></p>
-              <p class="h1 em12"><?php echo $arrSel[$ia]["nama_kucing"]. " adalah kucing ". strtolower($arrSel[$ia]["jk_kucing"]). " dan berbulu ". strtolower($arrSel[$ia]["bulu_kucing"])  ?></p>
+
+            <div class="isi-con-cari-profil" nm="<?php echo $arrSel[$ia]["nama_kucing"] ?>" img="<?php echo "../../../".$arrSel[$ia]["img_kucing1"] ?>" jk="<?php echo $arrSel[$ia]["jenis_kucing"] ?>" uk="<?php echo $arrSel[$ia]["umur_kucing"] ?>" wk="<?php echo $arrSel[$ia]["warna_kucing"] ?>" bk="<?php echo $arrSel[$ia]["bulu_kucing"] ?>" kuc="<?php echo $arrSel[$ia]["id_kucing"] ?>" jkel="<?php echo $arrSel[$ia]["jk_kucing"] ?>" >
+              <div class="background5f999b">
+                <p class="h1 em12"><?php echo $arrSel[$ia]["nama_kucing"]. ", ". $arrSel[$ia]["jenis_kucing"]. ", ". $arrSel[$ia]["umur_kucing"] ?></p>
+                <p class="h1 em12"><?php echo $arrSel[$ia]["nama_kucing"]. " adalah kucing ". strtolower($arrSel[$ia]["jk_kucing"]). " dan berbulu ". strtolower($arrSel[$ia]["bulu_kucing"])  ?></p>
+              </div>
             </div>
           </div>
           <?php

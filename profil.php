@@ -7,6 +7,11 @@
     include 'source/etc/db.php';
   }
 
+  $username = "";
+  if (isset($_SESSION["username"])) {
+    $username = $_SESSION["username"];
+  }
+
   if (isset($_POST["edit_isi_submit"])) {
     $username = "";
     if (isset($_SESSION["username"])) {
@@ -26,10 +31,42 @@
       $stmt->close();
     } else {
       $col = $_POST["col"];
-      $stmt = $mysqli->prepare("UPDATE users SET $col = ? WHERE username = ?");
-      $stmt->bind_param("ss", $isi, $username);
-      $stmt->execute();
-      $stmt->close();
+      if (isset($_GET["pesan"])) {
+        $_GET["pesan"] = null;
+      }
+      if ($col === "password") {
+        $isi = $_POST["isi"];
+        $pass = $_POST["pass"];
+        $repass = $_POST["repass"];
+        if ($pass !== $repass) {
+          header("Location: profil.php?r=$r&pesan=Gagal Ganti Password, Password Baru Tidak Sesuai");
+        }
+        // check old pass
+        $stmt = $mysqli->prepare("SELECT password FROM users WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $stmt->bind_result($passhash); $stmt->fetch();
+        $stmt->close();
+        if (!password_verify($isi, $passhash)) {
+          header("Location: profil.php?r=$r&pesan=Gagal Ganti Password, Password Lama Salah");
+        } else {
+          $options = [
+            'cost' => 13
+          ];
+          $passnew = password_hash($pass, PASSWORD_BCRYPT, $options);
+          $stmt = $mysqli->prepare("UPDATE users SET password = ? WHERE username = ?");
+          $stmt->bind_param("ss", $passnew, $username);
+          $stmt->execute();
+          $stmt->close();
+          header("Location: profil.php?r=$r&pesan=Ganti Password Berhasil, Password Sudah Diubah");
+        }
+// lanjutkan
+      } else {
+        $stmt = $mysqli->prepare("UPDATE users SET $col = ? WHERE username = ?");
+        $stmt->bind_param("ss", $isi, $username);
+        $stmt->execute();
+        $stmt->close();
+      }
     }
 
   }
@@ -55,10 +92,15 @@
     <link rel="stylesheet" href="source/css/styleProfil.css">
     <link rel="stylesheet" href="source/css/select_input.css">
     <link rel="stylesheet" href="source/css/bookmarks.css">
+    <link rel="stylesheet" href="source/css/pelihara.css">
+    <link rel="stylesheet" href="source/css/getMajikan.css">
   </head>
   <body>
   <?php include 'source/etc/header.php'; ?>
+  <!-- pelihara-container -->
+  <div class="pelihara-container">
 
+  </div>
   <!-- Modal -->
   <div class="container-modal">
     <div class="modal">
@@ -101,18 +143,26 @@
       <div class="dp">
         <div class="dp-relative">
           <img src="<?php echo $dp ?>" alt="">
-          <div class="ganti-dp text-center">
-            Ganti DP
-          </div>
+          <?php if($username === $r) {
+            ?>
+            <div class="ganti-dp text-center">
+              Ganti DP
+            </div>
+            <?php
+          }
+          ?>
           <div class="full-name">
             <p class="h1"><?php echo $fname ?></p>
           </div>
         </div>
       </div>
-
-      <div class="ganti-sampul">
-        <i class="fas fa-edit"></i>
-      </div>
+      <?php if($username === $r) {
+        ?>
+        <div class="ganti-sampul">
+          <i class="fas fa-edit"></i>
+        </div>
+        <?php
+      } ?>
     </div>
 
     <div class="grid-3">
@@ -133,41 +183,49 @@
        ?>
       <div class="isi">
         <form class="" action="" method="post">
-          <p>
-            <span val="fname"><span class="spanw">Nama </span> : <?php echo $fname. " <span class='isi-edit' vale='fname'>" .$edit. "</span>"; ?></span>
-            <span class="isi-clicked" val="fname-clicked"><span class="spanw">Nama </span> :
+          <div class="isi-info">
+            <span val="fname">
+              <span class="spanw">Nama </span> <span> : </span> <span><?php echo $fname. " <span class='isi-edit' vale='fname'>" .$edit. "</span></span>"; ?>
+            </span>
+            <span class="isi-clicked isi-click-grid" val="fname-clicked">
+              <span class="spanw">Nama </span> :
               <input class="textinput-isi" type="text" name="isi" placeholder="<?php echo $fname ?>">
               <input type="hidden" name="col" value="fullname">
               <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
               <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="fname" >
             </span>
-          </p>
+          </div>
         </form>
         <form class="" action="" method="post">
-          <p>
-            <span val="email"><span class="spanw">Email</span> : <?php echo $email. " <span class='isi-edit' vale='email'>" .$edit. "</span>";  ?></span>
-            <span class="isi-clicked" val="email-clicked"><span class="spanw">Email</span> :
+          <div class="isi-info">
+            <span val="email">
+              <span class="spanw">Email </span> <span> : </span> <span><?php echo $email. " <span class='isi-edit' vale='email'>" .$edit. "</span></span>";  ?>
+            </span>
+            <span class="isi-clicked isi-click-grid" val="email-clicked"><span class="spanw">Email</span> :
               <input class="textinput-isi" type="email" name="isi" placeholder="<?php echo $email ?>">
               <input type="hidden" name="col" value="email">
               <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
               <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="email" >
             </span>
-          </p>
+          </div>
         </form>
         <form class="" action="" method="post">
-          <p>
-            <span val="no-hp"><span class="spanw">Nomor HP</span> : <?php echo $no_hp. " <span class='isi-edit' vale='no-hp'>" .$edit. "</span>";  ?></span>
-            <span class="isi-clicked" val="no-hp-clicked"><span class="spanw">Nomor HP</span> :
+          <div class="isi-info">
+            <span val="no-hp">
+              <span class="spanw">Nomor HP </span><span> : </span><span><?php echo $no_hp. " <span class='isi-edit' vale='no-hp'>" .$edit. "</span></span>";  ?>
+            </span>
+            <span class="isi-clicked isi-click-grid" val="no-hp-clicked"><span class="spanw">Nomor HP</span> :
               <input class="textinput-isi" type="text" name="isi" placeholder="<?php echo $no_hp ?>">
               <input type="hidden" name="col" value="no_hp">
               <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
               <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="no-hp">
             </span>
-          </p>
+          </div>
         </form>
         <form class="" action="" method="post">
-          <p>
-            <span val="alamat"><span class="spanw">Alamat</span> : <?php echo "$prov, $kab, $kec, $kel, $ualamat_lengkap". " <span class='isi-edit' vale='alamat'>" .$edit. "</span>"; ?>
+          <div class="isi-info">
+            <span val="alamat isi-click-grid">
+              <span class="spanw">Alamat </span><span> : </span><span><?php echo "$prov, $kab, $kec, $kel, $ualamat_lengkap". "  <span class='isi-edit' vale='alamat'>" .$edit. "</span></span>"; ?>
             </span>
             <input type="hidden" name="isi" value="alamat">
             <div class="isi-clicked" val="alamat-clicked">
@@ -178,12 +236,72 @@
                 <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="alamat">
               </p>
             </div>
-          </p>
+          </div>
         </form>
+        <?php if ($username === $r): ?>
+          <!-- <form class="" action="" method="post">
+            <div class="isi-info">
+              <span val="username">
+                <span class="spanw">Username </span> <span> : </span> <span><?php echo $username. " <span class='isi-edit' vale='username'>" .$edit. "</span></span>";  ?>
+              </span>
+              <span class="isi-clicked isi-click-grid" val="username-clicked">
+                <span class="spanw">Username</span> :
+                <input class="textinput-isi" type="text" name="isi" placeholder="<?php echo $username ?>">
+                <input type="hidden" name="col" value="username">
+                <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
+                <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="username">
+              </span>
+            </div>
+          </form> -->
+
+          <form class="" id="password-form" action="" method="post">
+            <div class="isi-info">
+              <span val="password">
+                <span class="spanw">Password</span> <span> : </span> <span><?php echo "***************". " <span class='isi-edit' vale='password'>" .$edit. "</span></span>";  ?>
+              </span>
+              <span class="isi-clicked" val="password-clicked">
+                <div class="isi-click-grid">
+                  <span class="spanw">Password </span> :
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <p>
+                  <strong><u>Ganti Password</u></strong>
+                </p>
+                  <div class="form-group griddl">
+                      <label for="passlama">Password Lama </label> <span>:</span>
+                      <input class="textinput-isi" id="passlama" type="password" name="isi" placeholder="Password Lama">
+                  </div>
+                  <div class="form-group griddl">
+                      <label for="passbaru">Password Baru </label><span>:</span>
+                      <input class="textinput-isi" id="passbaru" type="password" name="pass" placeholder="Password Baru">
+                  </div>
+                  <div class="form-group griddl">
+                      <label for="repasslama">Ketik Ulang Password Lama </label><span>:</span>
+                      <input class="textinput-isi" id="repassbaru" type="password" name="repass" placeholder="Ketik Ulang Password Baru">
+                  </div>
+                  <div class="form-group griddl2">
+                      <input type="hidden" name="col" value="password">
+                      <span></span>
+                      <input class="edit_isi_submit text-center" type="submit" name="edit_isi_submit" value="Edit">
+                      <span></span>
+                      <input class="edit_isi_submit text-center" type="reset" name="reset_isi_submit" value="Cancel" val="password">
+                      <span></span>
+                  </div>
+
+              </span>
+            </div>
+          </form>
+        <?php endif; ?>
       </div>
     </div>
   </div>
 
+  <div class="getmj">
+
+  </div>
   <?php include 'source/etc/footer.php'; ?>
   <script src="source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
   <script src="source/js/fontawesome-all.min.js" charset="utf-8"></script>
@@ -191,6 +309,8 @@
   <script src="source/js/img_preview.js" charset="utf-8"></script>
   <script src="source/js/select_input.js" charset="utf-8"></script>
   <script src="source/js/bookmarks.js" charset="utf-8"></script>
+  <script src="source/js/pelihara.js" charset="utf-8"></script>
+  <script src="source/js/getMajikan.js" charset="utf-8"></script>
   <script type="text/javascript">
     var sampul = '<?php echo $sampul; ?>';
     $(".dp-dan-sampul").css("background-image", "url('"+sampul+"')");
@@ -269,7 +389,9 @@
     });
     $(document).on("mouseenter", ".kucing_saya_container", function(){
       $(this).find(".edit-kucing").fadeIn(800);
-      $(this).find(".bookmarks.bookmarks-in-profil").animate({"right":"100px"});
+      if ($(this).find(".edit-kucing").length) {
+        $(this).find(".bookmarks.bookmarks-in-profil").animate({"right":"100px"});
+      }
     });
 
     $(document).on("mouseleave", ".kucing_saya_container", function(){
@@ -284,7 +406,7 @@
       mouseleave: function () {
         $(this).find("span .isi-edit").css("display", "none");
       }
-    }, '.isi p');
+    }, '.isi .isi-info');
   </script>
 
   <script type="text/javascript">
@@ -296,6 +418,9 @@
       } else {
         $("span[val='"+vale+"']").hide(800);
         $("span[val='"+vale+"-clicked']").show(800);
+        setTimeout(function(){
+          $("span[val='"+vale+"-clicked']").css("display", "grid");
+        }, 900);
       }
       $(document).on('click', "input[type='reset']", function(){
         var val = $(this).attr("val");
@@ -343,6 +468,81 @@
       $("#"+id).val(null);
       $("#"+id2).attr("src", "");
       $(this).parents(".close-img").hide(800);
+    });
+    $(document).on("click", ".isi-edit[vale='password']", function(){
+      // $(".isi-edit[vale='password']").attr("vale");
+      var h = $("#passbaru").height();
+      $("#passbaru").height(h);
+      $("#passlama").height(h);
+      $("#repasslama").height(h);
+    })
+  </script>
+  <script type="text/javascript">
+    $(document).on("click", ".isi-edit[vale='alamat']", function(){
+      if ($("label[for='tempat-kucing']").length) {
+        $("label[for='tempat-kucing']").text("Ganti Alamat");
+        if ($(".isi-clicked[val='alamat-clicked'] p em strong small")[0].innerHTML === "Harap Pilih Lokasi Anda") {
+          $(".isi-clicked[val='alamat-clicked'] p em strong small")[0].innerHTML = "Ganti Lokasi";
+          $(".isi-clicked[val='alamat-clicked'] p em strong small")[2].style.display = "none";
+          $(".isi-clicked[val='alamat-clicked'] p em strong small label")[0].innerHTML = "Ganti Alamat Lengkap";
+          uname = userses;
+          $.post("source/etc/isiAlamatAuto.php", {uname:uname}, function(result){
+            $(".isi-clicked").parents(".isi-info").append(result);
+            var id_prov_p = $(".isi-clicked").parents(".isi-info").find("#id_prov_p").attr("val");
+            var nama_prov_p = $(".isi-clicked").parents(".isi-info").find("#nama_prov_p").attr("val");
+
+            var id_kab_p = $(".isi-clicked").parents(".isi-info").find("#id_kab_p").attr("val");
+            var nama_kab_p = $(".isi-clicked").parents(".isi-info").find("#nama_kab_p").attr("val");
+
+            var id_kec_p = $(".isi-clicked").parents(".isi-info").find("#id_kec_p").attr("val");
+            var nama_kec_p = $(".isi-clicked").parents(".isi-info").find("#nama_kec_p").attr("val");
+
+            var id_kel_p = $(".isi-clicked").parents(".isi-info").find("#id_kel_p").attr("val");
+            var nama_kel_p = $(".isi-clicked").parents(".isi-info").find("#nama_kel_p").attr("val");
+            var alamat_lengkap_p = $(".isi-clicked").parents(".isi-info").find("#alamat_lengkap_p").attr("val");
+            console.log(nama_kel_p);
+
+            $(".container-select-input #hidden_id_prov").val(id_prov_p);
+            $(".container-select-input input[type='text'][val='prov']").val(nama_prov_p);
+            $(".container-select-input #hidden_id_kab").val(id_kab_p);
+            $(".container-select-input input[type='text'][val='kab']").val(nama_kab_p);
+            $(".container-select-input #hidden_id_kec").val(id_kec_p);
+            $(".container-select-input input[type='text'][val='kec']").val(nama_kec_p);
+            $(".container-select-input #hidden_id_kel").val(id_kel_p);
+            $(".container-select-input input[type='text'][val='kel']").val(nama_kel_p);
+            $("#alamat_lengkap").val(alamat_lengkap_p);
+
+          });
+        }
+      }
+    });
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#password-form").submit(function(e){
+        var passlama = $("#passlama").val();
+        var passbaru = $("#passbaru").val();
+        var repassbaru = $("#repassbaru").val();
+        var fank = function(teks) {
+          $("body").append("<div class='pesanE'><h1></h1></div>");
+          $(".pesanE h1").text(teks);
+          $(".pesanE").fadeIn(800);
+          setTimeout(function(){
+            $(".pesanE").fadeOut(800);
+          }, 1000);
+        }
+        if (!passlama || !passbaru || !repassbaru) {
+          fank("Gagal Ganti Password, Harap Lengkapi Isian Form");
+          e.preventDefault();
+        } else if (passbaru !== repassbaru) {
+          fank("Gagal Ganti Password, Password Baru Tidak Sesuai");
+          e.preventDefault();
+        }
+      });
+    });
+
+    $(document).on("click", ".pesanE", function (){
+      $(this).fadeOut(800);
     });
   </script>
   </body>

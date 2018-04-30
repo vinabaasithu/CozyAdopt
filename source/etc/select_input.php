@@ -40,7 +40,7 @@
       <!--  -->
     </div>
     <div class="grid" val="kab">
-      <input type="text" class="form-control teks" val="kab" placeholder="Kabupaten" name="" value="">
+      <input type="text" id="kab-text-id" class="form-control teks" val="kab" placeholder="Kabupaten" name="" value="">
       <div class="chevron">
         <i class="fas fa-chevron-down"></i>
       </div>
@@ -58,7 +58,7 @@
       <!--  -->
     </div>
     <div class="grid"  val="kec">
-      <input type="text" class="form-control teks" val="kec" placeholder="Kecamatan" name="" value="">
+      <input type="text" id="kec-text-id" class="form-control teks" val="kec" placeholder="Kecamatan" name="" value="">
       <div class="chevron">
         <i class="fas fa-chevron-down"></i>
       </div>
@@ -76,7 +76,7 @@
       <!--  -->
     </div>
     <div class="grid"  val="kel">
-      <input type="text" class="form-control teks" val="kel" placeholder="Kelurahan" name="" value="">
+      <input type="text" id="kel-text-id" class="form-control teks" val="kel" placeholder="Kelurahan" name="" value="">
       <div class="chevron">
         <i class="fas fa-chevron-down"></i>
       </div>

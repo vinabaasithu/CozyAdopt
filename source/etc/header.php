@@ -13,6 +13,11 @@ if(!isset($index)) $adaIndex = "index.php" ;
   }
  ?>
  <?php include "check_for_the_firsttime.php"; ?>
+
+ <script type="text/javascript">
+   var userparam = "<?php if(isset($r)) { echo $r; } ?>";
+   var userses = "<?php if (isset($_SESSION['username'])) { echo $_SESSION['username']; } ?>";
+ </script>
  <div class="container-header">
    <header>
      <a class="logo" href="<?php echo $adaIndex ?>#home">
@@ -25,7 +30,7 @@ if(!isset($index)) $adaIndex = "index.php" ;
          <!-- <a href="<?php echo $adaIndex ?>#find"><li>Cari Kami</li></a> -->
          <a href="<?php echo $adaIndex ?>#tentang"><li>Tentang Kami</li></a>
          <a href="<?php echo $adaIndex ?>#kontak"><li>Kontak</li></a>
-         <a href="temukan_kami.php"><li>Adopt Kucing</li></a>
+         <a href="adopt_kucing.php"><li>Adopt Kucing</li></a>
          <a href="rehome_kucing.php"><li>Rehome Kucing</li></a>
          <?php
             if (isset($_SESSION["username"])) {
@@ -37,7 +42,7 @@ if(!isset($index)) $adaIndex = "index.php" ;
                 <div class="menu_dp_header">
                   <ul>
                     <a href="profil.php?r=<?php echo $_SESSION["username"]; ?>"><li>Profil</li></a>
-                    <a href="#"><li>Settings</li></a>
+                    <!-- <a href="#"><li>Settings</li></a> -->
                     <a href="source/etc/logout.php?r=logout"><li>Logout</li></a>
                   </ul>
                 </div>
@@ -68,7 +73,7 @@ if(!isset($index)) $adaIndex = "index.php" ;
       <ul>
         <a href="<?php echo $adaIndex ?>#tentang"><li>Tentang Kami</li></a>
         <a href="<?php echo $adaIndex ?>#kontak"><li>Kontak</li></a>
-        <a href="temukan_kami.php"><li>Adopt Kucing</li></a>
+        <a href="adopt_kucing.php"><li>Adopt Kucing</li></a>
         <a href="rehome_kucing.php"><li>Rehome Kucing</li></a>
         <?php
            if (isset($_SESSION["username"])) {

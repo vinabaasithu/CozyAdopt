@@ -9,6 +9,21 @@ $(document).on('click', '.isi-con-cari', function(e){
     kucingajax($(this));
   }
 });
+$(document).on("click", ".pelihara-container", function(e){
+  if (e.target.attributes["class"].nodeValue !== undefined) {  
+    if (e.target.attributes["class"].nodeValue === "pelihara-container") {
+      $(".pelihara-container").hide(800);
+    }
+  }
+})
+$(document).on('click', '.isi-con-cari-profil', function(e){
+  // console.log(e.target.parentElement.attributes["val"].nodeValue);
+  if (e.target.tagName === "path") {
+    return false;
+  } else {
+    kucingajax($(this));
+  }
+});
 // data from index
 $(document).ready(function(){
   var div = $("#isi-con-cari-from-index");

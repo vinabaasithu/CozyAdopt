@@ -11,11 +11,16 @@
     $warna_kucing = $_POST['warna_kucing'];
     $bulu_kucing = $_POST['bulu_kucing'];
     $jk_kucing = $_POST['jk_kucing'];
-    $stmt = $mysqli->prepare("SELECT k.info_kucing, k.info_khusus_kucing, prov.nama, kab.nama, kec.nama, kel.nama, k.alamat_lengkap FROM kucing k INNER JOIN provinsi_daerah prov ON k.id_prov = prov.id_prov INNER JOIN kabupaten_daerah kab ON k.id_kab = kab.id_kab INNER JOIN kecamatan_daerah kec ON k.id_kec = kec.id_kec INNER JOIN kelurahan_daerah kel ON k.id_kel = kel.id_kel WHERE id_kucing = ?");
+    $stmt = $mysqli->prepare("SELECT k.info_kucing, k.info_khusus_kucing, prov.nama, kab.nama, kec.nama, kel.nama, k.alamat_lengkap, k.dilihat, k.disukai FROM kucing k INNER JOIN provinsi_daerah prov ON k.id_prov = prov.id_prov INNER JOIN kabupaten_daerah kab ON k.id_kab = kab.id_kab INNER JOIN kecamatan_daerah kec ON k.id_kec = kec.id_kec INNER JOIN kelurahan_daerah kel ON k.id_kel = kel.id_kel WHERE id_kucing = ?");
     $stmt->bind_param("s", $id_kucing);
     $stmt->execute();
-    $stmt->bind_result($info_kucing, $info_khusus_kucing, $nama_prov, $nama_kab, $nama_kec, $nama_kel, $alamat_lengkap);
+    $stmt->bind_result($info_kucing, $info_khusus_kucing, $nama_prov, $nama_kab, $nama_kec, $nama_kel, $alamat_lengkap, $dilihat, $disukai);
     $stmt->fetch();
+    $stmt->close();
+    $dilihat++;
+    $stmt = $mysqli->prepare("UPDATE kucing SET dilihat = ? WHERE id_kucing = ?");
+    $stmt->bind_param("ss", $dilihat, $id_kucing);
+    $stmt->execute();
     $stmt->close();
     switch($umur_kucing) {
       case "Kitten": $umur_kucing = "Masih Anak Kucing"; break;

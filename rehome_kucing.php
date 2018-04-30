@@ -1,7 +1,8 @@
 <?php
   session_start();
   if (!isset($_SESSION["username"])) {
-    header("Location: sign.php?pesan='Maaf Anda harus Login dulu untuk mengakses fitur ini'");
+    header("Location: sign.php?pesan=Maaf Anda harus Login untuk mengakses fitur ini");
+    $_GET["pesan"] = "";
   } else {
     include 'source/etc/db.php';
     $username = $_SESSION["username"];
