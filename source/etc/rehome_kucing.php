@@ -81,12 +81,49 @@
         $info_kucing = htmlentities($_POST["info-kucing"], ENT_QUOTES);
         $info_khusus_kucing = htmlentities($_POST["info-khusus-kucing"], ENT_QUOTES);
 
+        // isi Sendiri Kucing
+        function isiSendiriKucing($name_column, $val_isi_sendiri) {
+          include 'db.php';
+          $isExists = ""; $id_s = "";
+          $stmt = $mysqli->prepare("SELECT id_$name_column, $name_column FROM $name_column WHERE $name_column = ?");
+          $stmt->bind_param("s", $val_isi_sendiri);
+          $stmt->execute();
+          $stmt->bind_result($id_s, $isExists);
+          $stmt->fetch();
+          $stmt->close();
+          if (!$isExists) {
+            $stmt = $mysqli->prepare("INSERT INTO ".$name_column." (".$name_column.") VALUES (?)");
+            $stmt->bind_param("s", $val_isi_sendiri);
+            $stmt->execute();
+            $stmt->close();
+
+            $stmt = $mysqli->prepare("SELECT id_$name_column FROM $name_column WHERE $name_column = ?");
+            $stmt->bind_param("s", $val_isi_sendiri);
+            $stmt->execute();
+            $stmt->bind_result($id_new);
+            $stmt->fetch();
+            $stmt->close();
+            $latest_id = $id_new;
+          } else {
+            $latest_id = $id_s;
+          }
+          return $latest_id;
+        }
+
+
+        if (isset($_POST["jenis_kucing_isi_sendiri"])) {
+            $id_jenis_kucing = isiSendiriKucing("jenis_kucing", $id_jenis_kucing);
+        }
+        if (isset($_POST["warna_kucing_isi_sendiri"])) {
+            $id_warna_kucing = isiSendiriKucing("warna_kucing", $id_warna_kucing);
+        }
+        //
         $stmt = $mysqli->prepare("INSERT INTO kucing (nama_kucing, id_jenis_kucing, umur_kucing, id_warna_kucing,   jk_kucing, bulu_kucing, waktu, username, id_prov, id_kab, id_kec, id_kel, img_kucing1, img_kucing2, img_kucing3, alamat_lengkap, info_kucing, info_khusus_kucing) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssssssssssssssss", $nama_kucing, $id_jenis_kucing, $umur_kucing, $id_warna_kucing, $jk_kucing, $bulu_kucing, $waktu, $username, $id_prov, $id_kab, $id_kec, $id_kel, $targetfile1, $targetfile2, $targetfile3, $alamat_lengkap, $info_kucing, $info_khusus_kucing);
         $stmt->execute();
         $affected_rows = $mysqli->affected_rows;
         $stmt->close();
-        header("Location: ../../index.php?pesan=Data $nama_kucing berhasil di upload, Semoga $nama_kucing Cepat mendapat rumah baru..");
+        // header("Location: ../../index.php?pesan=Data $nama_kucing berhasil di upload, Semoga $nama_kucing Cepat mendapat rumah baru..");
       }
 
     }

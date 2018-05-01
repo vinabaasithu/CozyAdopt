@@ -246,6 +246,29 @@
           </div>
           <?php
       }
+      // new bug
+      if ($id === "kucing_saya") {
+        ?>
+        <script type="text/javascript">
+          // isi sendiri jeniskucing dan warna kucing
+          $(document).on("click", ".clickjeniskucing.klikkucing", function() {
+            if ($(this).parents("div.form-group").find("input[type='text'][name='jenis-kucing']").attr("disabled") === "disabled") {
+              $(this).parents("form").find(".jenis_kucing_isi_sendiri").remove();
+            } else {
+              $(this).parents("form").append("<input type='hidden' name='jenis_kucing_isi_sendiri' class='jenis_kucing_isi_sendiri' value='isi'>");
+            }
+          })
+          $(document).on("click", ".clickwarnakucing.klikkucing", function() {
+            if ($(this).parents("div.form-group").find("input[type='text'][name='warna-kucing']").attr("disabled") === "disabled") {
+              $(this).parents("form").find(".warna_kucing_isi_sendiri").remove();
+            } else {
+              $(this).parents("form").append("<input type='hidden' name='warna_kucing_isi_sendiri' class='warna_kucing_isi_sendiri' value='isi'>");
+            }
+          })
+        </script>
+        <?php
+      }
+      // new bug
 
     }
   }

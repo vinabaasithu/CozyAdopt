@@ -207,5 +207,23 @@
 
       });
     </script>
+    <script type="text/javascript">
+      // isi sendiri jeniskucing dan warna kucing
+      $(document).on("click", "#clickjeniskucing, #clickwarnakucing", function() {
+        if($(this).attr("id") === "clickjeniskucing") {
+          if ($("#jenis-kucing-text").attr("disabled") === "disabled") {
+            $("#jenis_kucing_isi_sendiri").remove();
+          } else {
+            $("form").append("<input type='hidden' name='jenis_kucing_isi_sendiri' id='jenis_kucing_isi_sendiri' value='isi'>");
+          }
+        } else if($(this).attr("id") === "clickwarnakucing") {
+          if ($("#warna-kucing-text").attr("disabled") === "disabled") {
+            $("#warna_kucing_isi_sendiri").remove();
+          } else {
+            $("form").append("<input type='hidden' name='warna_kucing_isi_sendiri' id='warna_kucing_isi_sendiri' value='isi'>");
+          }
+        }
+      })
+    </script>
   </body>
 </html>
