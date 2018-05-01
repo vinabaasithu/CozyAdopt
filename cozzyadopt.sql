@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 01, 2018 at 09:54 AM
+-- Generation Time: May 01, 2018 at 11:53 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -40,7 +40,10 @@ CREATE TABLE `bookmarks` (
 
 INSERT INTO `bookmarks` (`username`, `id_kucing`, `waktu`) VALUES
 ('dendi', 15, '2018-04-30 19:50:57'),
-('dendi', 16, '2018-05-01 14:43:45');
+('dendi', 16, '2018-05-01 14:43:45'),
+('miya', 16, '2018-05-01 15:34:21'),
+('miya', 17, '2018-05-01 15:46:48'),
+('dendi', 17, '2018-05-01 16:08:22');
 
 -- --------------------------------------------------------
 
@@ -62,7 +65,10 @@ INSERT INTO `jenis_kucing` (`id_jenis_kucing`, `jenis_kucing`) VALUES
 (2, 'Anggora'),
 (3, 'Munchkin'),
 (4, 'Tiffanie'),
-(5, 'Burmilla');
+(5, 'Burmilla'),
+(6, 'Kucing Lokal Indonesia'),
+(7, 'American Shorthair'),
+(8, 'Rusian Blue');
 
 -- --------------------------------------------------------
 
@@ -90341,8 +90347,11 @@ CREATE TABLE `kucing` (
 --
 
 INSERT INTO `kucing` (`id_kucing`, `nama_kucing`, `id_jenis_kucing`, `umur_kucing`, `img_kucing1`, `img_kucing2`, `img_kucing3`, `id_warna_kucing`, `jk_kucing`, `bulu_kucing`, `waktu`, `username`, `id_prov`, `id_kab`, `id_kec`, `id_kel`, `alamat_lengkap`, `info_kucing`, `info_khusus_kucing`, `dilihat`, `disukai`) VALUES
-(15, 'Manis', 1, 'Kitten', '../../userData/dendi/kucing/img1/Manis7.jpeg', '../../userData/dendi/kucing/img2/Manis7.jpeg', '../../userData/dendi/kucing/img3/Manis5.jpeg', 1, 'Perempuan', 'Pendek', '2018-05-01 00:54:13', 'dendi', '36', '3671', '367111', '3671111005', 'Jalan Camar Blok A15/21', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 26, 1),
-(16, 'Emely', 1, 'Young', '../../userData/dendi/kucing/img1/Emely.jpeg', '../../userData/dendi/kucing/img2/Emely.jpeg', '../../userData/dendi/kucing/img3/Emely.jpeg', 1, 'Perempuan', 'Sedang', '2018-04-29 05:51:50', 'dendi', '36', '3671', '367111', '3671111005', 'Jalan Camar Blok A15/21', '\r\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '\r\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 21, 1);
+(15, 'Manis', 7, 'Kitten', '../../userData/dendi/kucing/img1/Manis7.jpeg', '../../userData/dendi/kucing/img2/Manis7.jpeg', '../../userData/dendi/kucing/img3/Manis5.jpeg', 1, 'Perempuan', 'Pendek', '2018-05-01 16:49:45', 'dendi', '36', '3671', '367111', '3671111005', 'Jalan Camar Blok A15/21', 'Manis suka berburu tikus dan juga mampu beradaptasi dengan lingkungannya. Manis juga tidak membutuhkan perawatan yang berlebihan', '-', 32, 1),
+(16, 'Emely', 8, 'Young', '../../userData/dendi/kucing/img1/Emely.jpeg', '../../userData/dendi/kucing/img2/Emely.jpeg', '../../userData/dendi/kucing/img3/Emely.jpeg', 1, 'Perempuan', 'Sedang', '2018-05-01 15:57:54', 'dendi', '36', '3671', '367111', '3671111005', 'Jalan Camar Blok A15/21', 'Emely sedang mendekati masa kawin. Jadi dia membutuhkan pasangan untuk menemani hidupnya. Emely suka menggaruk-garuk sofa.', 'Gunting kuku secara berkala', 26, 2),
+(17, 'Jedun', 2, 'Kitten', '../../userData/miya/kucing/img1/Jeny.jpeg', '../../userData/miya/kucing/img2/Jeny.jpeg', '../../userData/miya/kucing/img3/Jeny.jpeg', 4, 'Perempuan', 'Pendek', '2018-05-01 15:49:32', 'miya', '31', '3173', '317303', '3173031004', 'Jalan Delima Nomor 5', 'Angelina adalah kucing yang memiliki rasa ingin tahu yang tinggi. Dia sangat suka mengejar dan menggigit kecil kaki pemiliknya. Angelina sangat suka bermain dengan mainan baru. Angelina juga termasuk kucing yang hiperaktif.', 'Angelina belum suntik steril', 2, 2),
+(18, 'Angelina', 6, 'Kitten', '../../userData/miya/kucing/img1/Angelina.jpeg', '../../userData/miya/kucing/img2/Angelina.jpeg', '../../userData/miya/kucing/img3/Angelina.jpeg', 3, 'Perempuan', 'Pendek', '2018-05-01 15:43:47', 'miya', '31', '3173', '317303', '3173031004', 'Jalan Delima Nomor 5', 'Angelina adalah kucing perempuan yang sehat dan aktif. Angelina sudah terbiasa bermain dengan anak-anak, Angelina juga bukan kucing yang nakal. Angelina sangat suka makan Whiskas dan merk pasirnya adalah Natural Lite.', 'Angelina tidak memiliki kebutuhan khusus', 4, 0),
+(19, 'Tobi', 6, 'Kitten', '../../userData/miya/kucing/img1/Tobi.jpeg', '../../userData/miya/kucing/img2/Tobi.jpeg', '../../userData/miya/kucing/img3/Tobi.jpeg', 3, 'Perempuan', 'Pendek', '2018-05-01 15:46:38', 'miya', '31', '3173', '317303', '3173031004', 'Jalan Delima Nomor 5', 'Tobi adalah kucing pemalu. Dia masih belum terbiasa bersosialisasi dengan orang-orang, tapi dia sangat lucu banget, hobi Tobi adalah bersembunyi di bawah sofa', 'Tobi memerlukan banyak vitamin agar dia bisa terus tumbuh sehat', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -90422,7 +90431,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`username`, `fullname`, `password`, `email`, `no_hp`, `dp`, `sampul`, `id_prov`, `id_kab`, `id_kec`, `id_kel`, `alamat_lengkap`) VALUES
-('dendi', 'Dendi Dondon', '$2y$13$g5e2Ssi4DEzPN.RRbkyCBO9LYG9QicnmSLxvM95AIxsaS.GeiW.Em', 'dendi@gmail.com', '087799993333', '../../userData/dendi/dp/dp_dendi.png', '../../userData/dendi/sampul/sampul_dendi.png', '36', '3671', '367111', '3671111005', 'Jalan Camar Blok A15/21');
+('dendi', 'Dendi Nao', '$2y$13$g5e2Ssi4DEzPN.RRbkyCBO9LYG9QicnmSLxvM95AIxsaS.GeiW.Em', 'dendinao@gmail.com', '087788889999', '../../userData/dendi/dp/dp_dendi.png', '../../userData/dendi/sampul/sampul_dendi.png', '36', '3671', '367111', '3671111005', 'Jalan Camar Blok A15/21'),
+('miya', 'Miya Putri', '$2y$13$.M44U3b0M/M4iDo9DchGK.0Zl6zPT5qAVT5tmBFkfoNDw5RBPgsb6', 'miyap@gmail.com', '088823122312', '../../userData/miya/dp/dp_miya.png', '../../userData/miya/sampul/sampul_miya.png', '31', '3173', '317303', '3173031004', 'Jalan Delima Nomor 5'),
+('sasa', 'Sasa Bila', '$2y$13$PCjlxngoYvpOePZqWohuxOVwhm0qcxFxJul.0aZktjXskLclzmtDy', 'sasab@gmail.com', '081212123232', 'userData/dp_dummy.png', 'userData/sampul_dummy.jpg', '0', '0', '0', '0', '');
 
 -- --------------------------------------------------------
 
@@ -90525,13 +90536,13 @@ ALTER TABLE `warna_kucing`
 -- AUTO_INCREMENT for table `jenis_kucing`
 --
 ALTER TABLE `jenis_kucing`
-  MODIFY `id_jenis_kucing` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_jenis_kucing` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `kucing`
 --
 ALTER TABLE `kucing`
-  MODIFY `id_kucing` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_kucing` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `warna_kucing`
