@@ -22,7 +22,7 @@ if(!isset($index)) $adaIndex = "index.php" ;
    <header>
      <a class="logo" href="<?php echo $adaIndex ?>#home">
        <div class="">
-         CozyAdopt
+         <img src="source/img/cozyLogo.png" alt="CozyAdopt">
        </div>
      </a>
      <nav class="nav-head">
@@ -61,7 +61,7 @@ if(!isset($index)) $adaIndex = "index.php" ;
      <div class="nav-head-min">
        <a class="min-logo" href="<?php echo $adaIndex ?>#home">
          <div class="">
-           CozyAdopt
+           <img src="source/img/cozyLogo.png" alt="CozyAdopt">
          </div>
        </a>
      </div>

@@ -50,5 +50,6 @@ admin.php {
   # FORM CONFIRM kucing
 }
 
-# Bookmarks Error
-# Validasi Semua Form
+# Bookmarks Error V
+# Validasi Semua Form 
+# FONT LOGO = Futura Md BT V

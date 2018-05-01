@@ -8,6 +8,13 @@
     div.burger-menu {
       display: block;
     }
+    .container-header header {
+      padding-top: 25px;
+    }
+    .min-logo img {
+      width: 150%;
+      height: 150%;
+    }
 }
 @media only screen and (min-width: 903px) {
   .menu-nav-min {
@@ -62,12 +69,23 @@ header {
   padding: 25px;
   background-color: #FFFFFF80;
   transition-duration: 1s;
+  position: relative;
+  padding-top: 50px;
 }
 header .logo {
   font-size: 1.4em;
   font-weight: bold;
   color: #000;
   text-decoration: none;
+}
+header .logo div {
+  position: absolute;
+  top: 0;
+  left: 25px;
+  bottom: 0;
+  margin: auto;
+  width: 125px;
+  height: 35px;
 }
 nav.nav-head {
   position: relative;
