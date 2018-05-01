@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 27, 2018 at 09:23 AM
+-- Generation Time: May 01, 2018 at 09:54 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -21,6 +21,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `cozzyadopt`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bookmarks`
+--
+
+CREATE TABLE `bookmarks` (
+  `username` varchar(50) NOT NULL,
+  `id_kucing` int(11) NOT NULL,
+  `waktu` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bookmarks`
+--
+
+INSERT INTO `bookmarks` (`username`, `id_kucing`, `waktu`) VALUES
+('dendi', 15, '2018-04-30 19:50:57'),
+('dendi', 16, '2018-05-01 14:43:45');
 
 -- --------------------------------------------------------
 
@@ -90311,19 +90331,18 @@ CREATE TABLE `kucing` (
   `id_kel` char(10) NOT NULL,
   `alamat_lengkap` text NOT NULL,
   `info_kucing` text NOT NULL,
-  `info_khusus_kucing` text NOT NULL
+  `info_khusus_kucing` text NOT NULL,
+  `dilihat` int(11) NOT NULL,
+  `disukai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kucing`
 --
 
-INSERT INTO `kucing` (`id_kucing`, `nama_kucing`, `id_jenis_kucing`, `umur_kucing`, `img_kucing1`, `img_kucing2`, `img_kucing3`, `id_warna_kucing`, `jk_kucing`, `bulu_kucing`, `waktu`, `username`, `id_prov`, `id_kab`, `id_kec`, `id_kel`, `alamat_lengkap`, `info_kucing`, `info_khusus_kucing`) VALUES
-(10, 'Emily', 2, 'Adult', '../../userData/dendi/kucing/img1/Emely.jpeg', '', '', 1, 'Perempuan', 'Sedang', '2018-04-22 03:52:50', 'dendi', '36', '3603', '360303', '3603032002', '', '', ''),
-(11, 'Manis', 1, 'Kitten', '../../userData/dendi/kucing/img1/Manis.jpeg', '', '', 1, 'Perempuan', 'Sedang', '2018-04-22 03:54:37', 'dendi', '36', '3603', '360303', '3603032002', '', '', ''),
-(12, 'Angelina', 3, 'Adult', '../../userData/dendi/kucing/img1/Angelina.jpeg', '', '', 3, 'Perempuan', 'Sedang', '2018-04-22 03:57:05', 'dendi', '36', '3603', '360303', '3603032002', '', '', ''),
-(13, 'Tobi', 4, 'Young', '../../userData/dendi/kucing/img1/Tobi.jpeg', '', '', 3, 'Laki-Laki', 'Sedang', '2018-04-22 03:58:24', 'dendi', '36', '3603', '360303', '3603032002', '', '', ''),
-(14, 'Jeny', 5, 'Young', '../../userData/dendi/kucing/img1/Jeny.jpeg', '', '', 4, 'Perempuan', 'Sedang', '2018-04-22 03:59:35', 'dendi', '36', '3603', '360303', '3603032002', '', '', '');
+INSERT INTO `kucing` (`id_kucing`, `nama_kucing`, `id_jenis_kucing`, `umur_kucing`, `img_kucing1`, `img_kucing2`, `img_kucing3`, `id_warna_kucing`, `jk_kucing`, `bulu_kucing`, `waktu`, `username`, `id_prov`, `id_kab`, `id_kec`, `id_kel`, `alamat_lengkap`, `info_kucing`, `info_khusus_kucing`, `dilihat`, `disukai`) VALUES
+(15, 'Manis', 1, 'Kitten', '../../userData/dendi/kucing/img1/Manis7.jpeg', '../../userData/dendi/kucing/img2/Manis7.jpeg', '../../userData/dendi/kucing/img3/Manis5.jpeg', 1, 'Perempuan', 'Pendek', '2018-05-01 00:54:13', 'dendi', '36', '3671', '367111', '3671111005', 'Jalan Camar Blok A15/21', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 26, 1),
+(16, 'Emely', 1, 'Young', '../../userData/dendi/kucing/img1/Emely.jpeg', '../../userData/dendi/kucing/img2/Emely.jpeg', '../../userData/dendi/kucing/img3/Emely.jpeg', 1, 'Perempuan', 'Sedang', '2018-04-29 05:51:50', 'dendi', '36', '3671', '367111', '3671111005', 'Jalan Camar Blok A15/21', '\r\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '\r\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 21, 1);
 
 -- --------------------------------------------------------
 
@@ -90403,11 +90422,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`username`, `fullname`, `password`, `email`, `no_hp`, `dp`, `sampul`, `id_prov`, `id_kab`, `id_kec`, `id_kel`, `alamat_lengkap`) VALUES
-('anto', 'Anto Kewer', '$2y$13$NxHKMq8On7.Jhi9GjuFFYu1cNJHM/LVjYVK4wvTBhqpOOU96qhA1K', 'anto@gmail.com', '081299832712', 'userData/dp_dummy.png', 'userData/sampul_dummy.jpg', '0', '0', '0', '0', ''),
-('dendi', 'Dendi Nao', '$2y$13$3Ph8NwrU3jBlM2lX9P9cNuj22pN2YcX79X1qSQVTJELzioZFtNQK6', 'dendin@gmail.com', '087788889999', '../../userData/dendi/dp/dp_dendi.png', '../../userData/dendi/sampul/sampul_dendi.png', '34', '3403', '340302', '3403022002', 'Jalan Kelapa No. 3'),
-('icha', 'Icha Putri', '$2y$13$p2YaSVFfkhvzW9lMqjgVqOzd.HZFVQPl4dqWP5.7PfvKQpNe028RK', 'icha@gmail.com', '081298728392', 'userData/dp_dummy.png', 'userData/sampul_dummy.jpg', '0', '0', '0', '0', ''),
-('nisa', 'Anisa Fitri', '$2y$13$9pJwx97xXGU7gGWHHfKUZu2rD4KpBFQdrNU2wR9BLtHn7DZvkDlfC', 'nisa@gmail.com', '081292832831', 'userData/dp_dummy.png', 'userData/sampul_dummy.jpg', '0', '0', '0', '0', ''),
-('risa', 'Risa Bahar', '$2y$13$GK9aN9qNHt3PjDUU1HqNjOSB0HnMByXtHw.9akkkQGYUZEh2fv58m', 'risa@gmail.com', '081238472839', 'userData/dp_dummy.png', 'userData/sampul_dummy.jpg', '0', '0', '0', '0', '');
+('dendi', 'Dendi Dondon', '$2y$13$g5e2Ssi4DEzPN.RRbkyCBO9LYG9QicnmSLxvM95AIxsaS.GeiW.Em', 'dendi@gmail.com', '087799993333', '../../userData/dendi/dp/dp_dendi.png', '../../userData/dendi/sampul/sampul_dendi.png', '36', '3671', '367111', '3671111005', 'Jalan Camar Blok A15/21');
 
 -- --------------------------------------------------------
 
@@ -90433,6 +90448,13 @@ INSERT INTO `warna_kucing` (`id_warna_kucing`, `warna_kucing`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `bookmarks`
+--
+ALTER TABLE `bookmarks`
+  ADD KEY `id_kucing` (`id_kucing`),
+  ADD KEY `username` (`username`);
 
 --
 -- Indexes for table `jenis_kucing`
@@ -90509,7 +90531,7 @@ ALTER TABLE `jenis_kucing`
 -- AUTO_INCREMENT for table `kucing`
 --
 ALTER TABLE `kucing`
-  MODIFY `id_kucing` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_kucing` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `warna_kucing`
@@ -90520,6 +90542,13 @@ ALTER TABLE `warna_kucing`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `bookmarks`
+--
+ALTER TABLE `bookmarks`
+  ADD CONSTRAINT `bookmarks_ibfk_1` FOREIGN KEY (`id_kucing`) REFERENCES `kucing` (`id_kucing`),
+  ADD CONSTRAINT `bookmarks_ibfk_2` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
 
 --
 -- Constraints for table `kabupaten_daerah`

@@ -31,13 +31,13 @@
       <div class="grid-container">
         <div class="grid-col sampul-background"><br><br>
           <p class="h1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CozyAdopt Site</p>
-          <p class="h1 text-center"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Temukan Kucing Peliharaanmu Di Sini</p>
+          <p class="h1 text-center"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Temukan Kucing Kesayanganmu Hari Ini !</p>
           <br><br><br><br><br><br><br><br><br>
           <p class="h1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Meow...</p>
         </div>
         <div class="grid-col text-sampul text-center">
           <h1><i class="fas fa-paw"></i></h1>
-          <p>Cari, temukan, dan adopsi Kucing peliharaanmu di sini. Dengan semua fitur yang ada di <a href="index.php"><strong>CozyAdopt</strong></a>, pastinya akan memudahkan kamu menemukan Kucing idamanmu atau menemukan rumah baru untuk Kucing Peliharaanmu di sini</p>
+          <p>Tahukah Kamu bahwa lebih dari 1.000 orang per jam menjalankan pencarian disini untuk mengadopsi hewan peliharaan. Dengan semua fitur yang ada di <a href="index.php"><strong>CozyAdopt</strong></a>, pastinya akan memudahkan kamu menemukan Kucing idamanmu atau menemukan rumah baru untuk Kucing Peliharaanmu di sini</p>
           <p>
             <a href="adopt_kucing.php">
               <button class="btn-text-sampul" type="button" name="button">Adopt Kucing</button>
