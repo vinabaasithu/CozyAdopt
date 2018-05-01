@@ -14,7 +14,7 @@
       <!--  -->
     </div>
     <div class="grid" val="prov">
-      <input type="text" id="prov-text-id" class="form-control teks" val="prov" placeholder="Provinsi" name="" value="" >
+      <input type="text" id="prov-text-id" class="form-control teks" val="prov" placeholder="Provinsi" name="" value="" required>
       <div class="chevron">
         <i class="fas fa-chevron-down"></i>
       </div>
@@ -40,7 +40,7 @@
       <!--  -->
     </div>
     <div class="grid" val="kab">
-      <input type="text" id="kab-text-id" class="form-control teks" val="kab" placeholder="Kabupaten" name="" value="">
+      <input type="text" id="kab-text-id" class="form-control teks" val="kab" placeholder="Kabupaten" name="" value="" required>
       <div class="chevron">
         <i class="fas fa-chevron-down"></i>
       </div>
@@ -58,7 +58,7 @@
       <!--  -->
     </div>
     <div class="grid"  val="kec">
-      <input type="text" id="kec-text-id" class="form-control teks" val="kec" placeholder="Kecamatan" name="" value="">
+      <input type="text" id="kec-text-id" class="form-control teks" val="kec" placeholder="Kecamatan" name="" value="" required>
       <div class="chevron">
         <i class="fas fa-chevron-down"></i>
       </div>
@@ -76,7 +76,7 @@
       <!--  -->
     </div>
     <div class="grid"  val="kel">
-      <input type="text" id="kel-text-id" class="form-control teks" val="kel" placeholder="Kelurahan" name="" value="">
+      <input type="text" id="kel-text-id" class="form-control teks" val="kel" placeholder="Kelurahan" name="" value="" required>
       <div class="chevron">
         <i class="fas fa-chevron-down"></i>
       </div>
@@ -92,7 +92,7 @@
 
   <div class="form-group margin-none">
     <p> <em> <strong> <small><label for="alamat_lengkap" class="em1">Isi Alamat Lengkap :</label></small> </strong> </em> </p>
-    <textarea class="form-control" name="alamat_lengkap" id="alamat_lengkap" rows="8" cols="80" placeholder="Isi dengan nama jalan atau nomor rumah Anda"></textarea>
+    <textarea class="form-control" name="alamat_lengkap" id="alamat_lengkap" rows="8" cols="80" placeholder="Isi dengan nama jalan atau nomor rumah Anda" required></textarea>
   </div>
   <p class="isi-d-alamat-a">
     <input id="isiAlamatAuto" type="checkbox" class="isiAlamatAuto" isc="unchecked">

@@ -27,11 +27,11 @@
       <form class="" action="source/etc/rehome_kucing.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label for="nama-kucing">Nama Kucing :</label>
-          <input id="nama-kucing" type="text" class="form-control" name="nama-kucing" value="" placeholder="Nama Kucing">
+          <input id="nama-kucing" type="text" class="form-control" name="nama-kucing" value="" placeholder="Nama Kucing" required>
         </div>
         <div class="form-group">
           <label for="jenis-kucing">Jenis Kucing :</label>
-          <select class="select-control" name="jenis-kucing" id="jenis-kucing">
+          <select class="select-control" name="jenis-kucing" id="jenis-kucing" required>
             <?php
               $stmt = $mysqli->prepare("SELECT id_jenis_kucing, jenis_kucing FROM jenis_kucing");
               $stmt->execute(); $stmt->bind_result($id_jenis_kucing, $jenis_kucing);
@@ -115,12 +115,12 @@
         </div>
         <div class="form-group">
           <label for="info-kucing">Detail Info Kucing</label>
-          <textarea name="info-kucing" id="info-kucing" class="form-control" placeholder="Isi Detail Info Kucing seperti makanan favorit kucing, pasir yang digunakan Kucing, dll" rows="8" cols="80"></textarea>
+          <textarea name="info-kucing" id="info-kucing" class="form-control" placeholder="Isi Detail Info Kucing seperti makanan favorit kucing, pasir yang digunakan Kucing, dll" rows="8" cols="80" required></textarea>
         </div>
 
         <div class="form-group">
           <label for="info-khusus-kucing">Kebutuhan Khusus Kucing</label>
-          <textarea name="info-khusus-kucing" id="info-khusus-kucing" class="form-control" placeholder="Isi Kebutuhan Khusus Kucing atau Riwayat Penyakit" rows="8" cols="80"></textarea>
+          <textarea name="info-khusus-kucing" id="info-khusus-kucing" class="form-control" placeholder="Isi Kebutuhan Khusus Kucing atau Riwayat Penyakit" rows="8" cols="80" required></textarea>
         </div>
         <div class="form-group text-center">
           <input type="submit" class="form-control" name="rehome" value="Rehome Kucing">

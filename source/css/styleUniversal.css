@@ -101,3 +101,18 @@ input.form-control, textarea.form-control {
 input[type='submit'], input[type='reset'] {
   cursor: pointer;
 }
+.close-cftff {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+.close-cftff .fa-window-close {
+  font-size: 3em;
+}
+.close-cftff a {
+  color: #000;
+}
+.close-cftff .fa-window-close:hover {
+  color: #f32424;
+}

@@ -32,7 +32,7 @@
                </span>
                <span class="isi-clicked isi-click-grid" val="fname-clicked">
                  <span class="spanw">Nama </span> :
-                 <input class="textinput-isi" type="text" name="isi" placeholder="<?php echo $fname ?>">
+                 <input class="textinput-isi" type="text" name="isi" placeholder="<?php echo $fname ?>" required>
                  <input type="hidden" name="col" value="fullname">
                  <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
                  <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="fname" >
@@ -45,7 +45,7 @@
                  <span class="spanw">Email </span> <span> : </span> <span><?php echo $email. " <span class='isi-edit' vale='email'>" .$edit. "</span></span>";  ?>
                </span>
                <span class="isi-clicked isi-click-grid" val="email-clicked"><span class="spanw">Email</span> :
-                 <input class="textinput-isi" type="email" name="isi" placeholder="<?php echo $email ?>">
+                 <input class="textinput-isi" type="email" name="isi" placeholder="<?php echo $email ?>" required>
                  <input type="hidden" name="col" value="email">
                  <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
                  <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="email" >
@@ -58,7 +58,7 @@
                  <span class="spanw">Nomor HP </span><span> : </span><span><?php echo $no_hp. " <span class='isi-edit' vale='no-hp'>" .$edit. "</span></span>";  ?>
                </span>
                <span class="isi-clicked isi-click-grid" val="no-hp-clicked"><span class="spanw">Nomor HP</span> :
-                 <input class="textinput-isi" type="text" name="isi" placeholder="<?php echo $no_hp ?>">
+                 <input class="textinput-isi" type="text" name="isi" placeholder="<?php echo $no_hp ?>" required>
                  <input type="hidden" name="col" value="no_hp">
                  <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
                  <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="no-hp">
@@ -82,20 +82,20 @@
              </div>
            </form>
            <?php if ($username === $r): ?>
-             <form class="" action="" method="post">
+             <!-- <form class="" action="" method="post">
                <div class="isi-info">
                  <span val="username">
                    <span class="spanw">Username </span> <span> : </span> <span><?php echo $username. " <span class='isi-edit' vale='username'>" .$edit. "</span></span>";  ?>
                  </span>
                  <span class="isi-clicked isi-click-grid" val="username-clicked">
                    <span class="spanw">Username</span> :
-                   <input class="textinput-isi" type="text" name="isi" placeholder="<?php echo $username ?>">
+                   <input class="textinput-isi" type="text" name="isi" placeholder="<?php echo $username ?>" required>
                    <input type="hidden" name="col" value="username">
                    <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
                    <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="username">
                  </span>
                </div>
-             </form>
+             </form> -->
 
              <form class="" action="" method="post">
                <div class="isi-info">
@@ -143,7 +143,7 @@
       <?php
     } else if ($id === "kucing_saya" || $id === "favorit_saya") {
       if ($id === "favorit_saya") {
-        $query = "SELECT k.nama_kucing, k.img_kucing1, k.img_kucing2, k.img_kucing3, j_k.jenis_kucing, k.umur_kucing, k.jk_kucing, k.bulu_kucing, k.id_kucing, w_k.warna_kucing FROM kucing k INNER JOIN jenis_kucing j_k ON k.id_jenis_kucing = j_k.id_jenis_kucing INNER JOIN warna_kucing w_k ON k.id_warna_kucing = w_k.id_warna_kucing INNER JOIN bookmarks b ON b.username = k.username && b.id_kucing = k.id_kucing WHERE b.username = ?";
+        $query = "SELECT k.nama_kucing, k.img_kucing1, k.img_kucing2, k.img_kucing3, j_k.jenis_kucing, k.umur_kucing, k.jk_kucing, k.bulu_kucing, k.id_kucing, w_k.warna_kucing FROM kucing k INNER JOIN jenis_kucing j_k ON k.id_jenis_kucing = j_k.id_jenis_kucing INNER JOIN warna_kucing w_k ON k.id_warna_kucing = w_k.id_warna_kucing INNER JOIN bookmarks b ON  b.id_kucing = k.id_kucing WHERE b.username = ?";
       } else if ($id === "kucing_saya") {
         $query = "SELECT k.nama_kucing, k.img_kucing1, k.img_kucing2, k.img_kucing3, j_k.jenis_kucing, k.umur_kucing, k.jk_kucing, k.bulu_kucing, k.id_kucing, w_k.warna_kucing FROM kucing k INNER JOIN jenis_kucing j_k ON k.id_jenis_kucing = j_k.id_jenis_kucing INNER JOIN warna_kucing w_k ON k.id_warna_kucing = w_k.id_warna_kucing WHERE username = ? ";
       }

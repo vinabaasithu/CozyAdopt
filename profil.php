@@ -189,7 +189,7 @@
             </span>
             <span class="isi-clicked isi-click-grid" val="fname-clicked">
               <span class="spanw">Nama </span> :
-              <input class="textinput-isi" type="text" name="isi" placeholder="<?php echo $fname ?>">
+              <input class="textinput-isi" type="text" name="isi" placeholder="<?php echo $fname ?>" required>
               <input type="hidden" name="col" value="fullname">
               <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
               <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="fname" >
@@ -202,7 +202,7 @@
               <span class="spanw">Email </span> <span> : </span> <span><?php echo $email. " <span class='isi-edit' vale='email'>" .$edit. "</span></span>";  ?>
             </span>
             <span class="isi-clicked isi-click-grid" val="email-clicked"><span class="spanw">Email</span> :
-              <input class="textinput-isi" type="email" name="isi" placeholder="<?php echo $email ?>">
+              <input class="textinput-isi" type="email" name="isi" placeholder="<?php echo $email ?>" required>
               <input type="hidden" name="col" value="email">
               <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
               <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="email" >
@@ -215,7 +215,7 @@
               <span class="spanw">Nomor HP </span><span> : </span><span><?php echo $no_hp. " <span class='isi-edit' vale='no-hp'>" .$edit. "</span></span>";  ?>
             </span>
             <span class="isi-clicked isi-click-grid" val="no-hp-clicked"><span class="spanw">Nomor HP</span> :
-              <input class="textinput-isi" type="text" name="isi" placeholder="<?php echo $no_hp ?>">
+              <input class="textinput-isi" type="text" name="isi" placeholder="<?php echo $no_hp ?>" required>
               <input type="hidden" name="col" value="no_hp">
               <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
               <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="no-hp">

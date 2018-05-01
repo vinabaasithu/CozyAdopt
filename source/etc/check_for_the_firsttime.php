@@ -43,6 +43,11 @@
           <link rel="stylesheet" href="source/css/select_input.css">
           <div class="fixed-form-f-l" style="position: fixed; height: 100vh; width: 100vw; background-color: #0009; z-index: 99; ">
             <div class="fixed-form-f" style="position: fixed; height: 100vh; width: 90vw; background-color: #fff; z-index: 99; margin: auto; left:0; right:0;overflow-y: scroll;"><br><br><br>
+              <div class="close-cftff">
+                <a href="source/etc/logout.php?r=logout">
+                  <i class="fas fa-window-close"></i>
+                </a>
+              </div>
               <?php include "source/etc/select_input.php"; ?>
             </div>
           </div>
