@@ -146,7 +146,7 @@ $(document).on("keyup", "#prov-text-id", function(e){
 // khusus untuk prov
 var selesaiKlikProv = function(idnya) {
   $.ajax({
-  url: "source/etc/select_lokasi.php",
+  url: "/CozyAdopt/source/etc/select_lokasi.php",
   method: "POST",
   data: {id_prov:idnya},
   dataType: "html",
@@ -157,7 +157,7 @@ var selesaiKlikProv = function(idnya) {
 }
 var selesaiKlikKab = function(idnya) {
   $.ajax({
-  url: "source/etc/select_lokasi.php",
+  url: "/CozyAdopt/source/etc/select_lokasi.php",
   method: "POST",
   data: {id_kab:idnya},
   dataType: "html",
@@ -168,7 +168,7 @@ var selesaiKlikKab = function(idnya) {
 }
 var selesaiKlikKec = function(idnya) {
   $.ajax({
-  url: "source/etc/select_lokasi.php",
+  url: "/CozyAdopt/source/etc/select_lokasi.php",
   method: "POST",
   data: {id_kec:idnya},
   dataType: "html",

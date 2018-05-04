@@ -152,6 +152,7 @@ footer {
    left: 0;
    right: 0;
    margin: auto;
+   overflow: hidden;
  }
  .img-upl-front .grid{
    display: inline-block;
@@ -171,13 +172,20 @@ footer {
    line-height: 37px;
  }
  input[type='file'], #upl {
-   opacity: 0;
+   /* opacity: 0;
    border: none;
    width: 130px;
    position: absolute;
    left: 0;
    right: 0;
    margin: auto;
+   cursor: pointer; */
+   opacity: 0;
+   border: none;
+   width: 263px;
+   position: absolute;
+   left: -130px !important;
+   top: 0;
    cursor: pointer;
  }
  .img-preview {
@@ -326,11 +334,11 @@ input[type="file"], #upl {
   color: #000;
 }
 .close-img-con:hover .backcol {
-  background: #f5b1e8 !important;
+  background: #000 !important;
 }
-/* .close-img .fa-window-close:hover {
-  color: #000;
-} */
+.close-img .fa-window-close:hover {
+  color: #ddd;
+}
 .backcol {
   position: absolute;
   background: #fff;

@@ -1,7 +1,7 @@
 <?php
 $pesanE = "";
 $adaIndex = "";
-if(!isset($index)) $adaIndex = "index.php" ;
+if(!isset($index)) $adaIndex = "/CozyAdopt/" ;
  ?>
 <?php
   if (isset($_GET['pesan'])) {
@@ -22,7 +22,7 @@ if(!isset($index)) $adaIndex = "index.php" ;
    <header>
      <a class="logo" href="<?php echo $adaIndex ?>#home">
        <div class="">
-         <img src="source/img/cozyLogo.png" alt="CozyAdopt">
+         <img src="/CozyAdopt/source/img/cozyLogo.png" alt="CozyAdopt">
        </div>
      </a>
      <nav class="nav-head">
@@ -30,28 +30,28 @@ if(!isset($index)) $adaIndex = "index.php" ;
          <!-- <a href="<?php echo $adaIndex ?>#find"><li>Cari Kami</li></a> -->
          <a href="<?php echo $adaIndex ?>#tentang"><li>Tentang Kami</li></a>
          <a href="<?php echo $adaIndex ?>#kontak"><li>Kontak</li></a>
-         <a href="adopt_kucing.php"><li>Adopt Kucing</li></a>
-         <a href="rehome_kucing.php"><li>Rehome Kucing</li></a>
+         <a href="/CozyAdopt/adopt_kucing.php"><li>Adopt Kucing</li></a>
+         <a href="/CozyAdopt/rehome_kucing.php"><li>Rehome Kucing</li></a>
          <?php
             if (isset($_SESSION["username"])) {
               $dpUniv = "";
               include 'source/etc/selectDP.php';
               ?>
               <div href="#" class="dp_header">
-                <div class="click-dp"> <img src="<?php echo $dpUniv ?>" alt=""> </div>
+                <div class="click-dp"> <img src="/CozyAdopt/<?php echo $dpUniv ?>" alt=""> </div>
                 <div class="menu_dp_header">
                   <ul>
-                    <a href="profil.php?r=<?php echo $_SESSION["username"]; ?>"><li>Profil</li></a>
+                    <a href="/CozyAdopt/profil.php?r=<?php echo $_SESSION["username"]; ?>"><li>Profil</li></a>
                     <!-- <a href="#"><li>Settings</li></a> -->
-                    <a href="source/etc/logout.php?r=logout"><li>Logout</li></a>
+                    <a href="/CozyAdopt/source/etc/logout.php?r=logout"><li>Logout</li></a>
                   </ul>
                 </div>
               </div>
               <?php
             } else {
               ?>
-            <a href="sign.php"><li>Login</li></a>
-            <a href="sign.php?r=reg"><li>Register</li></a>
+            <a href="/CozyAdopt/sign.php"><li>Login</li></a>
+            <a href="/CozyAdopt/sign.php?r=reg"><li>Register</li></a>
             <?php
             }
          ?>
@@ -61,7 +61,7 @@ if(!isset($index)) $adaIndex = "index.php" ;
      <div class="nav-head-min">
        <a class="min-logo" href="<?php echo $adaIndex ?>#home">
          <div class="">
-           <img src="source/img/cozyLogo.png" alt="CozyAdopt">
+           <img src="/CozyAdopt/source/img/cozyLogo.png" alt="CozyAdopt">
          </div>
        </a>
      </div>
@@ -73,28 +73,28 @@ if(!isset($index)) $adaIndex = "index.php" ;
       <ul>
         <a href="<?php echo $adaIndex ?>#tentang"><li>Tentang Kami</li></a>
         <a href="<?php echo $adaIndex ?>#kontak"><li>Kontak</li></a>
-        <a href="adopt_kucing.php"><li>Adopt Kucing</li></a>
-        <a href="rehome_kucing.php"><li>Rehome Kucing</li></a>
+        <a href="/CozyAdopt/adopt_kucing.php"><li>Adopt Kucing</li></a>
+        <a href="/CozyAdopt/rehome_kucing.php"><li>Rehome Kucing</li></a>
         <?php
            if (isset($_SESSION["username"])) {
              $dpUniv = "";
              include 'source/etc/selectDP.php';
              ?>
              <div href="#" class="dp_header text-center dp_header_min">
-               <div class="click-dp"> <img src="<?php echo $dpUniv ?>" alt=""> </div>
+               <div class="click-dp"> <img src="/CozyAdopt/<?php echo $dpUniv ?>" alt=""> </div>
                <div class="">
                  <ul>
-                   <a href="profil.php?r=<?php echo $_SESSION["username"]; ?>"><li>Profil</li></a>
-                   <a href="#"><li>Settings</li></a>
-                   <a href="source/etc/logout.php?r=logout"><li>Logout</li></a>
+                   <a href="/CozyAdopt/profil.php?r=<?php echo $_SESSION["username"]; ?>"><li>Profil</li></a>
+                   <!-- <a href="#"><li>Settings</li></a> -->
+                   <a href="/CozyAdopt/source/etc/logout.php?r=logout"><li>Logout</li></a>
                  </ul>
                </div>
              </div>
              <?php
            } else {
              ?>
-           <a href="sign.php"><li>Login</li></a>
-           <a href="sign.php?r=reg"><li>Register</li></a>
+           <a href="/CozyAdopt/sign.php"><li>Login</li></a>
+           <a href="/CozyAdopt/sign.php?r=reg"><li>Register</li></a>
            <?php
            }
         ?>

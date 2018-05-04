@@ -227,13 +227,13 @@
 
             <div class="grid-3-true">
               <div class="isi-con-cari-profil" nm="<?php echo $arrSel[$ia]["nama_kucing"] ?>" img="<?php echo "../../../".$arrSel[$ia]["img_kucing1"] ?>" jk="<?php echo $arrSel[$ia]["jenis_kucing"] ?>" uk="<?php echo $arrSel[$ia]["umur_kucing"] ?>" wk="<?php echo $arrSel[$ia]["warna_kucing"] ?>" bk="<?php echo $arrSel[$ia]["bulu_kucing"] ?>" kuc="<?php echo $arrSel[$ia]["id_kucing"] ?>" jkel="<?php echo $arrSel[$ia]["jk_kucing"] ?>" >
-                <img src="<?php echo $arrSel[$ia]["img_kucing1"] ?>" alt="">
+                <img src="<?php echo "/CozyAdopt/".$arrSel[$ia]["img_kucing1"] ?>" alt="">
               </div>
               <div class="isi-con-cari-profil" nm="<?php echo $arrSel[$ia]["nama_kucing"] ?>" img="<?php echo "../../../".$arrSel[$ia]["img_kucing1"] ?>" jk="<?php echo $arrSel[$ia]["jenis_kucing"] ?>" uk="<?php echo $arrSel[$ia]["umur_kucing"] ?>" wk="<?php echo $arrSel[$ia]["warna_kucing"] ?>" bk="<?php echo $arrSel[$ia]["bulu_kucing"] ?>" kuc="<?php echo $arrSel[$ia]["id_kucing"] ?>" jkel="<?php echo $arrSel[$ia]["jk_kucing"] ?>" >
-                <img src="<?php echo $arrSel[$ia]["img_kucing2"] ?>" alt="">
+                <img src="<?php echo "/CozyAdopt/".$arrSel[$ia]["img_kucing2"] ?>" alt="">
               </div>
               <div class="isi-con-cari-profil" nm="<?php echo $arrSel[$ia]["nama_kucing"] ?>" img="<?php echo "../../../".$arrSel[$ia]["img_kucing1"] ?>" jk="<?php echo $arrSel[$ia]["jenis_kucing"] ?>" uk="<?php echo $arrSel[$ia]["umur_kucing"] ?>" wk="<?php echo $arrSel[$ia]["warna_kucing"] ?>" bk="<?php echo $arrSel[$ia]["bulu_kucing"] ?>" kuc="<?php echo $arrSel[$ia]["id_kucing"] ?>" jkel="<?php echo $arrSel[$ia]["jk_kucing"] ?>" >
-                <img src="<?php echo $arrSel[$ia]["img_kucing3"] ?>" alt="">
+                <img src="<?php echo "/CozyAdopt/".$arrSel[$ia]["img_kucing3"] ?>" alt="">
               </div>
             </div>  <br> <br> <hr>
 

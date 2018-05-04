@@ -19,6 +19,7 @@ body {
   /* width: 15vw; */
   text-align: center;
   font-weight: bold;
+  overflow: hidden;
 }
 .img-upl-front .grid{
   display: inline-block;
@@ -40,16 +41,44 @@ body {
 input[type='file'] {
   opacity: 0;
   border: none;
-  width: 130px;
+  width: 263px;
   position: absolute;
-  left: 0;
+  left: -130px;
+  top: 0;
+  cursor: pointer;
 }
 .img-preview {
   padding-top: 55px;
+}
+.img-preview .close-img {
+  position: absolute;
+  top: 105px;
+  right: 15px;
+  z-index: 1;
 }
 #view-img {
   display: none;
 }
 input[type="checkbox"] {
   border: 1px solid #ddd;
+}
+.img-upl-con .fa-window-close {
+  cursor: pointer;
+  font-size: 3em;
+  /* color: #515151; */
+  color: #000;
+}
+/* .img-upl-con .fa-window-close:hover {
+  color: #000;
+} */
+.close-img {
+  display: none;
+}
+.backcol {
+  height: 35px;
+  width: 35px;
+  background: #fff;
+  position: absolute;
+  top: 113px;
+  right: 20px;
 }

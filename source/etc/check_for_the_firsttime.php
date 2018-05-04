@@ -51,8 +51,8 @@
               <?php include "source/etc/select_input.php"; ?>
             </div>
           </div>
-          <script src="source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
-          <script src="source/js/select_input.js" charset="utf-8"></script>
+          <script src="/CozyAdopt/source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
+          <script src="/CozyAdopt/source/js/select_input.js" charset="utf-8"></script>
 
           <script type="text/javascript">
            $(document).ready(function(){

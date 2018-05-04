@@ -16,9 +16,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?php echo $title ?></title>
-    <link rel="stylesheet" href="source/css/styleUniversal.css">
-    <link rel="stylesheet" href="source/css/styleHeader.css">
-    <link rel="stylesheet" href="source/css/styleSign.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/styleUniversal.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/styleHeader.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/styleSign.css">
   </head>
   <body>
     <?php if ($pesan): ?>
@@ -46,9 +46,9 @@
               </p>
               <p class="grid">
                 <small>
-                  Belum punya akun ? <a href="sign.php?r=reg">Register di sini</a>
+                  Belum punya akun ? <a href="/CozyAdopt/sign.php?r=reg">Register di sini</a>
                 </small>
-                <small class="text-right"><a href="#">Lupa password atau username ?</a> </small>
+                <small class="text-right"><a href="/CozyAdopt/#">Lupa password atau username ?</a> </small>
               </p>
             </form>
           </div>
@@ -87,9 +87,9 @@
        ?>
     </div>
     <?php include 'source/etc/footer.php'; ?>
-     <script src="source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
-     <script src="source/js/fontawesome-all.min.js" charset="utf-8"></script>
-     <script src="source/js/header.js" charset="utf-8"></script>
+     <script src="/CozyAdopt/source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
+     <script src="/CozyAdopt/source/js/fontawesome-all.min.js" charset="utf-8"></script>
+     <script src="/CozyAdopt/source/js/header.js" charset="utf-8"></script>
      <script type="text/javascript">
        $(document).ready(function(){
          $(".show-pass-check").click(function(){

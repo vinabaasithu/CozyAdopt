@@ -87,16 +87,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title></title>
-    <link rel="stylesheet" href="source/css/styleUniversal.css">
-    <link rel="stylesheet" href="source/css/styleHeader.css">
-    <link rel="stylesheet" href="source/css/styleProfil.css">
-    <link rel="stylesheet" href="source/css/select_input.css">
-    <link rel="stylesheet" href="source/css/bookmarks.css">
-    <link rel="stylesheet" href="source/css/pelihara.css">
-    <link rel="stylesheet" href="source/css/getMajikan.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/styleUniversal.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/styleHeader.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/styleProfil.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/select_input.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/bookmarks.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/pelihara.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/getMajikan.css">
   </head>
   <body>
-  <?php include 'source/etc/header.php'; ?>
+    <?php include 'source/etc/header.php'; ?>
   <!-- pelihara-container -->
   <div class="pelihara-container">
 
@@ -108,7 +108,7 @@
         <p class="title text-center"> <strong>Ganti Sampul</strong>  </p>
         <hr>
         <div class="img-preview" id="img-preview">
-          <img id="view-img" src="" alt="">
+          <img id="view-img" src="/CozyAdopt/" alt="">
         </div><br><br>
         <div class="img-upl-front">
           <div class="grid">
@@ -142,7 +142,7 @@
     <div class="dp-dan-sampul">
       <div class="dp">
         <div class="dp-relative">
-          <img src="<?php echo $dp ?>" alt="">
+          <img src="/CozyAdopt/<?php echo $dp ?>" alt="">
           <?php if($username === $r) {
             ?>
             <div class="ganti-dp text-center">
@@ -303,16 +303,16 @@
 
   </div>
   <?php include 'source/etc/footer.php'; ?>
-  <script src="source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
-  <script src="source/js/fontawesome-all.min.js" charset="utf-8"></script>
-  <script src="source/js/header.js" charset="utf-8"></script>
-  <script src="source/js/img_preview.js" charset="utf-8"></script>
-  <script src="source/js/select_input.js" charset="utf-8"></script>
-  <script src="source/js/bookmarks.js" charset="utf-8"></script>
-  <script src="source/js/pelihara.js" charset="utf-8"></script>
-  <script src="source/js/getMajikan.js" charset="utf-8"></script>
+  <script src="/CozyAdopt/source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
+  <script src="/CozyAdopt/source/js/fontawesome-all.min.js" charset="utf-8"></script>
+  <script src="/CozyAdopt/source/js/header.js" charset="utf-8"></script>
+  <script src="/CozyAdopt/source/js/img_preview.js" charset="utf-8"></script>
+  <script src="/CozyAdopt/source/js/select_input.js" charset="utf-8"></script>
+  <script src="/CozyAdopt/source/js/bookmarks.js" charset="utf-8"></script>
+  <script src="/CozyAdopt/source/js/pelihara.js" charset="utf-8"></script>
+  <script src="/CozyAdopt/source/js/getMajikan.js" charset="utf-8"></script>
   <script type="text/javascript">
-    var sampul = '<?php echo $sampul; ?>';
+    var sampul = '/CozyAdopt/<?php echo $sampul; ?>';
     $(".dp-dan-sampul").css("background-image", "url('"+sampul+"')");
     $(document).ready(function(){
       $(".dp-dan-sampul").hover(function(e){
@@ -350,7 +350,7 @@
         ganti = "sampul";
       }
       var link = $("#view-img").attr("src");
-      $.post("source/etc/ganti_dp_sampul.php", {ganti:ganti, link:link}, function(result){
+      $.post("/CozyAdopt/source/etc/ganti_dp_sampul.php", {ganti:ganti, link:link}, function(result){
         console.log(result)
         window.location = window.location;
       });
@@ -383,7 +383,7 @@
     $(document).on("click", ".click-profile", function(){
       var id = $(this).attr("id");
       var r = '<?php echo $r ?>';
-      $.post("source/etc/profil.php", {id:id, r:r}, function(result){
+      $.post("/CozyAdopt/source/etc/profil.php", {id:id, r:r}, function(result){
         $(".isi").html(result);
       });
     });
@@ -443,7 +443,7 @@
     $(document).on("click", ".edit-kucing .fa-edit", function(){
       var val = $(this).attr("val");
       var parent = $(this).parents(".kucing_saya_container");
-      $.post("source/etc/edit_profil_kucing_saya.php", {val:val}, function(result){
+      $.post("/CozyAdopt/source/etc/edit_profil_kucing_saya.php", {val:val}, function(result){
         parent.css("display", "none");
         ksc[val] = parent.html();
         parent.html(result).show(800);
@@ -486,7 +486,7 @@
           $(".isi-clicked[val='alamat-clicked'] p em strong small")[2].style.display = "none";
           $(".isi-clicked[val='alamat-clicked'] p em strong small label")[0].innerHTML = "Ganti Alamat Lengkap";
           uname = userses;
-          $.post("source/etc/isiAlamatAuto.php", {uname:uname}, function(result){
+          $.post("/CozyAdopt/source/etc/isiAlamatAuto.php", {uname:uname}, function(result){
             $(".isi-clicked").parents(".isi-info").append(result);
             var id_prov_p = $(".isi-clicked").parents(".isi-info").find("#id_prov_p").attr("val");
             var nama_prov_p = $(".isi-clicked").parents(".isi-info").find("#nama_prov_p").attr("val");

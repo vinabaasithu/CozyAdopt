@@ -10,7 +10,7 @@ $(document).on('click', '.isi-con-cari', function(e){
   }
 });
 $(document).on("click", ".pelihara-container", function(e){
-  if (e.target.attributes["class"].nodeValue !== undefined) {  
+  if (e.target.attributes["class"].nodeValue !== undefined) {
     if (e.target.attributes["class"].nodeValue === "pelihara-container") {
       $(".pelihara-container").hide(800);
     }
@@ -42,7 +42,7 @@ var kucingajax = function(i) {
   var jk_kucing = i.attr("jkel");
   var id_kucing = i.attr("kuc");
   $.ajax({
-    url: "source/etc/pelihara.php",
+    url: "/CozyAdopt/source/etc/pelihara.php",
     method: "POST",
     data: {nama:nama, img:img, jenis_kucing:jenis_kucing, umur_kucing:umur_kucing, warna_kucing:warna_kucing, bulu_kucing:bulu_kucing, jk_kucing:jk_kucing, id_kucing:id_kucing},
     dataType: "html",

@@ -5,7 +5,7 @@ $(document).on("click", ".bookmarks", function(){
         var r = userparam;
         var usersess = userses;
         if (userparam === usersess) {
-          $.post("source/etc/profil.php", {id:id, r:r}, function(result){
+          $.post("/CozyAdopt/source/etc/profil.php", {id:id, r:r}, function(result){
             $(".isi").html(result);
           });
         }
@@ -40,7 +40,7 @@ var bookmarks = function(classbookmarks) {
     torh = "ditambahkan ke dalam daftar Kucing Favorit";
   }
   if (confirm(dialog)) {
-    $.post("source/etc/bookmarks.php", {bookmarks:bookmarks, id_kucing:id_kucing}, function(result){
+    $.post("/CozyAdopt/source/etc/bookmarks.php", {bookmarks:bookmarks, id_kucing:id_kucing}, function(result){
       if (isbookmarked) {
         fa_star.removeClass("bookmarked");
       } else if(result === "INSERT BERHASIL") {

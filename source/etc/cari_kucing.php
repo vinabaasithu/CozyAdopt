@@ -68,7 +68,7 @@
         }
         ?>
         <div class="isi-con-cari" nm="<?php echo $arrSel[$i]["nama_kucing"] ?>" img="<?php echo $arrSel[$i]["img_kucing1"] ?>" jk="<?php echo $arrSel[$i]["jenis_kucing"] ?>" uk="<?php echo $arrSel[$i]["umur_kucing"] ?>" wk="<?php echo $arrSel[$i]["warna_kucing"] ?>" bk="<?php echo $arrSel[$i]["bulu_kucing"] ?>" kuc="<?php echo $arrSel[$i]["id_kucing"] ?>" jkel="<?php echo $arrSel[$i]["jk_kucing"] ?>" >
-          <img src="source/img/kucing/<?php echo $arrSel[$i]["img_kucing1"] ?>" alt="<?php echo $arrSel[$i]["img_kucing1"] ?>">
+          <img src="/CozyAdopt/source/img/kucing/<?php echo $arrSel[$i]["img_kucing1"] ?>" alt="<?php echo $arrSel[$i]["img_kucing1"] ?>">
           <div class="text-kucing">
             <p><strong><?php echo $arrSel[$i]["nama_kucing"]. ", ".  $arrSel[$i]["jenis_kucing"].", ". $arrSel[$i]["umur_kucing"] ?></strong></p>
             <p><?php echo "Uploaded by ".$arrSel[$i]["username"] ?></p>

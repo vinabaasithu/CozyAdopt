@@ -14,10 +14,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Rehome Kucing</title>
-    <link rel="stylesheet" href="source/css/styleUniversal.css">
-    <link rel="stylesheet" href="source/css/styleHeader.css">
-    <link rel="stylesheet" href="source/css/styleRehomeKucing.css">
-    <link rel="stylesheet" href="source/css/select_input.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/styleUniversal.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/styleHeader.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/styleRehomeKucing.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/select_input.css">
   </head>
   <body>
     <?php include 'source/etc/header.php'; ?>
@@ -70,7 +70,15 @@
                 <input id="upl<?php echo $i ?>" type="file" class="form-control" name="fileupl<?php echo $i ?>" value="">
               </div>
               <div class="img-preview" id="img-preview<?php echo $i ?>">
-                <img id="view-img<?php echo $i ?>" src="" alt="">
+                <img id="view-img<?php echo $i ?>" src="/CozyAdopt/" alt="">
+
+                <div class="close-img" val="upl<?php echo $i ?>">
+                  <div class="close-img-con">
+                    <i class="fas fa-window-close"></i>
+                  </div>
+                </div>
+                <div class="backcol"></div>
+
               </div>
             </div>
             <?php
@@ -128,11 +136,11 @@
       </form>
     </div>
     <?php include 'source/etc/footer.php'; ?>
-    <script src="source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
-    <script src="source/js/fontawesome-all.min.js" charset="utf-8"></script>
-    <script src="source/js/header.js" charset="utf-8"></script>
-    <script src="source/js/select_input.js" charset="utf-8"></script>
-    <script src="source/js/img_preview.js" charset="utf-8"></script>
+    <script src="/CozyAdopt/source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
+    <script src="/CozyAdopt/source/js/fontawesome-all.min.js" charset="utf-8"></script>
+    <script src="/CozyAdopt/source/js/header.js" charset="utf-8"></script>
+    <script src="/CozyAdopt/source/js/select_input.js" charset="utf-8"></script>
+    <script src="/CozyAdopt/source/js/img_preview.js" charset="utf-8"></script>
     <script type="text/javascript">
       $(document).ready(function(){
         $(".klikkucing").click(function(){
@@ -156,7 +164,7 @@
       $(document).on("click", "#isiAlamatAuto", function(){
         var check = $(this).attr("isc");
         if (check === "unchecked") {
-          $.post("source/etc/isiAlamatAuto.php", {uname:uname}, function(result){
+          $.post("/CozyAdopt/source/etc/isiAlamatAuto.php", {uname:uname}, function(result){
             $(".auto-input-post").html(result);
             var id_prov = $("#id_prov_p").attr("val");
             var nama_prov = $("#nama_prov_p").attr("val");
@@ -224,6 +232,32 @@
           }
         }
       })
+    </script>
+
+    <script type="text/javascript">
+      $(document).on("click", ".img-upl-con .fa-window-close", function(){
+        var dis = this;
+        $(dis).parents(".img-upl-con").find(".img-preview img").hide(800);
+        $(dis).parents(".img-upl-con").find(".close-img").hide(800);
+        setTimeout(function(){
+          $(dis).parents(".img-upl-con").find(".img-preview img").attr("src", "");
+          $(dis).parents(".img-upl-con").find("input[type='file']").val(null);
+          $(dis).parents(".img-upl-con").find("img").show(800);
+          $(dis).parents(".img-upl-con").find(".img-upl-front").show(800);
+        }, 800);
+      });
+      $(document).on("change", "input[type='file']", function(){
+        $(this).parents(".img-upl-con").find(".close-img").show(800);
+      });
+      $(document).ready(function() {
+        $(".close-img").hover(function(){
+          $(".img-upl-con .fa-window-close").css("color", "#ddd");
+          $(".backcol").css("background", "#000");
+        }, function(){
+          $(".img-upl-con .fa-window-close").css("color", "#000");
+          $(".backcol").css("background", "#fff");
+        });
+      });
     </script>
   </body>
 </html>

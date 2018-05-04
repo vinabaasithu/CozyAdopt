@@ -41,7 +41,7 @@
   <div class="isi_pelihara">
     <div class="data-pelihara">
       <div class="gambar-pelihara">
-        <img src="source/img/kucing/<?php echo $img_kucing1 ?>" alt="">
+        <img src="/CozyAdopt/source/img/kucing/<?php echo $img_kucing1 ?>" alt="">
       </div>
       <div class="data-kucing">
         <div class="head-data-kucing">

@@ -20,10 +20,10 @@
 <div class="getMajikan">
   <div class="cont-get-majikan">
     <div class="rel">
-      <a href="profil.php?r=<?php echo $username ?>">
+      <a href="/CozyAdopt/profil.php?r=<?php echo $username ?>">
         <div class="sampul">
           <div class="dp">
-            <img src="<?php echo $dp ?>" alt="">
+            <img src="/CozyAdopt/<?php echo $dp ?>" alt="">
             <p class="text-center nama"><?php echo $fullname ?></p>
           </div>
         </div>

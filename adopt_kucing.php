@@ -18,14 +18,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Adopt Kucing</title>
-    <link rel="stylesheet" href="source/css/styleUniversal.css">
-    <link rel="stylesheet" href="source/css/styleHeader.css">
-    <link rel="stylesheet" href="source/css/adopt_kucing.css">
-    <link rel="stylesheet" href="source/css/cari_kucing.css">
-    <link rel="stylesheet" href="source/css/pelihara.css">
-    <link rel="stylesheet" href="source/css/getMajikan.css">
-    <link rel="stylesheet" href="source/css/select_input.css">
-    <link rel="stylesheet" href="source/css/bookmarks.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/styleUniversal.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/styleHeader.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/adopt_kucing.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/cari_kucing.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/pelihara.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/getMajikan.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/select_input.css">
+    <link rel="stylesheet" href="/CozyAdopt/source/css/bookmarks.css">
   </head>
   <body>
     <?php
@@ -38,10 +38,10 @@
       <div class="form-cari-con">
         <div class="form-cari-kucing-con">
           <div class="img-con img-con1">
-            <img src="source/img/cari_kucing_img.png" alt="">
+            <img src="/CozyAdopt/source/img/cari_kucing_img.png" alt="">
           </div>
           <div class="img-con img-con2">
-            <img src="source/img/cari_kucing_img.png" alt="">
+            <img src="/CozyAdopt/source/img/cari_kucing_img.png" alt="">
           </div>
           <h1 class="text-center h1">Cari Kucing</h1>
           <div class="form-cari-kucing">
@@ -139,13 +139,13 @@
     </div>
 
     <?php include 'source/etc/footer.php'; ?>
-    <script src="source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
-    <script src="source/js/fontawesome-all.min.js" charset="utf-8"></script>
-    <script src="source/js/header.js" charset="utf-8"></script>
-    <script src="source/js/pelihara.js" charset="utf-8"></script>
-    <script src="source/js/select_input.js" charset="utf-8"></script>
-    <script src="source/js/bookmarks.js" charset="utf-8"></script>
-    <script src="source/js/getMajikan.js" charset="utf-8"></script>
+    <script src="/CozyAdopt/source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
+    <script src="/CozyAdopt/source/js/fontawesome-all.min.js" charset="utf-8"></script>
+    <script src="/CozyAdopt/source/js/header.js" charset="utf-8"></script>
+    <script src="/CozyAdopt/source/js/pelihara.js" charset="utf-8"></script>
+    <script src="/CozyAdopt/source/js/select_input.js" charset="utf-8"></script>
+    <script src="/CozyAdopt/source/js/bookmarks.js" charset="utf-8"></script>
+    <script src="/CozyAdopt/source/js/getMajikan.js" charset="utf-8"></script>
     <script type="text/javascript">
         $(document).on('click', '#cari-kucing', function(){
           var jenis_kucing = $(".jenis-kucing").val();
@@ -161,7 +161,7 @@
 
           var cari = "true";
           $.ajax({
-          url: "source/etc/cari_kucing.php",
+          url: "/CozyAdopt/source/etc/cari_kucing.php",
           method: "POST",
           data: {jenis_kucing:jenis_kucing, umur_kucing:umur_kucing, bulu_kucing:bulu_kucing, warna_kucing:warna_kucing, jk_kucing:jk_kucing, cari:cari, id_prov:id_prov, id_kab:id_kab, id_kec:id_kec, id_kel:id_kel, urut:urut},
           dataType: "html",
@@ -220,7 +220,7 @@
       });
       // checked use profil location
       $(document).on("click", "#use-profil-loc", function(){
-        var uname = '<?php echo $_SESSION["username"] ?>';
+        var uname = '<?php if (isset($_SESSION["username"])) { echo $_SESSION["username"]; }  ?>';
         var checked = $(this).attr("checked");
         if(checked === "checked") {
           $(this).removeAttr("checked");
@@ -238,7 +238,7 @@
           $(this).attr("checked", "checked");
           // alert("checked");
           $.ajax({
-            url: "source/etc/isiAlamatAuto.php",
+            url: "/CozyAdopt/source/etc/isiAlamatAuto.php",
             method: "POST",
             data: {uname:uname},
             dataType: "html",

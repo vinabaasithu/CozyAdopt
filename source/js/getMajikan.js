@@ -1,7 +1,7 @@
 $(document).on("click", ".rawatpelihara", function(){
   var val = $(this).attr("val");
   $.ajax({
-    url: "source/etc/getMajikan.php",
+    url: "/CozyAdopt/source/etc/getMajikan.php",
     method: "POST",
     data: {val:val},
     dataType: "html",

@@ -51,6 +51,9 @@ admin.php {
 }
 
 # Bookmarks Error V
-# Validasi Semua Form
 # FONT LOGO = Futura Md BT V
-# Backend Tulis Jenis Sendiri
+# Backend Tulis Jenis Sendiri V
+
+# Validasi Semua Form
+# Page Admin
+# Ganti Sistem Rehome, Input Jenis Kucing Sendiri, Input Warna Kucing Sendiri harus di Accept Admin 
