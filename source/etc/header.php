@@ -38,7 +38,7 @@ if(!isset($index)) $adaIndex = "/CozyAdopt/" ;
               include 'source/etc/selectDP.php';
               ?>
               <div href="#" class="dp_header">
-                <div class="click-dp"> <img src="<?php echo $dpUniv ?>" alt=""> </div>
+                <div class="click-dp"> <img src="/CozyAdopt/<?php echo $dpUniv ?>" alt=""> </div>
                 <div class="menu_dp_header">
                   <ul>
                     <a href="/CozyAdopt/profil.php?r=<?php echo $_SESSION["username"]; ?>"><li>Profil</li></a>
@@ -81,7 +81,7 @@ if(!isset($index)) $adaIndex = "/CozyAdopt/" ;
              include 'source/etc/selectDP.php';
              ?>
              <div href="#" class="dp_header text-center dp_header_min">
-               <div class="click-dp"> <img src="<?php echo $dpUniv ?>" alt=""> </div>
+               <div class="click-dp"> <img src="/CozyAdopt/<?php echo $dpUniv ?>" alt=""> </div>
                <div class="">
                  <ul>
                    <a href="/CozyAdopt/profil.php?r=<?php echo $_SESSION["username"]; ?>"><li>Profil</li></a>
