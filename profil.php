@@ -142,7 +142,7 @@
     <div class="dp-dan-sampul">
       <div class="dp">
         <div class="dp-relative">
-          <img src="/CozyAdopt/<?php echo $dp ?>" alt="">
+          <img src="<?php echo $dp ?>" alt="">
           <?php if($username === $r) {
             ?>
             <div class="ganti-dp text-center">
@@ -312,7 +312,7 @@
   <script src="/CozyAdopt/source/js/pelihara.js" charset="utf-8"></script>
   <script src="/CozyAdopt/source/js/getMajikan.js" charset="utf-8"></script>
   <script type="text/javascript">
-    var sampul = '/CozyAdopt/<?php echo $sampul; ?>';
+    var sampul = '<?php echo $sampul; ?>';
     $(".dp-dan-sampul").css("background-image", "url('"+sampul+"')");
     $(document).ready(function(){
       $(".dp-dan-sampul").hover(function(e){

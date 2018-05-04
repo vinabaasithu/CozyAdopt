@@ -7,7 +7,7 @@
     $username = $_SESSION["username"];
 
     //
-    $target = "/CozyAdopt/userData/".$username."/".$ganti."/".$ganti."_".$username.".png";
+    $target = "../../userData/".$username."/".$ganti."/".$ganti."_".$username.".png";
     copy($link, $target);
 
     $stmt = $mysqli->prepare("UPDATE users SET $ganti = ? WHERE username = ?");
