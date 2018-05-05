@@ -1,0 +1,22 @@
+Options -Indexes
+DirectoryIndex index.php
+
+RewriteEngine on
+
+# REDIRECT
+# RewriteCond %{THE_REQUEST} \ /(.*)\.php
+# RewriteRule ^ /%1/ [L,R=301]
+
+# ALIAS
+#PROFIL
+RewriteRule ^profil/(.+)/$ profil.php?r=$1 [L]
+#SIGN
+RewriteRule ^register/$ sign.php?r=reg [L]
+#ALL MSG
+RewriteRule ^(.*)/(.+)/$ $1.php?pesan=$2 [L]
+#ALL WITHOUT PARAM
+RewriteRule ^(.*)/$ $1.php [L]
+#MSG IN INDEX
+RewriteRule ^msg:(.*)$ index.php?pesan=$1 [L]
+#REDI ADOPT_KUCING FROM INDEX
+RewriteRule ^adopt_kucing/(.+)/(.+)/(.+)/(.+)/(.+)/(.+)/(.+)-(.+) adopt_kucing.php?nm=$1&jk=$2&uk=$3&wk=$4&bk=$5&kuc=$6&jkel=$7&img=$8 [L]
