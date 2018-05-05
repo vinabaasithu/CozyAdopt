@@ -388,12 +388,12 @@ span .isi-edit {
 .form-group.griddl label {
   font-size: 1em;
 }
-.modal input[type="file"]#upl {
+.modal #upl {
   left: -100vw !important;
   right: 0 !important;
   margin: auto;
-  opacity: 1;
   padding-right: 200vw;
+  height: 40px;
 }
 @media only screen and (max-width: 905px) {
   div.menu {

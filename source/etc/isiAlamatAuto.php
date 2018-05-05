@@ -1,7 +1,8 @@
 <?php
   if (isset($_POST["uname"])) {
     include 'db.php';
-    $username = $_POST["uname"];
+    include 'vali.php';
+    $username = vali_input($_POST["uname"]);
     $stmt = $mysqli->prepare("SELECT prov.id_prov, prov.nama, kab.id_kab, kab.nama, kec.id_kec, kec.nama, kel.id_kel, kel.nama, u.alamat_lengkap FROM users u INNER JOIN provinsi_daerah prov ON u.id_prov = prov.id_prov INNER JOIN kabupaten_daerah kab ON u.id_kab = kab.id_kab INNER JOIN kecamatan_daerah kec ON u.id_kec = kec.id_kec INNER JOIN kelurahan_daerah kel ON u.id_kel = kel.id_kel WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();

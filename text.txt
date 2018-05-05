@@ -55,11 +55,11 @@ admin.php {
 # Backend Tulis Jenis Sendiri V
 
 # Validasi Semua Form
-  - rehome_kucing.php (1)
-  - adopt_kucing.php (1)
-  - profil.php (2, info, kucing saya)
+  - adopt_kucing.php (1) V
   - Login (1) V
   - register (1) V
+  - profil.php (2, info, kucing saya) {Bagian info baru redirect data info jika kosong}
+  - rehome_kucing.php (1)
   * Validasi Menggunakan : vali.php dan vali.js
 # Page Admin
 # Ganti Sistem Rehome, Input Jenis Kucing Sendiri, Input Warna Kucing Sendiri harus di Accept Admin

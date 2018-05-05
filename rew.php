@@ -7,12 +7,11 @@
   echo $password. "<br>";
   $pesan = "";
   include 'source/etc/vali.php';
-  $pass = "";
-  substr(($pass = vali_pass($pass)), 0, 3) === "<h1" ? $pesan = $pass : $pass = $pass;
-  if ($pesan) {
-    echo $pesan."<br>";
+  $url = "/CozyAdopt/profil.php?r=dendi&pesan=d";
+  if (preg_match("/profil.php\?r=(.+)&pesan=(.*)/", $url)) {
+    echo "URL ADA";
   } else {
-    echo $pass."<br>";
+    echo "URL TIDAK ADA";
   }
   // $keywords = $pass;
   // $keywords = preg_quote($keywords, '/');

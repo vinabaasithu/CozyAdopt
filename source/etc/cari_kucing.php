@@ -1,19 +1,20 @@
 <?php
   session_start();
   include 'coz_domain.php';
+  include 'vali.php';
   include 'db.php';
   $indexTercari = array();
   if (isset($_POST['cari'])) {
-    $jenis_kucing = $_POST['jenis_kucing'];
-    $umur_kucing = $_POST['umur_kucing'];
-    $bulu_kucing = $_POST['bulu_kucing'];
-    $warna_kucing = $_POST['warna_kucing'];
-    $jk_kucing = $_POST['jk_kucing'];
-    $id_prov = $_POST['id_prov'];
-    $id_kab = $_POST['id_kab'];
-    $id_kec = $_POST['id_kec'];
-    $id_kel = $_POST['id_kel'];
-    $urut = $_POST['urut'];
+    $jenis_kucing = vali_input($_POST['jenis_kucing']);
+    $umur_kucing = vali_input($_POST['umur_kucing']);
+    $bulu_kucing = vali_input($_POST['bulu_kucing']);
+    $warna_kucing = vali_input($_POST['warna_kucing']);
+    $jk_kucing = vali_input($_POST['jk_kucing']);
+    $id_prov = vali_input($_POST['id_prov']);
+    $id_kab = vali_input($_POST['id_kab']);
+    $id_kec = vali_input($_POST['id_kec']);
+    $id_kel = vali_input($_POST['id_kel']);
+    $urut = vali_input($_POST['urut']);
 
     $jenis_kucing = !$jenis_kucing ? "%%" : $jenis_kucing;
     $umur_kucing = !$umur_kucing ? "%%" : $umur_kucing;

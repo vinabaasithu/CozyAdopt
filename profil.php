@@ -1,13 +1,21 @@
 <?php
   session_start();
   include 'source/etc/coz_domain.php';
+  include 'source/etc/vali.php';
+
+  $ttkttk = "";
+  if ( preg_match("/".preg_quote($coz_domain, '/')."profil\/(.+)\/(.*)\//", $_SERVER["REQUEST_URI"], $match) ) {
+    $ttkttk = "../../../";
+  } else if ( preg_match("/".preg_quote($coz_domain, '/')."profil\/(.+)\//", $_SERVER["REQUEST_URI"], $match) ) {
+    $ttkttk = "../../";
+  }
+
   if (!isset($_GET["r"])) {
-    header("Location: index.php");
+    header("Location: ".$ttkttk."index.php");
   } else {
     $r = $_GET["r"];
     include 'source/etc/db.php';
   }
-
   $username = "";
   if (isset($_SESSION["username"])) {
     $username = $_SESSION["username"];
@@ -19,56 +27,61 @@
       $username = $_SESSION["username"];
     }
 
-    $isi = $_POST["isi"];
-    if ($isi === "alamat") {
-      $id_prov = $_POST["id_prov"];
-      $id_kab = $_POST["id_kab"];
-      $id_kec = $_POST["id_kec"];
-      $id_kel = $_POST["id_kel"];
-      $alamat_lengkap = $_POST["alamat_lengkap"];
-      $stmt = $mysqli->prepare("UPDATE users SET id_prov = ?, id_kab = ?, id_kec = ?, id_kel = ?, alamat_lengkap = ? WHERE username = ?");
-      $stmt->bind_param("ssssss", $id_prov, $id_kab, $id_kec, $id_kel, $alamat_lengkap,  $username);
-      $stmt->execute();
-      $stmt->close();
+    $isi = vali_input($_POST["isi"]);
+    if (!$isi) {
+        header("Location: ".$ttkttk."profil.php?r=$username&pesan=Ganti Info Gagal, Data Tidak Boleh Kosong");
     } else {
-      $col = $_POST["col"];
-      if (isset($_GET["pesan"])) {
-        $_GET["pesan"] = null;
-      }
-      if ($col === "password") {
-        $isi = $_POST["isi"];
-        $pass = $_POST["pass"];
-        $repass = $_POST["repass"];
-        if ($pass !== $repass) {
-          header("Location: profil.php?r=$r&pesan=Gagal Ganti Password, Password Baru Tidak Sesuai");
-        }
-        // check old pass
-        $stmt = $mysqli->prepare("SELECT password FROM users WHERE username = ?");
-        $stmt->bind_param("s", $username);
+      if ($isi === "alamat") {
+        $id_prov = vali_input($_POST["id_prov"]);
+        $id_kab = vali_input( $_POST["id_kab"]);
+        $id_kec = vali_input($_POST["id_kec"]);
+        $id_kel = vali_input($_POST["id_kel"]);
+        $alamat_lengkap = vali_input($_POST["alamat_lengkap"]);
+        $stmt = $mysqli->prepare("UPDATE users SET id_prov = ?, id_kab = ?, id_kec = ?, id_kel = ?, alamat_lengkap = ? WHERE username = ?");
+        $stmt->bind_param("ssssss", $id_prov, $id_kab, $id_kec, $id_kel, $alamat_lengkap,  $username);
         $stmt->execute();
-        $stmt->bind_result($passhash); $stmt->fetch();
         $stmt->close();
-        if (!password_verify($isi, $passhash)) {
-          header("Location: profil.php?r=$r&pesan=Gagal Ganti Password, Password Lama Salah");
+      } else {
+        $col = $_POST["col"];
+        if (isset($_GET["pesan"])) {
+          $_GET["pesan"] = null;
+        }
+        if ($col === "password") {
+          $isi = vali_input($_POST["isi"]);
+          $pass = vali_input($_POST["pass"]);
+          $repass = vali_input($_POST["repass"]);
+          if ($pass !== $repass) {
+            header("Location: ".$ttkttk."profil.php?r=$r&pesan=Gagal Ganti Password, Password Baru Tidak Sesuai");
+          }
+          // check old pass
+          $stmt = $mysqli->prepare("SELECT password FROM users WHERE username = ?");
+          $stmt->bind_param("s", $username);
+          $stmt->execute();
+          $stmt->bind_result($passhash); $stmt->fetch();
+          $stmt->close();
+          if (!password_verify($isi, $passhash)) {
+            header("Location: ".$ttkttk."profil.php?r=$r&pesan=Gagal Ganti Password, Password Lama Salah");
+          } else {
+            $options = [
+              'cost' => 13
+            ];
+            $passnew = password_hash($pass, PASSWORD_BCRYPT, $options);
+            $stmt = $mysqli->prepare("UPDATE users SET password = ? WHERE username = ?");
+            $stmt->bind_param("ss", $passnew, $username);
+            $stmt->execute();
+            $stmt->close();
+            header("Location: ".$ttkttk."profil.php?r=$r&pesan=Ganti Password Berhasil, Password Sudah Diubah");
+          }
+  // lanjutkan
         } else {
-          $options = [
-            'cost' => 13
-          ];
-          $passnew = password_hash($pass, PASSWORD_BCRYPT, $options);
-          $stmt = $mysqli->prepare("UPDATE users SET password = ? WHERE username = ?");
-          $stmt->bind_param("ss", $passnew, $username);
+          $stmt = $mysqli->prepare("UPDATE users SET $col = ? WHERE username = ?");
+          $stmt->bind_param("ss", $isi, $username);
           $stmt->execute();
           $stmt->close();
-          header("Location: profil.php?r=$r&pesan=Ganti Password Berhasil, Password Sudah Diubah");
         }
-// lanjutkan
-      } else {
-        $stmt = $mysqli->prepare("UPDATE users SET $col = ? WHERE username = ?");
-        $stmt->bind_param("ss", $isi, $username);
-        $stmt->execute();
-        $stmt->close();
       }
     }
+
 
   }
 
@@ -313,7 +326,7 @@
   <script src="<?php echo $coz_domain; ?>source/js/pelihara.js" charset="utf-8"></script>
   <script src="<?php echo $coz_domain; ?>source/js/getMajikan.js" charset="utf-8"></script>
   <script type="text/javascript">
-    var sampul = '<?php echo $sampul; ?>';
+    var sampul = '<?php echo $coz_domain.$sampul; ?>';
     $(".dp-dan-sampul").css("background-image", "url('"+sampul+"')");
     $(document).ready(function(){
       $(".dp-dan-sampul").hover(function(e){
