@@ -116,3 +116,23 @@ input[type='submit'], input[type='reset'] {
 .close-cftff .fa-window-close:hover {
   color: #f32424;
 }
+.relative {
+  position: relative;
+}
+form .fa-times {
+  color: red;
+}
+form .fa-check {
+  color: green;
+}
+form .fa-check, form .fa-times {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 30px;
+  margin: auto;
+  display: none;
+}
+.PasswordCheck .fa-check, .PasswordCheck .fa-times {
+  top: -35px;
+}

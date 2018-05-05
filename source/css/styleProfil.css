@@ -135,7 +135,7 @@ footer {
    background-color: #fff;
    height: 40vh;
    width: 50vw;
-   overflow-y: scroll;
+   -moz-overflow-y: scroll;
  }
  .modal .title {
    font-size: 1.3em;
@@ -387,6 +387,13 @@ span .isi-edit {
 }
 .form-group.griddl label {
   font-size: 1em;
+}
+.modal input[type="file"]#upl {
+  left: -100vw !important;
+  right: 0 !important;
+  margin: auto;
+  opacity: 1;
+  padding-right: 200vw;
 }
 @media only screen and (max-width: 905px) {
   div.menu {

@@ -1,6 +1,7 @@
 <?php
 $pesanE = "";
 $adaIndex = "";
+include "header_uri.php";
 if(!isset($index)) $adaIndex = "/CozyAdopt/" ;
  ?>
 <?php
@@ -22,7 +23,7 @@ if(!isset($index)) $adaIndex = "/CozyAdopt/" ;
    <header>
      <a class="logo" href="<?php echo $adaIndex ?>#home">
        <div class="">
-         <img src="/CozyAdopt/source/img/cozyLogo.png" alt="CozyAdopt">
+         <img src="/CozyAdopt/source/img/cozyLogo3.png" alt="CozyAdopt">
        </div>
      </a>
      <nav class="nav-head">
@@ -61,7 +62,7 @@ if(!isset($index)) $adaIndex = "/CozyAdopt/" ;
      <div class="nav-head-min">
        <a class="min-logo" href="<?php echo $adaIndex ?>#home">
          <div class="">
-           <img src="/CozyAdopt/source/img/cozyLogo.png" alt="CozyAdopt">
+           <img src="/CozyAdopt/source/img/cozyLogo3.png" alt="CozyAdopt">
          </div>
        </a>
      </div>

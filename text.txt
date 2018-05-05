@@ -55,5 +55,12 @@ admin.php {
 # Backend Tulis Jenis Sendiri V
 
 # Validasi Semua Form
+  - rehome_kucing.php (1)
+  - adopt_kucing.php (1)
+  - profil.php (2, info, kucing saya)
+  - Login (1) V
+  - register (1) V
+  * Validasi Menggunakan : vali.php dan vali.js
 # Page Admin
-# Ganti Sistem Rehome, Input Jenis Kucing Sendiri, Input Warna Kucing Sendiri harus di Accept Admin 
+# Ganti Sistem Rehome, Input Jenis Kucing Sendiri, Input Warna Kucing Sendiri harus di Accept Admin
+# CozyAdopt domain

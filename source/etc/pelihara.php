@@ -1,4 +1,5 @@
 <?php
+  include 'coz_domain.php';
   if (isset($_POST['id_kucing'])) {
     if (file_exists('db.php')) {
       include 'db.php';
@@ -41,7 +42,7 @@
   <div class="isi_pelihara">
     <div class="data-pelihara">
       <div class="gambar-pelihara">
-        <img src="/CozyAdopt/source/img/kucing/<?php echo $img_kucing1 ?>" alt="">
+        <img src="<?php echo $coz_domain; ?>source/img/kucing/<?php echo $img_kucing1 ?>" alt="">
       </div>
       <div class="data-kucing">
         <div class="head-data-kucing">

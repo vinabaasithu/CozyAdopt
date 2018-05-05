@@ -1,5 +1,6 @@
 <?php
   session_start();
+  include 'source/etc/coz_domain.php';
   $index = true;
   include 'source/etc/db.php';
   if (isset($_POST["send-email"])) {
@@ -12,10 +13,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>CozyAdopt</title>
-    <link rel="stylesheet" href="/CozyAdopt/source/css/styleUniversal.css">
-    <link rel="stylesheet" href="/CozyAdopt/source/css/styleIndex.css">
-    <link rel="stylesheet" href="/CozyAdopt/source/css/styleHeader.css">
-    <link rel="stylesheet" href="/CozyAdopt/source/css/bookmarks.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/styleUniversal.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/styleIndex.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/styleHeader.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/bookmarks.css">
   </head>
   <body>
     <?php include 'source/etc/header.php'; ?>
@@ -29,9 +30,9 @@
         </div>
         <div class="grid-col text-sampul text-center">
           <h1><i class="fas fa-paw"></i></h1>
-          <p>Tahukah Kamu bahwa lebih dari 1.000 orang per jam menjalankan pencarian disini untuk mengadopsi hewan peliharaan. Dengan semua fitur yang ada di <a href="/CozyAdopt/index.php"><strong>CozyAdopt</strong></a>, pastinya akan memudahkan kamu menemukan Kucing idamanmu atau menemukan rumah baru untuk Kucing Peliharaanmu di sini</p>
+          <p>Tahukah Kamu bahwa lebih dari 1.000 orang per jam menjalankan pencarian disini untuk mengadopsi hewan peliharaan. Dengan semua fitur yang ada di <a href="<?php echo $coz_domain; ?>index.php"><strong>CozyAdopt</strong></a>, pastinya akan memudahkan kamu menemukan Kucing idamanmu atau menemukan rumah baru untuk Kucing Peliharaanmu di sini.<br>Mengapa harus di CozyAdopt ? Karena Kucing Di sini pasti terawat dengan baik oleh pemiliknya, sehingga kamu tidak perlu khawatir tentang kesehatan kucing peliharaanmu nanti.</p>
           <p>
-            <a href="/CozyAdopt/adopt_kucing.php">
+            <a href="<?php echo $coz_domain; ?>adopt_kucing.php">
               <button class="btn-text-sampul" type="button" name="button">Adopt Kucing</button>
             </a>
           </p>
@@ -43,9 +44,9 @@
       <div class="look-at-me-grid">
         <div class="text-look-at-me">
           <p><strong>Cara Penggunaan Untuk Pengadopt</strong></p>
-          <p>Bagi pengadopt akan terasa mudah untuk mencari peliharaanmu di sini. Kamu bisa menggunakan fitur <a href="/CozyAdopt/adopt_kucing.php"><strong>Adopt Kucing</strong></a>. Setelah sampai di laman Adopt Kucing silahkan pilih filter pencarian yang sesuai untuk mencari Kucing peliharaanmu. Lalu tekan tombol cari. Setelah foto-foto kucing tampil, pilih kucing yang anda inginkan. Klik pada foto tersebut, lalu klik <strong>Rawat dan Pelihara</strong>. Maka akan muncul popup yang berisi profil pemilik kucing, dan Kamu bisa menghubungi pemilik tersebut untuk bernegosiasi lebih lanjut.</p>
+          <p>Bagi pengadopt akan terasa mudah untuk mencari peliharaanmu di sini. Kamu bisa menggunakan fitur <a href="<?php echo $coz_domain; ?>adopt_kucing.php"><strong>Adopt Kucing</strong></a>. Setelah sampai di laman Adopt Kucing silahkan pilih filter pencarian yang sesuai untuk mencari Kucing peliharaanmu. Lalu tekan tombol cari. Setelah foto-foto kucing tampil, pilih kucing yang anda inginkan. Klik pada foto tersebut, lalu klik <strong>Rawat dan Pelihara</strong>. Maka akan muncul popup yang berisi profil pemilik kucing, dan Kamu bisa menghubungi pemilik tersebut untuk bernegosiasi lebih lanjut.</p>
           <p><strong>Cara Penggunaan Untuk Perehome</strong></p>
-          <p>Untuk Kamu yang ingin mencari pemilik atau rumah baru untuk kucing peliharaanmu (rehome). Kamu bisa mengikuti langkah berikut untuk merehome kucing kesayanganmu di sini. Silahkan lakukan <a href="/CozyAdopt/sign.php?r=reg"><strong>Register</strong></a> jika Kamu belum memiliki akun CozyAdopt. Setelah Kamu sudah memiliki akun CozyAdopt Silahkan <a href="/CozyAdopt/sign.php"><strong>login</strong></a> lalu masuk ke laman <a href="/CozyAdopt/rehome_kucing"><strong>Rehome Kucing</strong></a> dan daftarkan kucing kamu di CozyAdopt, tunggu permintaan dari Pengadopt dan kucingmu akan mendapatkan rumah barunya</p>
+          <p>Untuk Kamu yang ingin mencari pemilik atau rumah baru untuk kucing peliharaanmu (rehome). Kamu bisa mengikuti langkah berikut untuk merehome kucing kesayanganmu di sini. Silahkan lakukan <a href="<?php echo $coz_domain; ?>sign.php?r=reg"><strong>Register</strong></a> jika Kamu belum memiliki akun CozyAdopt. Setelah Kamu sudah memiliki akun CozyAdopt Silahkan <a href="<?php echo $coz_domain; ?>sign.php"><strong>login</strong></a> lalu masuk ke laman <a href="<?php echo $coz_domain; ?>rehome_kucing"><strong>Rehome Kucing</strong></a> dan daftarkan kucing kamu di CozyAdopt, tunggu permintaan dari Pengadopt dan kucingmu akan mendapatkan rumah barunya</p>
         </div>
         <div class="look-container">
           <?php
@@ -74,7 +75,7 @@
                 $arrSel[$ia]["img_kucing1"] = substr($arrSel[$ia]["img_kucing1"], 6);
               }
               ?>
-              <a class="klik-to-temukan" nm="<?php echo $arrSel[$ia]["nama_kucing"]  ?>" href="/CozyAdopt/adopt_kucing.php?nm=<?php echo $arrSel[$ia]["nama_kucing"] ?>&jk=<?php echo $arrSel[$ia]["jenis_kucing"] ?>&uk=<?php echo $arrSel[$ia]["umur_kucing"] ?>&wk=<?php echo $arrSel[$ia]["warna_kucing"] ?>&bk=<?php echo $arrSel[$ia]["bulu_kucing"] ?>&kuc=<?php echo $arrSel[$ia]["id_kucing"] ?>&jkel=<?php echo $arrSel[$ia]["jk_kucing"] ?>&img=<?php echo $arrSel[$ia]["img_kucing1"] ?>">
+              <a class="klik-to-temukan" nm="<?php echo $arrSel[$ia]["nama_kucing"]  ?>" href="<?php echo $coz_domain; ?>adopt_kucing.php?nm=<?php echo $arrSel[$ia]["nama_kucing"] ?>&jk=<?php echo $arrSel[$ia]["jenis_kucing"] ?>&uk=<?php echo $arrSel[$ia]["umur_kucing"] ?>&wk=<?php echo $arrSel[$ia]["warna_kucing"] ?>&bk=<?php echo $arrSel[$ia]["bulu_kucing"] ?>&kuc=<?php echo $arrSel[$ia]["id_kucing"] ?>&jkel=<?php echo $arrSel[$ia]["jk_kucing"] ?>&img=<?php echo $arrSel[$ia]["img_kucing1"] ?>">
                 <div class="sampul<?php echo $i; ?> sampul-isi">
                   <div class="sampul-isi-relative">
                     <div class="bio-kucing">
@@ -98,7 +99,7 @@
                         <i class="fas fa-star <?php echo $bookmarked ?>" val="<?php echo $arrSel[$ia]["id_kucing"] ?>"></i>
                       </div>
                     </div>
-                    <img src="/CozyAdopt/<?php echo $arrSel[$ia]["img_kucing1"]; ?>" alt="<?php echo $arrSel[$ia]["nama_kucing"] ?>">
+                    <img src="<?php echo $coz_domain; ?><?php echo $arrSel[$ia]["img_kucing1"]; ?>" alt="<?php echo $arrSel[$ia]["nama_kucing"] ?>">
                   </div>
                   </div>
               </a>
@@ -112,13 +113,13 @@
     <div class="tentang-kami" id="tentang">
       <div class="tentang-kami-rel">
         <div class="helloCat">
-          <!-- <img src="/CozyAdopt/source/img/helloCat.png" alt="Hello Meow.."> -->
+          <!-- <img src="<?php echo $coz_domain; ?>source/img/helloCat.png" alt="Hello Meow.."> -->
         </div>
       </div>
       <div class="tentang-kami-text">
         <h1>Tentang CozyAdopt</h1>
-        <p>CozyAdopt adalah website yang yang memiliki fitur pencarian kucing bagi kamu-kamu yang ingin mengadopsi kucing-kucing yang lucu. Di sini kamu bisa dengan mudah mencari kucing yang ingin kamu pelihara sesuai dengan keinginanmu. Untuk mencari kucing peliharaan yang sesuai dengan keinginanmu, Kamu bisa menggunakan fitur <a href="/CozyAdopt/adopt_kucing.php"><strong>Adopt Kucing</strong></a>. Di CozyAdopt, baik fitur pencarian Kucing berdasarkan lokasi, jenis kucing, karakteristik kucing, serta detail kebutuhan-nya sudah tersedia disini. Jadi semoga cepat bertemu dengan peliharaan barumu :)</p>
-        <p>Atau bagi kamu yang ingin mendapatkan rumah baru untuk Kucing peliharaan-mu di rumah, CozyAdopt juga menyediakan fitur <a href="/CozyAdopt/rehome_kucing.php"><strong>Rehome Kucing</strong></a>. Di sini kamu bisa menemukan majikan baru untuk kucingmu yang tentunya akan dengan senang hati merawat peliharaan kesayanganmu. Untuk <a href="/CozyAdopt/rehome_kucing.php"><strong>Rehome Kucing</strong></a> peliharaanmu. Kamu bisa <a href="/CozyAdopt/sign.php"><strong>login</strong></a> dan klik <a href="/CozyAdopt/rehome_kucing.php"><strong>Rehome Kucing</strong></a> untuk mendaftarkan peliharaanmu disini. </p>
+        <p>CozyAdopt adalah website yang yang memiliki fitur pencarian kucing bagi kamu-kamu yang ingin mengadopsi kucing-kucing yang lucu. Di sini kamu bisa dengan mudah mencari kucing yang ingin kamu pelihara sesuai dengan keinginanmu. Untuk mencari kucing peliharaan yang sesuai dengan keinginanmu, Kamu bisa menggunakan fitur <a href="<?php echo $coz_domain; ?>adopt_kucing.php"><strong>Adopt Kucing</strong></a>. Di CozyAdopt, baik fitur pencarian Kucing berdasarkan lokasi, jenis kucing, karakteristik kucing, serta detail kebutuhan-nya sudah tersedia disini. Jadi semoga cepat bertemu dengan peliharaan barumu :)</p>
+        <p>Atau bagi kamu yang ingin mendapatkan rumah baru untuk Kucing peliharaan-mu di rumah, CozyAdopt juga menyediakan fitur <a href="<?php echo $coz_domain; ?>rehome_kucing.php"><strong>Rehome Kucing</strong></a>. Di sini kamu bisa menemukan majikan baru untuk kucingmu yang tentunya akan dengan senang hati merawat peliharaan kesayanganmu. Untuk <a href="<?php echo $coz_domain; ?>rehome_kucing.php"><strong>Rehome Kucing</strong></a> peliharaanmu. Kamu bisa <a href="<?php echo $coz_domain; ?>sign.php"><strong>login</strong></a> dan klik <a href="<?php echo $coz_domain; ?>rehome_kucing.php"><strong>Rehome Kucing</strong></a> untuk mendaftarkan peliharaanmu disini. </p>
       </div>
     </div>
     <div class="kontak" id="kontak">
@@ -142,24 +143,24 @@
         </div><br>
         <div class="text-center more-kontak">
           <p>atau ikuti dan hubungi kami melalui :</p>
-          <span><img src="/CozyAdopt/source/img/sosmed/fb.png" class="folUs" val="fb"></span>
-          <span><img src="/CozyAdopt/source/img/sosmed/gm.png" class="folUs" val="gm"></span>
-          <span><img src="/CozyAdopt/source/img/sosmed/tg.png" class="folUs" val="tg"></span>
-          <span><img src="/CozyAdopt/source/img/sosmed/ig.png" class="folUs" val="ig"></span>
+          <span><img src="<?php echo $coz_domain; ?>source/img/sosmed/fb.png" class="folUs" val="fb"></span>
+          <span><img src="<?php echo $coz_domain; ?>source/img/sosmed/gm.png" class="folUs" val="gm"></span>
+          <span><img src="<?php echo $coz_domain; ?>source/img/sosmed/tg.png" class="folUs" val="tg"></span>
+          <span><img src="<?php echo $coz_domain; ?>source/img/sosmed/ig.png" class="folUs" val="ig"></span>
           <p class="hoverFollow-container"><strong class="hoverFollow"></strong></p>
         </div>
       </form>
     </div>
     <?php include 'source/etc/footer.php'; ?>
-    <a href="/CozyAdopt/#home">
+    <a href="#home">
       <span class="keatas">
           <i class="fas fa-arrow-up"></i>
       </span>
     </a>
-    <script src="/CozyAdopt/source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
-    <script src="/CozyAdopt/source/js/fontawesome-all.min.js" charset="utf-8"></script>
-    <script src="/CozyAdopt/source/js/header.js" charset="utf-8"></script>
-    <script src="/CozyAdopt/source/js/bookmarks.js" charset="utf-8"></script>
+    <script src="<?php echo $coz_domain; ?>source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
+    <script src="<?php echo $coz_domain; ?>source/js/fontawesome-all.min.js" charset="utf-8"></script>
+    <script src="<?php echo $coz_domain; ?>source/js/header.js" charset="utf-8"></script>
+    <script src="<?php echo $coz_domain; ?>source/js/bookmarks.js" charset="utf-8"></script>
     <script type="text/javascript">
       // detect scroll
       $(window).scroll(function() {

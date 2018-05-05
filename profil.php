@@ -1,5 +1,6 @@
 <?php
   session_start();
+  include 'source/etc/coz_domain.php';
   if (!isset($_GET["r"])) {
     header("Location: index.php");
   } else {
@@ -87,13 +88,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title></title>
-    <link rel="stylesheet" href="/CozyAdopt/source/css/styleUniversal.css">
-    <link rel="stylesheet" href="/CozyAdopt/source/css/styleHeader.css">
-    <link rel="stylesheet" href="/CozyAdopt/source/css/styleProfil.css">
-    <link rel="stylesheet" href="/CozyAdopt/source/css/select_input.css">
-    <link rel="stylesheet" href="/CozyAdopt/source/css/bookmarks.css">
-    <link rel="stylesheet" href="/CozyAdopt/source/css/pelihara.css">
-    <link rel="stylesheet" href="/CozyAdopt/source/css/getMajikan.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/styleUniversal.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/styleHeader.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/styleProfil.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/select_input.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/bookmarks.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/pelihara.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/getMajikan.css">
   </head>
   <body>
     <?php include 'source/etc/header.php'; ?>
@@ -108,7 +109,7 @@
         <p class="title text-center"> <strong>Ganti Sampul</strong>  </p>
         <hr>
         <div class="img-preview" id="img-preview">
-          <img id="view-img" src="/CozyAdopt/" alt="">
+          <img id="view-img" src="<?php echo $coz_domain; ?>" alt="">
         </div><br><br>
         <div class="img-upl-front">
           <div class="grid">
@@ -142,7 +143,7 @@
     <div class="dp-dan-sampul">
       <div class="dp">
         <div class="dp-relative">
-          <img src="<?php echo $dp ?>" alt="">
+          <img src="<?php echo "/CozyAdopt/".$dp ?>" alt="">
           <?php if($username === $r) {
             ?>
             <div class="ganti-dp text-center">
@@ -303,14 +304,14 @@
 
   </div>
   <?php include 'source/etc/footer.php'; ?>
-  <script src="/CozyAdopt/source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
-  <script src="/CozyAdopt/source/js/fontawesome-all.min.js" charset="utf-8"></script>
-  <script src="/CozyAdopt/source/js/header.js" charset="utf-8"></script>
-  <script src="/CozyAdopt/source/js/img_preview.js" charset="utf-8"></script>
-  <script src="/CozyAdopt/source/js/select_input.js" charset="utf-8"></script>
-  <script src="/CozyAdopt/source/js/bookmarks.js" charset="utf-8"></script>
-  <script src="/CozyAdopt/source/js/pelihara.js" charset="utf-8"></script>
-  <script src="/CozyAdopt/source/js/getMajikan.js" charset="utf-8"></script>
+  <script src="<?php echo $coz_domain; ?>source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
+  <script src="<?php echo $coz_domain; ?>source/js/fontawesome-all.min.js" charset="utf-8"></script>
+  <script src="<?php echo $coz_domain; ?>source/js/header.js" charset="utf-8"></script>
+  <script src="<?php echo $coz_domain; ?>source/js/img_preview.js" charset="utf-8"></script>
+  <script src="<?php echo $coz_domain; ?>source/js/select_input.js" charset="utf-8"></script>
+  <script src="<?php echo $coz_domain; ?>source/js/bookmarks.js" charset="utf-8"></script>
+  <script src="<?php echo $coz_domain; ?>source/js/pelihara.js" charset="utf-8"></script>
+  <script src="<?php echo $coz_domain; ?>source/js/getMajikan.js" charset="utf-8"></script>
   <script type="text/javascript">
     var sampul = '<?php echo $sampul; ?>';
     $(".dp-dan-sampul").css("background-image", "url('"+sampul+"')");

@@ -1,6 +1,7 @@
 <?php
   session_start();
   include 'source/etc/db.php';
+  include 'source/etc/coz_domain.php';
   if (isset($_GET['nm']) && isset($_GET['jk']) && isset($_GET['uk']) && isset($_GET['wk']) && isset($_GET['bk']) && isset($_GET['kuc']) && isset($_GET['jkel']) && isset($_GET['img'])) {
     $nm = $_GET['nm']; $jk = $_GET['jk']; $uk = $_GET['uk']; $wk = $_GET['wk']; $bk = $_GET['bk']; $kuc = $_GET['kuc']; $jkel = $_GET['jkel']; $img = $_GET['img'];
     if (!$nm || !$jk || !$uk || !$wk || !$bk || !$kuc || !$jkel || !$img) {
@@ -18,14 +19,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Adopt Kucing</title>
-    <link rel="stylesheet" href="/CozyAdopt/source/css/styleUniversal.css">
-    <link rel="stylesheet" href="/CozyAdopt/source/css/styleHeader.css">
-    <link rel="stylesheet" href="/CozyAdopt/source/css/adopt_kucing.css">
-    <link rel="stylesheet" href="/CozyAdopt/source/css/cari_kucing.css">
-    <link rel="stylesheet" href="/CozyAdopt/source/css/pelihara.css">
-    <link rel="stylesheet" href="/CozyAdopt/source/css/getMajikan.css">
-    <link rel="stylesheet" href="/CozyAdopt/source/css/select_input.css">
-    <link rel="stylesheet" href="/CozyAdopt/source/css/bookmarks.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/styleUniversal.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/styleHeader.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/adopt_kucing.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/cari_kucing.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/pelihara.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/getMajikan.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/select_input.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/bookmarks.css">
   </head>
   <body>
     <?php
@@ -38,10 +39,10 @@
       <div class="form-cari-con">
         <div class="form-cari-kucing-con">
           <div class="img-con img-con1">
-            <img src="/CozyAdopt/source/img/cari_kucing_img.png" alt="">
+            <img src="<?php echo $coz_domain; ?>source/img/cari_kucing_img.png" alt="">
           </div>
           <div class="img-con img-con2">
-            <img src="/CozyAdopt/source/img/cari_kucing_img.png" alt="">
+            <img src="<?php echo $coz_domain; ?>source/img/cari_kucing_img.png" alt="">
           </div>
           <h1 class="text-center h1">Cari Kucing</h1>
           <div class="form-cari-kucing">
@@ -139,13 +140,13 @@
     </div>
 
     <?php include 'source/etc/footer.php'; ?>
-    <script src="/CozyAdopt/source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
-    <script src="/CozyAdopt/source/js/fontawesome-all.min.js" charset="utf-8"></script>
-    <script src="/CozyAdopt/source/js/header.js" charset="utf-8"></script>
-    <script src="/CozyAdopt/source/js/pelihara.js" charset="utf-8"></script>
-    <script src="/CozyAdopt/source/js/select_input.js" charset="utf-8"></script>
-    <script src="/CozyAdopt/source/js/bookmarks.js" charset="utf-8"></script>
-    <script src="/CozyAdopt/source/js/getMajikan.js" charset="utf-8"></script>
+    <script src="<?php echo $coz_domain; ?>source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
+    <script src="<?php echo $coz_domain; ?>source/js/fontawesome-all.min.js" charset="utf-8"></script>
+    <script src="<?php echo $coz_domain; ?>source/js/header.js" charset="utf-8"></script>
+    <script src="<?php echo $coz_domain; ?>source/js/pelihara.js" charset="utf-8"></script>
+    <script src="<?php echo $coz_domain; ?>source/js/select_input.js" charset="utf-8"></script>
+    <script src="<?php echo $coz_domain; ?>source/js/bookmarks.js" charset="utf-8"></script>
+    <script src="<?php echo $coz_domain; ?>source/js/getMajikan.js" charset="utf-8"></script>
     <script type="text/javascript">
         $(document).on('click', '#cari-kucing', function(){
           var jenis_kucing = $(".jenis-kucing").val();

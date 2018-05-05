@@ -9,6 +9,7 @@
   } else if(file_exists("source/etc/db.php")) {
     include "source/etc/db.php";
   }
+  include 'coz_domain.php';
 
   if (isset($_SESSION["username"])) {
     $uname_c = $_SESSION["username"];
@@ -51,8 +52,8 @@
               <?php include "source/etc/select_input.php"; ?>
             </div>
           </div>
-          <script src="/CozyAdopt/source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
-          <script src="/CozyAdopt/source/js/select_input.js" charset="utf-8"></script>
+          <script src="<?php echo $coz_domain; ?>source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
+          <script src="<?php echo $coz_domain; ?>source/js/select_input.js" charset="utf-8"></script>
 
           <script type="text/javascript">
            $(document).ready(function(){

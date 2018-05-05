@@ -1,5 +1,6 @@
 <?php
   session_start();
+  include 'coz_domain.php';
   include 'db.php';
   if (isset($_POST["val"])) {
     $img_kucing1 = "";
@@ -240,7 +241,7 @@ var alamat_lengkap = '<?php if(isset($alamat_lengkap)) echo $alamat_lengkap ?>';
             <input id="upl<?php echo $i ?>" type="file" class="form-control" name="fileupl<?php echo $i ?>">
           </div>
           <div class="img-preview" id="img-preview<?php echo $i ?>">
-            <img id="view-img<?php echo $i ?>" src="/CozyAdopt/<?php echo $img_kucing[$i-1] ?>" alt="">
+            <img id="view-img<?php echo $i ?>" src="<?php echo $coz_domain; ?><?php echo $img_kucing[$i-1] ?>" alt="">
           </div>
           <div class="close-img" val="fileupl<?php echo $i ?>">
             <div class="close-img-con">

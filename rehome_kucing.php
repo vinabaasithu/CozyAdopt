@@ -1,7 +1,8 @@
 <?php
   session_start();
+  include 'source/etc/coz_domain.php';
   if (!isset($_SESSION["username"])) {
-    header("Location: sign.php?pesan=Maaf Anda harus Login untuk mengakses fitur ini");
+    header("Location: /CozyAdopt/sign.php?pesan=Maaf Anda harus Login untuk mengakses fitur ini");
     $_GET["pesan"] = "";
   } else {
     include 'source/etc/db.php';
@@ -14,10 +15,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Rehome Kucing</title>
-    <link rel="stylesheet" href="/CozyAdopt/source/css/styleUniversal.css">
-    <link rel="stylesheet" href="/CozyAdopt/source/css/styleHeader.css">
-    <link rel="stylesheet" href="/CozyAdopt/source/css/styleRehomeKucing.css">
-    <link rel="stylesheet" href="/CozyAdopt/source/css/select_input.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/styleUniversal.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/styleHeader.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/styleRehomeKucing.css">
+    <link rel="stylesheet" href="<?php echo $coz_domain; ?>source/css/select_input.css">
   </head>
   <body>
     <?php include 'source/etc/header.php'; ?>
@@ -70,7 +71,7 @@
                 <input id="upl<?php echo $i ?>" type="file" class="form-control" name="fileupl<?php echo $i ?>" value="">
               </div>
               <div class="img-preview" id="img-preview<?php echo $i ?>">
-                <img id="view-img<?php echo $i ?>" src="/CozyAdopt/" alt="">
+                <img id="view-img<?php echo $i ?>" src="<?php echo $coz_domain; ?>" alt="">
 
                 <div class="close-img" val="upl<?php echo $i ?>">
                   <div class="close-img-con">
@@ -136,11 +137,11 @@
       </form>
     </div>
     <?php include 'source/etc/footer.php'; ?>
-    <script src="/CozyAdopt/source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
-    <script src="/CozyAdopt/source/js/fontawesome-all.min.js" charset="utf-8"></script>
-    <script src="/CozyAdopt/source/js/header.js" charset="utf-8"></script>
-    <script src="/CozyAdopt/source/js/select_input.js" charset="utf-8"></script>
-    <script src="/CozyAdopt/source/js/img_preview.js" charset="utf-8"></script>
+    <script src="<?php echo $coz_domain; ?>source/js/jquery-3.3.1.min.js" charset="utf-8"></script>
+    <script src="<?php echo $coz_domain; ?>source/js/fontawesome-all.min.js" charset="utf-8"></script>
+    <script src="<?php echo $coz_domain; ?>source/js/header.js" charset="utf-8"></script>
+    <script src="<?php echo $coz_domain; ?>source/js/select_input.js" charset="utf-8"></script>
+    <script src="<?php echo $coz_domain; ?>source/js/img_preview.js" charset="utf-8"></script>
     <script type="text/javascript">
       $(document).ready(function(){
         $(".klikkucing").click(function(){

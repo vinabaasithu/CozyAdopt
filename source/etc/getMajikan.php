@@ -1,4 +1,5 @@
 <?php
+  include "coz_domain.php";
   if (isset($_POST["val"])) {
     include "db.php";
     $val = $_POST["val"];
@@ -20,10 +21,10 @@
 <div class="getMajikan">
   <div class="cont-get-majikan">
     <div class="rel">
-      <a href="/CozyAdopt/profil.php?r=<?php echo $username ?>">
+      <a href="<?php echo $coz_domain; ?>profil.php?r=<?php echo $username ?>">
         <div class="sampul">
           <div class="dp">
-            <img src="/CozyAdopt/<?php echo $dp ?>" alt="">
+            <img src="<?php echo $coz_domain; ?><?php echo $dp ?>" alt="">
             <p class="text-center nama"><?php echo $fullname ?></p>
           </div>
         </div>
@@ -54,6 +55,6 @@
   </div>
 </div>
 <script type="text/javascript">
-  var bg = '<?php echo $sampul ?>';
+  var bg = '<?php echo $coz_domain.$sampul ?>';
   $(".getMajikan .sampul").css("background-image", "url('"+bg+"')");
 </script>

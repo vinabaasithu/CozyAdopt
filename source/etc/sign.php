@@ -4,20 +4,26 @@
   if(file_exists("source/etc/db.php")) {
     include 'source/etc/db.php';
   }
+  require 'vali.php';
   $pesan = "";
   // Register
   if (isset($_POST['register'])) {
-    $username = $_POST['username'];
-    $nama_lengkap = $_POST['nama_lengkap'];
-    $email = $_POST['email'];
-    $no_hp = $_POST['no_hp'];
-    $password = $_POST['password'];
+    // $username = vali_input($_POST['username']);
+    substr(($username = vali_uname($_POST["username"])), 0, 3) === "<h1" ? $pesan = $username : $username = $username;
+    // $nama_lengkap = vali_input($_POST['nama_lengkap']);
+    substr(($nama_lengkap = vali_nama($_POST['nama_lengkap'])), 0, 3) === "<h1" ? $pesan = $nama_lengkap : $nama_lengkap = $nama_lengkap;
+    // $email = vali_input($_POST['email']);
+    substr(($email = vali_email($_POST['email'])), 0, 3) === "<h1" ? $pesan = $email : $email = $email;
+    // $no_hp = vali_no_hp($_POST['no_hp']);
+    substr(($no_hp = vali_no_hp($_POST['no_hp'])), 0, 3) === "<h1" ? $pesan = $no_hp : $no_hp = $no_hp;
+    // $password = vali_input($_POST['password']);
+    substr(($password = vali_pass($_POST["password"])), 0, 3) === "<h1" ? $pesan = $password : $password = $password;
     $dp = "userData/dp_dummy.png";
     $sampul = "userData/sampul_dummy.jpg";
     $lokasi = "0";
     if (!$username || !$nama_lengkap || !$email || !$no_hp || !$password) {
       $pesan = "<h1>Register gagal, harap isi data dengan lengkap</h1>";
-    } else {
+    } else if(!$pesan) {
       $options = [
         'cost' => 13
       ];
@@ -45,9 +51,9 @@
     if (isset($_GET["pesan"])) {
       $_GET["pesan"] = null;
     }
-    
-    $username = $_POST['username_log'];
-    $password = $_POST['password_log'];
+
+    $username = htmlspecialchars($_POST['username_log'], ENT_QUOTES);
+    $password = htmlspecialchars($_POST['password_log'], ENT_QUOTES);
     $stmt = $mysqli->prepare("SELECT password FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
