@@ -10,6 +10,10 @@
     $ttkttk = "../../";
   }
 
+  if (isset($_GET["pesan"])) {
+    $_GET["pesan"] = null;
+  }
+
   if (!isset($_GET["r"])) {
     header("Location: ".$ttkttk."index.php");
   } else {
@@ -29,55 +33,73 @@
 
     $isi = vali_input($_POST["isi"]);
     if (!$isi) {
-        header("Location: ".$ttkttk."profil.php?r=$username&pesan=Ganti Info Gagal, Data Tidak Boleh Kosong");
+        $_GET["pesan"] = "Ganti Info Gagal, Data Tidak Boleh Kosong";
     } else {
       if ($isi === "alamat") {
-        $id_prov = vali_input($_POST["id_prov"]);
-        $id_kab = vali_input( $_POST["id_kab"]);
-        $id_kec = vali_input($_POST["id_kec"]);
-        $id_kel = vali_input($_POST["id_kel"]);
+        $pesan = "";
+        substr(($id_prov = vali_id_prov($_POST["id_prov"])), 0, 3) === "<h1" ? $pesan = $id_prov : $id_prov = $id_prov;
+        substr(($id_kab = vali_id_kab($_POST["id_kab"])), 0, 3) === "<h1" ? $pesan = $id_kab : $id_kab = $id_kab;
+        substr(($id_kec = vali_id_kec($_POST["id_kec"])), 0, 3) === "<h1" ? $pesan = $id_kec : $id_kec = $id_kec;
+        substr(($id_kel = vali_id_kel($_POST["id_kel"])), 0, 3) === "<h1" ? $pesan = $id_kel : $id_kel = $id_kel;
         $alamat_lengkap = vali_input($_POST["alamat_lengkap"]);
-        $stmt = $mysqli->prepare("UPDATE users SET id_prov = ?, id_kab = ?, id_kec = ?, id_kel = ?, alamat_lengkap = ? WHERE username = ?");
-        $stmt->bind_param("ssssss", $id_prov, $id_kab, $id_kec, $id_kel, $alamat_lengkap,  $username);
-        $stmt->execute();
-        $stmt->close();
+        if (!$pesan) {
+          $stmt = $mysqli->prepare("UPDATE users SET id_prov = ?, id_kab = ?, id_kec = ?, id_kel = ?, alamat_lengkap = ? WHERE username = ?");
+          $stmt->bind_param("ssssss", $id_prov, $id_kab, $id_kec, $id_kel, $alamat_lengkap,  $username);
+          $stmt->execute();
+          $stmt->close();
+          $_GET["pesan"] = "Ganti Info Berhasil, Alamat Berhasil Diubah";
+        } else {
+          $_GET["pesan"] = "Ganti Info Gagal, ".substr($pesan, 20);
+        }
       } else {
         $col = $_POST["col"];
-        if (isset($_GET["pesan"])) {
-          $_GET["pesan"] = null;
-        }
         if ($col === "password") {
-          $isi = vali_input($_POST["isi"]);
-          $pass = vali_input($_POST["pass"]);
-          $repass = vali_input($_POST["repass"]);
+          $pesan = "";
+          substr(($isi = vali_pass($_POST["isi"])), 0, 3) === "<h1" ? $pesan = $isi : $isi = $isi;
+          substr(($pass = vali_pass($_POST["pass"])), 0, 3) === "<h1" ? $pesan = $pass : $pass = $pass;
+          substr(($repass = vali_pass($_POST["repass"])), 0, 3) === "<h1" ? $pesan = $repass : $repass = $repass;
           if ($pass !== $repass) {
-            header("Location: ".$ttkttk."profil.php?r=$r&pesan=Gagal Ganti Password, Password Baru Tidak Sesuai");
-          }
-          // check old pass
-          $stmt = $mysqli->prepare("SELECT password FROM users WHERE username = ?");
-          $stmt->bind_param("s", $username);
-          $stmt->execute();
-          $stmt->bind_result($passhash); $stmt->fetch();
-          $stmt->close();
-          if (!password_verify($isi, $passhash)) {
-            header("Location: ".$ttkttk."profil.php?r=$r&pesan=Gagal Ganti Password, Password Lama Salah");
+            $_GET["pesan"] = "Ganti Password Gagal, Password Baru Tidak Sesuai.. Harap Samakan Isi Field 'Password Baru' dan 'Ketik Ulang Password Baru'";
+          } else if ($pesan) {
+            $_GET["pesan"] = "Ganti Info Gagal, ".substr($pesan, 20);
           } else {
-            $options = [
-              'cost' => 13
-            ];
-            $passnew = password_hash($pass, PASSWORD_BCRYPT, $options);
-            $stmt = $mysqli->prepare("UPDATE users SET password = ? WHERE username = ?");
-            $stmt->bind_param("ss", $passnew, $username);
+            // check old pass
+            $stmt = $mysqli->prepare("SELECT password FROM users WHERE username = ?");
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            $stmt->bind_result($passhash); $stmt->fetch();
+            $stmt->close();
+            if (!password_verify($isi, $passhash)) {
+              $_GET["pesan"] = "Gagal Ganti Password, Password Lama Salah";
+            } else {
+              $options = [
+                'cost' => 13
+              ];
+              $passnew = password_hash($pass, PASSWORD_BCRYPT, $options);
+              $stmt = $mysqli->prepare("UPDATE users SET password = ? WHERE username = ?");
+              $stmt->bind_param("ss", $passnew, $username);
+              $stmt->execute();
+              $stmt->close();
+              $_GET["pesan"] = "Ganti Password Berhasil, Password Sudah Diubah";
+            }
+          }
+        } else {
+          $pesan = "";
+          $col_text = "";
+          switch ($col) {
+            case 'fullname': $col_text = "Nama"; substr(($isi = vali_nama($isi)), 0, 3) === "<h1" ? $pesan = $isi : $isi = $isi; break;
+            case 'email': $col_text = "Email"; substr(($isi = vali_email($isi)), 0, 3) === "<h1" ? $pesan = $isi : $isi = $isi; break;
+            case 'no_hp':  $col_text = "No HP"; substr(($isi = vali_no_hp($isi)), 0, 3) === "<h1" ? $pesan = $isi : $isi = $isi; break;
+          }
+          if (!$pesan) {
+            $stmt = $mysqli->prepare("UPDATE users SET $col = ? WHERE username = ?");
+            $stmt->bind_param("ss", $isi, $username);
             $stmt->execute();
             $stmt->close();
-            header("Location: ".$ttkttk."profil.php?r=$r&pesan=Ganti Password Berhasil, Password Sudah Diubah");
+            $_GET["pesan"] = "Ganti Info Berhasil, $col_text Berhasil Diubah";
+          } else {
+            $_GET["pesan"] = "Ganti Info Gagal, ".substr($pesan, 20);
           }
-  // lanjutkan
-        } else {
-          $stmt = $mysqli->prepare("UPDATE users SET $col = ? WHERE username = ?");
-          $stmt->bind_param("ss", $isi, $username);
-          $stmt->execute();
-          $stmt->close();
         }
       }
     }
@@ -197,7 +219,7 @@
        ?>
       <div class="isi">
         <form class="" action="" method="post">
-          <div class="isi-info">
+          <div class="isi-info relative FullNameCheck">
             <span val="fname">
               <span class="spanw">Nama </span> <span> : </span> <span><?php echo $fname. " <span class='isi-edit' vale='fname'>" .$edit. "</span></span>"; ?>
             </span>
@@ -206,12 +228,14 @@
               <input class="textinput-isi" type="text" name="isi" placeholder="<?php echo $fname ?>" required>
               <input type="hidden" name="col" value="fullname">
               <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
-              <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="fname" >
+              <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="fname">
+              <i class="fas fa-check"></i>
+              <i class="fas fa-times"></i>
             </span>
           </div>
         </form>
         <form class="" action="" method="post">
-          <div class="isi-info">
+          <div class="isi-info relative EmailCheck">
             <span val="email">
               <span class="spanw">Email </span> <span> : </span> <span><?php echo $email. " <span class='isi-edit' vale='email'>" .$edit. "</span></span>";  ?>
             </span>
@@ -220,11 +244,13 @@
               <input type="hidden" name="col" value="email">
               <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
               <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="email" >
+              <i class="fas fa-check"></i>
+              <i class="fas fa-times"></i>
             </span>
           </div>
         </form>
         <form class="" action="" method="post">
-          <div class="isi-info">
+          <div class="isi-info relative NoHPCheck">
             <span val="no-hp">
               <span class="spanw">Nomor HP </span><span> : </span><span><?php echo $no_hp. " <span class='isi-edit' vale='no-hp'>" .$edit. "</span></span>";  ?>
             </span>
@@ -233,6 +259,8 @@
               <input type="hidden" name="col" value="no_hp">
               <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
               <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="no-hp">
+              <i class="fas fa-check"></i>
+              <i class="fas fa-times"></i>
             </span>
           </div>
         </form>
@@ -288,13 +316,17 @@
                       <label for="passlama">Password Lama </label> <span>:</span>
                       <input class="textinput-isi" id="passlama" type="password" name="isi" placeholder="Password Lama">
                   </div>
-                  <div class="form-group griddl">
+                  <div class="form-group griddl relative PasswordCheck">
                       <label for="passbaru">Password Baru </label><span>:</span>
-                      <input class="textinput-isi" id="passbaru" type="password" name="pass" placeholder="Password Baru">
+                      <input class="textinput-isi" id="passbaru" type="password" rep="repeatpass" repeat="repeat1" name="pass" placeholder="Password Baru">
+                      <i class="fas fa-check"></i>
+                      <i class="fas fa-times"></i>
                   </div>
-                  <div class="form-group griddl">
-                      <label for="repasslama">Ketik Ulang Password Lama </label><span>:</span>
-                      <input class="textinput-isi" id="repassbaru" type="password" name="repass" placeholder="Ketik Ulang Password Baru">
+                  <div class="form-group griddl relative PasswordCheck">
+                      <label for="repasslama">Ketik Ulang Password Baru </label><span>:</span>
+                      <input class="textinput-isi" id="repassbaru" type="password" rep="repeatpass" repeat="repeat2" name="repass" placeholder="Ketik Ulang Password Baru">
+                      <i class="fas fa-check"></i>
+                      <i class="fas fa-times"></i>
                   </div>
                   <div class="form-group griddl2">
                       <input type="hidden" name="col" value="password">
@@ -325,6 +357,7 @@
   <script src="<?php echo $coz_domain; ?>source/js/bookmarks.js" charset="utf-8"></script>
   <script src="<?php echo $coz_domain; ?>source/js/pelihara.js" charset="utf-8"></script>
   <script src="<?php echo $coz_domain; ?>source/js/getMajikan.js" charset="utf-8"></script>
+  <script src="<?php echo $coz_domain; ?>source/js/vali.js" charset="utf-8"></script>
   <script type="text/javascript">
     var sampul = '<?php echo $coz_domain.$sampul; ?>';
     $(".dp-dan-sampul").css("background-image", "url('"+sampul+"')");

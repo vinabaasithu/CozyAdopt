@@ -92,13 +92,33 @@ $(document).on("keyup", ".PasswordCheck input", function(e) {
   var vali = 0;
   if (!pola.test(val)) {
     vali = 0;
+    // gakena
   } else {
     vali = 1;
+    // kena
   }
   if (!vali) {
     $("form.formc").bind("submit", preventDefault);
-    ortu.find(".fa-times").show();
-    ortu.find(".fa-check").hide();
+    if ($(this).attr("repeat") !== "repeat2" && $(this).attr("repeat") !== "repeat1") {
+      ortu.find(".fa-times").show();
+      ortu.find(".fa-check").hide();
+    } else {
+      var ortu = $("input[type='password'][rep='repeatpass']").parents(".PasswordCheck");
+      ortu.find(".fa-times").show();
+      ortu.find(".fa-check").hide();
+    }
+  } else if ($(this).attr("repeat") === "repeat2" || $(this).attr("repeat") === "repeat1") {
+    var rep1 = $("input[type='password'][rep='repeatpass'][repeat='repeat1']");
+    var rep2 = $("input[type='password'][rep='repeatpass'][repeat='repeat2']");
+    var ortu = $("input[type='password'][rep='repeatpass']").parents(".PasswordCheck");
+    if (rep1.val() !== rep2.val()) {
+      $("form.formc").bind("submit", preventDefault);
+      ortu.find(".fa-times").show();
+      ortu.find(".fa-check").hide();
+    } else if(vali) {
+      ortu.find(".fa-check").show();
+      ortu.find(".fa-times").hide();
+    }
   } else {
     ortu.find(".fa-check").show();
     ortu.find(".fa-times").hide();

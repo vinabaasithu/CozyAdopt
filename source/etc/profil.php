@@ -26,7 +26,7 @@
          <!-- new -->
 
            <form class="" action="" method="post">
-             <div class="isi-info">
+             <div class="isi-info relative FullNameCheck">
                <span val="fname">
                  <span class="spanw">Nama </span> <span> : </span> <span><?php echo $fname. " <span class='isi-edit' vale='fname'>" .$edit. "</span></span>"; ?>
                </span>
@@ -36,11 +36,13 @@
                  <input type="hidden" name="col" value="fullname">
                  <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
                  <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="fname" >
+                 <i class="fas fa-check"></i>
+                 <i class="fas fa-times"></i>
                </span>
              </div>
            </form>
            <form class="" action="" method="post">
-             <div class="isi-info">
+             <div class="isi-info relative EmailCheck">
                <span val="email">
                  <span class="spanw">Email </span> <span> : </span> <span><?php echo $email. " <span class='isi-edit' vale='email'>" .$edit. "</span></span>";  ?>
                </span>
@@ -49,11 +51,13 @@
                  <input type="hidden" name="col" value="email">
                  <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
                  <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="email" >
+                 <i class="fas fa-check"></i>
+                 <i class="fas fa-times"></i>
                </span>
              </div>
            </form>
            <form class="" action="" method="post">
-             <div class="isi-info">
+             <div class="isi-info relative NoHPCheck">
                <span val="no-hp">
                  <span class="spanw">Nomor HP </span><span> : </span><span><?php echo $no_hp. " <span class='isi-edit' vale='no-hp'>" .$edit. "</span></span>";  ?>
                </span>
@@ -62,6 +66,8 @@
                  <input type="hidden" name="col" value="no_hp">
                  <input class="edit_isi_submit" type="submit" name="edit_isi_submit" value="Edit">
                  <input class="edit_isi_submit" type="reset" name="reset_isi_submit" value="Cancel" val="no-hp">
+                 <i class="fas fa-check"></i>
+                 <i class="fas fa-times"></i>
                </span>
              </div>
            </form>
@@ -117,13 +123,17 @@
                          <label for="passlama">Password Lama </label> <span>:</span>
                          <input class="textinput-isi" id="passlama" type="password" name="isi" placeholder="Password Lama">
                      </div>
-                     <div class="form-group griddl">
+                     <div class="form-group griddl relative PasswordCheck">
                          <label for="passbaru">Password Baru </label><span>:</span>
-                         <input class="textinput-isi" id="passbaru" type="password" name="pass" placeholder="Password Baru">
+                         <input class="textinput-isi" id="passbaru" type="password" name="pass" rep="repeatpass" repeat="repeat1"  placeholder="Password Baru">
+                         <i class="fas fa-check"></i>
+                         <i class="fas fa-times"></i>
                      </div>
-                     <div class="form-group griddl">
+                     <div class="form-group griddl relative PasswordCheck">
                          <label for="repasslama">Ketik Ulang Password Lama </label><span>:</span>
-                         <input class="textinput-isi" id="repasslama" type="password" name="repass" placeholder="Ketik Ulang Password Baru">
+                         <input class="textinput-isi" id="repasslama" type="password" name="repass" rep="repeatpass" repeat="repeat2"  placeholder="Ketik Ulang Password Baru">
+                         <i class="fas fa-check"></i>
+                         <i class="fas fa-times"></i>
                      </div>
                      <div class="form-group griddl2">
                          <input type="hidden" name="col" value="password">

@@ -58,9 +58,9 @@ admin.php {
   - adopt_kucing.php (1) V
   - Login (1) V
   - register (1) V
-  - profil.php (2, info, kucing saya) {Bagian info baru redirect data info jika kosong}
+  - profil.php (2, info V, kucing saya)
   - rehome_kucing.php (1)
-  * Validasi Menggunakan : vali.php dan vali.js
+  * Validasi Menggunakan : vali.php dan vali.js V
 # Page Admin
 # Ganti Sistem Rehome, Input Jenis Kucing Sendiri, Input Warna Kucing Sendiri harus di Accept Admin
 # CozyAdopt domain

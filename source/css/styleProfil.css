@@ -395,6 +395,15 @@ span .isi-edit {
   padding-right: 200vw;
   height: 40px;
 }
+form .relative .fa-check, form .relative .fa-times {
+  right: 27%;
+}
+form .relative.PasswordCheck .fa-check, form .relative.PasswordCheck .fa-times {
+  right: 3%;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
 @media only screen and (max-width: 905px) {
   div.menu {
     max-height: none;

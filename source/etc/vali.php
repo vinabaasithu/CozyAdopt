@@ -81,5 +81,45 @@ function vali_pass($pass) {
   }
 }
 /* <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> //tambah pada action form <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>*/
+function vali_id_daerah($id, $table) {
+  include 'db.php';
+  $id = vali_input($id);
+  $vali = 0;
+  $column = "";
+  switch ($table) {
+    case 'provinsi_daerah': $ptext = "Provinsi Daerah"; $column = "id_prov"; break;
+    case 'kabupaten_daerah': $ptext = "Kabupaten Daerah"; $column = "id_kab"; break;
+    case 'kecamatan_daerah': $ptext = "Kecamatan Daerah"; $column = "id_kec"; break;
+    case 'kelurahan_daerah': $ptext = "Kelurahan Daerah"; $column = "id_kel"; break;
+  }
+  $stmt = $mysqli->prepare("SELECT $column FROM $table ORDER BY $column ASC");
+  $stmt->execute();
+  $stmt->bind_result($id_s);
+  while ($stmt->fetch()) {
+    if ($id == $id_s) {
+      $vali = 1;
+      break;
+    }
+  }
+  $stmt->close();
+  if (!$vali) {
+    $pesan = "<h1>Register Gagal, $ptext Tidak Terdaftar</h1>";
+    return $pesan;
+  } else {
+    return $id;
+  }
+}
+function vali_id_prov($id_prov) {
+  return vali_id_daerah($id_prov, "provinsi_daerah");
+}
+function vali_id_kab($id_kab) {
+  return vali_id_daerah($id_kab, "kabupaten_daerah");
+}
 
+function vali_id_kec($id_kec) {
+  return vali_id_daerah($id_kec, "kecamatan_daerah");
+}
+function vali_id_kel($id_kel) {
+  return vali_id_daerah($id_kel, "kelurahan_daerah");
+}
 ?>
