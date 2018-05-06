@@ -9,6 +9,7 @@ RewriteEngine on
 
 # ALIAS
 #PROFIL
+RewriteRule ^profil/(.+)/(.*)/$ profil.php?r=$1&pesan=$2 [L]
 RewriteRule ^profil/(.+)/$ profil.php?r=$1 [L]
 #SIGN
 RewriteRule ^register/$ sign.php?r=reg [L]
