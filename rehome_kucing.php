@@ -1,6 +1,8 @@
 <?php
   session_start();
+  $ttkttk = "";
   include 'source/etc/coz_domain.php';
+  include 'source/etc/vali.php';
   if (!isset($_SESSION["username"])) {
     header("Location: /CozyAdopt/sign.php?pesan=Maaf Anda harus Login untuk mengakses fitur ini");
     $_GET["pesan"] = "";
@@ -25,10 +27,12 @@
     <br>
     <div class="container">
       <p class="h1 text-center">Isi Data Kucing</>
-      <form class="" action="source/etc/rehome_kucing.php" method="post" enctype="multipart/form-data">
-        <div class="form-group">
+      <form class="" action="<?php echo $ttkttk; ?>source/etc/rehome_kucing.php" method="post" enctype="multipart/form-data">
+        <div class="form-group relative FullNameCheck">
           <label for="nama-kucing">Nama Kucing :</label>
           <input id="nama-kucing" type="text" class="form-control" name="nama-kucing" value="" placeholder="Nama Kucing" required>
+          <i class="fas fa-check"></i>
+          <i class="fas fa-times"></i>
         </div>
         <div class="form-group">
           <label for="jenis-kucing">Jenis Kucing :</label>
@@ -142,6 +146,7 @@
     <script src="<?php echo $coz_domain; ?>source/js/header.js" charset="utf-8"></script>
     <script src="<?php echo $coz_domain; ?>source/js/select_input.js" charset="utf-8"></script>
     <script src="<?php echo $coz_domain; ?>source/js/img_preview.js" charset="utf-8"></script>
+    <script src="<?php echo $coz_domain; ?>source/js/vali.js" charset="utf-8"></script>
     <script type="text/javascript">
       $(document).ready(function(){
         $(".klikkucing").click(function(){
@@ -259,6 +264,31 @@
           $(".backcol").css("background", "#fff");
         });
       });
+    </script>
+    <script type="text/javascript">
+      $(document).on("submit", "form", function(e) {
+        var lengupl1 = $("#upl1")[0].files.length;
+        var lengupl2 = $("#upl2")[0].files.length;
+        var lengupl3 = $("#upl3")[0].files.length;
+        if (!lengupl1 || !lengupl2 || !lengupl3) {
+          e.preventDefault();
+          if (!$(".pesanE").length) {
+            $("body").append("<div class='pesanE' style='display: none;'><h1>Rehome Gagal, Harap Masukan Foto Kucingmu</h1></div>");
+            $(".pesanE").fadeIn(800);
+            $('html, body').animate({scrollTop:$("#umur-kucing").offset().top}, 'slow');
+            setTimeout(function(){
+              $(".pesanE").fadeOut(800);
+            }, 2000);
+          } else {
+            $(".pesanE").hide();
+            $(".pesanE").html("<h1>Rehome Gagal, Harap Masukan Foto Kucingmu</h1>").fadeIn(800);
+            $('html, body').animate({scrollTop:$("#umur-kucing").offset().top}, 'slow');
+            setTimeout(function(){
+              $(".pesanE").fadeOut(800);
+            }, 2000);
+          }
+        }
+      })
     </script>
   </body>
 </html>

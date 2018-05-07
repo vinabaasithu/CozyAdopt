@@ -59,7 +59,10 @@ admin.php {
   - Login (1) V
   - register (1) V
   - profil.php (2, info V, kucing saya)
-  - rehome_kucing.php (1)
+  - rehome_kucing.php (1) {
+      - check validasi Jenis Kucing dan Warna Kucing Isi Sendiri
+      -[ganti directory penyimpanan kucing]
+    };
   * Validasi Menggunakan : vali.php dan vali.js V
 # Page Admin
 # Ganti Sistem Rehome, Input Jenis Kucing Sendiri, Input Warna Kucing Sendiri harus di Accept Admin

@@ -82,3 +82,6 @@ input[type="checkbox"] {
   top: 113px;
   right: 20px;
 }
+form .fa-times, form .fa-check {
+  top: 25px;
+}

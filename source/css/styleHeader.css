@@ -12,8 +12,10 @@
       padding-top: 25px;
     }
     .min-logo img {
-      width: 150%;
-      height: 150%;
+      /* width: 150%;
+      height: 150%; */
+      width: 125px;
+      height: 24px;
     }
 }
 @media only screen and (min-width: 903px) {

@@ -7,7 +7,8 @@
   echo $password. "<br>";
   $pesan = "";
   include 'source/etc/vali.php';
-  $id = "asdlasd$^";
-  $id = vali_pass($id);
-  echo $id;
+  include 'source/etc/db.php';
+  echo get_enum_data("bulu_kucing", "Senio");
+  $p = "<h1>Register Gagal, Nama Tidak Boleh Menggunakan Angka Atau Simbol Lainnya</h1>";
+  echo substr($p, 4, 21). "Kucing". substr($p, 24, -5);
 ?>

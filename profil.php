@@ -1,18 +1,11 @@
 <?php
   session_start();
+  $ttkttk = "";
   include 'source/etc/coz_domain.php';
   include 'source/etc/vali.php';
-
-  $ttkttk = "";
-  if ( preg_match("/".preg_quote($coz_domain, '/')."profil\/(.+)\/(.*)\//", $_SERVER["REQUEST_URI"], $match) ) {
-    $ttkttk = "../../../";
-  } else if ( preg_match("/".preg_quote($coz_domain, '/')."profil\/(.+)\//", $_SERVER["REQUEST_URI"], $match) ) {
-    $ttkttk = "../../";
-  }
-
-  if (isset($_GET["pesan"])) {
-    $_GET["pesan"] = null;
-  }
+  // if (isset($_GET["pesan"])) {
+  //   $_GET["pesan"] = null;
+  // }
 
   if (!isset($_GET["r"])) {
     header("Location: ".$ttkttk."index.php");

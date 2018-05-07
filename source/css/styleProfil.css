@@ -404,6 +404,10 @@ form .relative.PasswordCheck .fa-check, form .relative.PasswordCheck .fa-times {
   bottom: 0;
   margin: auto;
 }
+form.edit_pks_form .fa-check, form.edit_pks_form .fa-times {
+  right: 35px;
+  top: 20px;
+}
 @media only screen and (max-width: 905px) {
   div.menu {
     max-height: none;
