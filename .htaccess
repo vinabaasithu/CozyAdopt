@@ -1,5 +1,6 @@
 Options -Indexes
 DirectoryIndex index.php
+ErrorDocument 404 http://localhost/CozyAdopt/err404.php
 
 RewriteEngine on
 
