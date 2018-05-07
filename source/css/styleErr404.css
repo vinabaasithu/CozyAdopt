@@ -1,0 +1,103 @@
+.container {
+  display: grid;
+  grid-template-columns: 63vw auto;
+  height: 100vh;
+  font-family: "roboto";
+}
+.cat-gif-con {
+  position: relative;
+}
+.cat404 {
+  width: 100%;
+  height: unset;
+  max-height: 100vh;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.cont-err-mess {
+  background-color: #f90;
+  /* color: #fff; */
+  color: #efefef;
+  padding: 0 4vw;
+  border-top-left-radius:  25%;
+  border-bottom-left-radius: 25%;
+  box-shadow: -20px 5px 1px #ddd;
+  z-index: 3;
+  position: relative;
+}
+.cont-err-mess p {
+  font-size: 1.4em;
+  cursor: pointer;
+  transition-duration: 1s;
+}
+@keyframes changecolor {
+  0% {color: #fff}
+  /* 50% {color: #ddd} */
+  100% {color: #000}
+}
+.cont-err-mess p.h1 {
+  font-size: 5em;
+  /* font-size: 3em; */
+  animation-name: changecolor;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.cont-err-mess p.h1:hover {
+  color: #544444;
+}
+.cont-err-mess p.lh {
+  line-height: 1.7;
+  position: absolute;
+  top: 12em;
+  margin: auto;
+}
+.cont-err-mess a {
+  color: #0009;
+  text-decoration: none;
+}
+.cont-err-mess a:hover {
+  color: #000;
+  /* color: #544444; */
+  /* color: #fff; */
+}
+.abso404 {
+  position: absolute;
+  z-index: 2;
+}
+.abso404 img {
+  width: 170px;
+}
+.abso4041 {
+  top: 5vh;
+  left: 5vw;
+  transform: rotate(30deg)
+}
+.abso4042 {
+  top: 7vh;
+  right: 5vw;
+  transform: rotate(340deg);
+}
+.abso4043 {
+  bottom: 5vh;
+  left: 25vw;
+  transform: rotate(20deg);
+}
+.abso4044 {
+  bottom: 5vh;
+  left: 5vw;
+  transform: rotate(210deg);
+}
+.abso4045 {
+  bottom: 5vh;
+  right: 5vw;
+  transform: rotate(140deg);
+}
+
+.abso4046 {
+  top: 5vh;
+  right: 25vw;
+  transform: rotate(260deg);
+}
