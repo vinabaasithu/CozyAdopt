@@ -14,7 +14,7 @@
     <div class="container">
       <div class="cat-gif-con">
         <img class="cat404" src="<?php echo $coz_domain ?>source/img/cat404.gif" alt="">
-        <?php
+        <!-- <?php
           for ($i=1; $i <= 6; $i++) {
             ?>
             <div class="abso404 abso404<?php echo $i; ?>">
@@ -22,7 +22,7 @@
             </div>
             <?php
           }
-         ?>
+         ?> -->
       </div>
       <div class="cont-err-mess">
         <div class="mess">

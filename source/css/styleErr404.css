@@ -40,10 +40,11 @@
 .cont-err-mess p.h1 {
   font-size: 5em;
   /* font-size: 3em; */
-  animation-name: changecolor;
+  color: #000;
+  /* animation-name: changecolor;
   animation-duration: 2s;
   animation-iteration-count: infinite;
-  animation-direction: alternate;
+  animation-direction: alternate; */
 }
 .cont-err-mess p.h1:hover {
   color: #544444;
@@ -63,14 +64,14 @@
   /* color: #544444; */
   /* color: #fff; */
 }
-.abso404 {
+/* .abso404 {
   position: absolute;
   z-index: 2;
-}
+} */
 .abso404 img {
   width: 170px;
 }
-.abso4041 {
+/* .abso4041 {
   top: 5vh;
   left: 5vw;
   transform: rotate(30deg)
@@ -95,9 +96,8 @@
   right: 5vw;
   transform: rotate(140deg);
 }
-
 .abso4046 {
   top: 5vh;
   right: 25vw;
   transform: rotate(260deg);
-}
+} */
