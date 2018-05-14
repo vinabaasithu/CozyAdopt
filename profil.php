@@ -106,6 +106,9 @@
   $stmt->bind_result($fname, $email, $no_hp, $prov, $kab, $kec, $kel, $ualamat_lengkap);
   $stmt->fetch();
   $stmt->close();
+  if(!$fname) {
+    header("Location: err404.php");
+  }
   $kabn = ucfirst(strtolower($kab));
   $kab = substr($kab, 0, 6).substr($kabn, 6);
 
@@ -210,7 +213,7 @@
           }
         }
        ?>
-      <div class="isi">
+      <div class="isi" id="isi-prof">
         <form class="" action="" method="post">
           <div class="isi-info relative FullNameCheck">
             <span val="fname">
@@ -424,7 +427,15 @@
       var id = $(this).attr("id");
       var r = '<?php echo $r ?>';
       $.post("/CozyAdopt/source/etc/profil.php", {id:id, r:r}, function(result){
-        $(".isi").html(result);
+        $(".isi").empty();
+        setTimeout(function(){
+          $(".isi").html(result);
+          $(".isi > div, .isi > form").hide();
+          $(".isi > div, .isi > form").fadeIn(1600);
+          $('html, body').animate({
+            scrollTop: $("#isi-prof").offset().top - 80
+          }, 800);
+        }, 250);
       });
     });
     $(document).on("mouseenter", ".kucing_saya_container", function(){

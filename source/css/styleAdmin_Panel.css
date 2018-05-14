@@ -1,0 +1,371 @@
+body {
+  background-color: #eee;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+hr {
+  border: 1px solid #ddd;
+}
+table {
+  width: 100%;
+}
+table, td, th {
+  border: 1px solid #e1e0e5;
+  border-collapse: collapse;
+}
+td, th {
+  padding: 10px 20px;
+  text-align: justify;
+  resize: both;
+}
+td:not(.bkn-text) {
+  cursor: text;
+}
+td:hover {
+  background-color: #eee;
+}
+th {
+  color: #eee;
+  background-color: #442d65;
+  cursor: pointer;
+}
+th:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+tr {
+  background-color: #fff;
+}
+tr:nth-child(even){
+  background-color: #f5f5f5;
+}
+.h2 {
+  font-weight: 500;
+  font-size: 1.5em;
+  font-family: "courgette";
+}
+.pesanE {
+  position: fixed;
+  background-color: #555;
+  width: 100%;
+  color: #eee;
+  text-align: center;
+  z-index: 5;
+  display: none;
+}
+.pesanE h1::before {
+  content: "Alert: ";
+}
+.menu-container {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+.menu-container-fixed {
+  position: fixed;
+}
+.left-menu {
+  min-height: 95.5vh;
+  background-color: #fff;
+  display: inline-block;
+  padding: 15px;
+  color: #724858;
+  font-size: 1.2em;
+}
+.left-menu ul {
+  list-style: none;
+  /* font-weight: bold; */
+}
+.left-menu li {
+  padding: 15px 20px;
+  cursor: pointer;
+}
+.left-menu li:hover {
+  background-color: #ddd9;
+}
+.left-menu li.li-dihover {
+  display: none;
+  padding: 0;
+}
+.left-menu li.li-dihover li{
+  padding-left: 40px;
+  padding-right: 0;
+}
+.left-menu li.li-dihover:hover {
+  background-color: #fff;
+}
+.left-menu .TitlePage {
+  margin-bottom: 50px;
+  cursor: pointer;
+  padding: 0;
+}
+.TitlePage .h2 {
+  font-weight: 700;
+}
+.left-menu .TitlePage:hover {
+  color: #000;
+  background-color: unset;
+}
+
+.menu-close-left {
+  display: inline-block;
+  border-right: 1px solid #ccc;
+  background-color: #fff;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  right: -35px;
+  top: 0;
+  width: 35px;
+  text-align: center;
+  cursor: pointer;
+}
+.menu-close-left .fa-chevron-circle-left, .menu-close-left .fa-chevron-circle-right {
+  font-size: 1.3em;
+  color: #555;
+}
+.menu-close-left .fa-chevron-circle-left:hover, .menu-close-left .fa-chevron-circle-right:hover {
+  color: #9c27b0;
+}
+.menu-close-left .fa-chevron-circle-right {
+  display: none;
+}
+.menu-close-rel {
+  position: relative;
+}
+.menu-close-rel .icon {
+  position: absolute;
+  top: 40vh;
+  font-size: 1.5em;
+  width: 100%;
+}
+/*  */
+.panel {
+  padding: 40px 60px;
+}
+.dash-title {
+  text-indent: 50px;
+  font-weight: 400;
+  color: #333;
+}
+#first-content-dash.grid-4 {
+  grid-template-columns: 25% 25% 25% 25%;
+}
+.window {
+  position: relative;
+  background-color: #fff;
+  margin: 0 7% 7% 7%;
+  padding: 15px;
+  border-radius: 15px;
+  /* position: relative;
+  background-color: #e9ecff;
+  height: 30vh;
+  margin: 0 7% 7% 7%;
+  padding: 15px;
+  border: 1px solid #ddd; */
+}
+.window .icon-window {
+  position: absolute;
+  left: 20px;
+  top: -20px;
+  font-size: 3em;
+  color: #fff;
+  padding: 20px;
+  border-radius: 7px;
+  box-shadow: 1px 1px 15px #ddd;
+}
+.content .first, .content .second, .content .third {
+  margin: 5px 0;
+}
+.content .first {
+  /* color: #a5b5d8; */
+  color: #555;
+  font-size: .9em;
+}
+.content .second {
+  color: #000;
+  font-size: 1.4em;
+  font-weight: 800;
+}
+.content .third {
+  color: #555;
+}
+.icon-window-0 {
+  background-color: #8497ff;
+}
+.icon-window-1 {
+  background-color: #84eeff;
+}
+.icon-window-2 {
+  background-color: #84ffad;
+}
+.icon-window-3 {
+  background-color: #ff8484;
+}
+#secont-content-dash > div {
+  min-height: 50px;
+  background-color: #fff;
+  margin: 25px;
+}
+.add-data small {
+  cursor: pointer;
+  color: #555;
+  line-height: 3;
+  border: 1px solid #ddd;
+  padding: 5px;
+  background-color: #fff;
+  box-shadow: 1px 1px 1px;
+  border-radius: 5px;
+}
+.add-data small:hover {
+  color: #000;
+  line-height: 2.8;
+}
+.bkn-text {
+  cursor: pointer;
+}
+.fa-trash-alt, .fa-key {
+  position: relative;
+  color: #555;
+  cursor: pointer;
+}
+.fa-trash-alt:hover, .fa-key:hover, .bkn-text:hover .fa-trash-alt, .bkn-text:hover .fa-key {
+  color: #000;
+  bottom: 2px;
+}
+.cozy-edit-table input, .cozy-edit-table select, .cozy-edit-table button {
+  border: 1px solid #ddd;
+  padding: 5px;
+  font-size: 1em;
+  margin: 7px 0;
+}
+.cozy-edit-table select, .cozy-edit-table button {
+  margin: 7px;
+  background-color: #fff;
+  color: #555;
+}
+.cozy-edit-table input[type='text'] {
+  border-right: none;
+}
+.cozy-edit-table button {
+  margin-left: 0;
+  margin-right: 0;
+  border-left: none;
+  cursor: pointer;
+}
+.cozy-edit-table button:hover {
+  color: #000;
+}
+.inp_edit {
+  font-size: 1em;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+.inp_edit button {
+  display: inline-block;
+}
+td.td_alamat {
+  cursor: pointer;
+}
+.modal-alamat {
+  display: none;
+  position: fixed;
+  z-index: 3;
+  background-color: #0009;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+.alamat-form {
+  background-color: #fff;
+  width: 50vw;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  overflow-y: scroll;
+}
+.btn-primary {
+  background-color: #222;
+  color: #f2f2f2;
+  border: none;
+  padding: 10px;
+  font-size: .8em;
+  font-weight: bold;
+  border-radius: 7px;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 1px 1px 1px;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #000;
+  bottom: 1px;
+}
+.adm_table .fa-chevron-circle-up, .adm_table .fa-chevron-circle-down {
+  display: none;
+}
+.panel .head {
+  background-color: #fff;
+  position: absolute;
+  width: 100%;
+  height: 80px;
+  left: 0;
+  top: 0;
+}
+.panel > div:nth-child(2n) {
+  margin-top: 70px;
+}
+.head-cont-rel {
+  position: relative;
+}
+.panel .dp {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 60px;
+  top: 10px;
+}
+.panel .dp img {
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.75;
+}
+.panel .dp img:hover {
+  opacity: 1;
+}
+.panel .username-name {
+  position: absolute;
+  color: #777;
+  right: 130px;
+  top: 15px;
+  padding: 5px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.panel .username-name:hover {
+  color: #000;
+}
+.dp-click {
+  display: none;
+  position: absolute;
+  left: -45px;
+  width: 95px;
+  font-size: 1.2em;
+  background-color: #fff;
+  padding: 20px;
+}
+.dp-click span{
+  color: #555;
+  margin: 15px 0;
+  display: inline-block;
+  cursor: pointer;
+}
+.dp-click span:hover {
+  color: #000;
+}

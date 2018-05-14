@@ -13,6 +13,10 @@
       $ttkttk = "";
       if ( preg_match("/".preg_quote($coz_domain, '/')."(.+)\/(.+)\/(.*)\//", $server, $match) ) {
         $ttkttk = "../../../";
+      } else if ( preg_match("/".preg_quote($coz_domain, '/')."(adm_coz)\/(.+)\//", $server, $match) ) {
+        $ttkttk = "../";
+      } else if ( preg_match("/".preg_quote($coz_domain, '/')."(adm_coz)\/(.+)\.php$/", $server, $match) ) {
+        $ttkttk = "";
       } else if ( preg_match("/".preg_quote($coz_domain, '/')."(.+)\/(.+)\//", $server, $match) ) {
         $ttkttk = "../../";
       } else if( preg_match("/".preg_quote($coz_domain, '/')."(.+)\//", $server, $match) ) {
@@ -22,5 +26,4 @@
     }
     $ttkttk = ttk_func($_SERVER["REQUEST_URI"], $coz_domain);
   }
-
  ?>

@@ -1,0 +1,80 @@
+body, div {
+  margin: 0;
+  padding: 0;
+}
+body {
+   background: #C33764;  /* fallback for old browsers */
+   background: -webkit-linear-gradient(to right, #1D2671, #C33764);  /* Chrome 10-25, Safari 5.1-6 */
+   background: linear-gradient(to right, #1D2671, #C33764); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   color: #fff;
+}
+fieldset legend.label {
+  font-size: 1.4em;
+}
+.container {
+  position: relative;
+  height: 100vh;
+}
+.loginform {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 25%;
+  bottom: 0;
+  margin: auto;
+  display: inline-block;
+  width: 500px;
+}
+.loginform input {
+  border: 1px solid #ddd;
+}
+.label {
+  font-size: 1.2em;
+  font-weight: bold;
+  line-height: 1.8em;
+}
+.form-group-adm {
+  display: grid;
+  grid-template-columns: 100px 20px auto;
+}
+.form-control-adm {
+  width: 90%;
+  font-size: 1.2em;
+  padding: 7px;
+}
+input[type="text"].form-control-adm, input[type="password"].form-control-adm, input[type="email"].form-control-adm {
+}
+input[type="text"].form-control-adm:focus, input[type="password"].form-control-adm:focus, input[type="email"].form-control-adm:focus {
+  box-shadow: 0 0 2px;
+}
+input[type="submit"].form-control-adm, input[type="reset"].form-control-adm {
+  width: 95%;
+}
+.btn-primary-adm {
+  background: #333;
+  color: #fff;
+  font-weight: bold;
+  transition-duration: .5s;
+}
+.btn-primary-adm:hover {
+  color: #333;
+  background-color: #ddd;
+  box-shadow: 1px 1px 2px #ddd, -1px -1px 2px #ddd;
+}
+.pesanE {
+  position: fixed;
+  background-color: #5559;
+  width: 100%;
+  text-align: center;
+  display: none;
+}
+.pesanE h1::before {
+  content: "Alert: ";
+}
+@media only screen and (max-width: 510px) {
+  .loginform {
+    width: 100%;
+  }
+  .form-group-adm {
+  }
+}

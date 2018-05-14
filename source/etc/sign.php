@@ -35,9 +35,9 @@
       $stmt->close();
       if ($affected_rows == 1) {
         if (!file_exists("userData/$username")) {
-          mkdir("userData/$username/kucing/", 0777, true);
-          mkdir("userData/$username/dp/", 0777, true);
-          mkdir("userData/$username/sampul/", 0777, true);
+          mkdir("userData/$username/kucing/", 0755, true);
+          mkdir("userData/$username/dp/", 0755, true);
+          mkdir("userData/$username/sampul/", 0755, true);
         }
         $pesan = "<h1 class='success'>Registrasi Berhasil, Silahkan Login :)</h1>";
       } else if($affected_rows == -1) {

@@ -9,9 +9,24 @@
 .text-right {
   text-align: right;
 }
+.text-left {
+  text-align: left;
+}
 .grid {
   display: grid;
   grid-template-columns: auto auto;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.grid-4 {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
 }
 body, div, ul {
   margin: 0;

@@ -14,6 +14,8 @@ RewriteRule ^profil/(.+)/(.*)/$ profil.php?r=$1&pesan=$2 [L]
 RewriteRule ^profil/(.+)/$ profil.php?r=$1 [L]
 #SIGN
 RewriteRule ^register/$ sign.php?r=reg [L]
+#ALL ADM
+RewriteRule adm_coz/(.+)/$ adm_coz/$1.php [L]
 #ALL MSG
 RewriteRule ^(.*)/(.+)/$ $1.php?pesan=$2 [L]
 #ALL WITHOUT PARAM

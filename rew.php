@@ -1,5 +1,5 @@
 <?php
-  $password = "dendi";
+  $password = "mr_autumn";
   $options = [
     'cost' => 13
   ];
@@ -8,7 +8,19 @@
   $pesan = "";
   include 'source/etc/vali.php';
   include 'source/etc/db.php';
-  echo get_enum_data("bulu_kucing", "Senio");
-  $p = "<h1>Register Gagal, Nama Tidak Boleh Menggunakan Angka Atau Simbol Lainnya</h1>";
-  echo substr($p, 4, 21). "Kucing". substr($p, 24, -5);
+
+  function removeDirectory($path) {
+  	$files = glob($path . '/*');
+  	foreach ($files as $file) {
+  		is_dir($file) ? removeDirectory($file) : unlink($file);
+  	}
+  	rmdir($path);
+  	return;
+  }
+  removeDirectory("userData/sasa/dp/");
+  removeDirectory("userData/sasa/kucing/img1/");
+  removeDirectory("userData/sasa/kucing/img2/");
+  removeDirectory("userData/sasa/kucing/img3/");
+  removeDirectory("userData/sasa/kucing/");
+  removeDirectory("userData/sasa/sampul/");
 ?>

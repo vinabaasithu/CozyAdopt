@@ -67,3 +67,6 @@ admin.php {
 # Page Admin
 # Ganti Sistem Rehome, Input Jenis Kucing Sendiri, Input Warna Kucing Sendiri harus di Accept Admin
 # CozyAdopt domain
+# Edit Inline admin_panel_coz, adm_edit_inline {for: username, and add Data. sortir, password, alamat and order done}
+# Username -> change username in table, bookmarks, kucing, users.
+change users.dp & users.sampul Location, Change File and Folder Directory
