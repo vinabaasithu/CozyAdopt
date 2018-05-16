@@ -201,8 +201,18 @@
         return false;
         });
       });
+      $(document).ready(function(){
+        if(!userses) {
+          $(".f-sel-in").remove();
+          return false;
+        }
+      });
       $(document).on("click", ".searchloc_strong", function() {
         var val = $(this).attr("val");
+        if(!userses) {
+          $(".f-sel-in").remove();
+          return false;
+        }
         if (val === "down") {
           $(this).attr("val", "up");
           // $(this).find(".chev").attr("class", "fas fa-chevron-up chev");

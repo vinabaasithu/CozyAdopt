@@ -19,6 +19,7 @@ if(!isset($index)) $adaIndex = "/CozyAdopt/" ;
    var userparam = "<?php if(isset($r)) { echo $r; } ?>";
    var userses = "<?php if (isset($_SESSION['username'])) { echo $_SESSION['username']; } ?>";
  </script>
+ <script src="/CozyAdopt/source/js/warna_pesan.js" charset="utf-8" defer></script>
  <div class="container-header">
    <header>
      <a class="logo" href="<?php echo $adaIndex ?>#home">

@@ -173,4 +173,5 @@ nav.nav-head li:hover {
   padding: 5% 0px;
   color: #fffc;
   z-index: 9;
+  display: none;
 }
