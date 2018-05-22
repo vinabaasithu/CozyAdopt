@@ -142,5 +142,12 @@
          }
        });
      </script>
+     <script type="text/javascript">
+       if ($("#username_log").length) {
+         $(document).ready(function(){
+           $("#username_log").focus();
+         });
+       }
+     </script>
   </body>
 </html>

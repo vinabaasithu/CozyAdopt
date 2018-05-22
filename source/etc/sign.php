@@ -3,7 +3,7 @@
   $mysqli = "";
   if(file_exists("source/etc/db.php")) {
     include 'source/etc/db.php';
-  }
+  } else if(file_exists("db.php"));
   require 'vali.php';
   $pesan = "";
   // Register
@@ -20,7 +20,15 @@
     substr(($password = vali_pass($_POST["password"])), 0, 3) === "<h1" ? $pesan = $password : $password = $password;
     $dp = "userData/dp_dummy.png";
     $sampul = "userData/sampul_dummy.jpg";
-    $lokasi = "0";
+    if (isset($_POST["id_prov"]) && isset($_POST["id_kab"]) && isset($_POST["id_kec"]) && isset($_POST["id_kel"])) {
+      substr(($id_prov = vali_id_prov($_POST["id_prov"])), 0, 3) === "<h1" ? $pesan = $id_prov : $id_prov = $id_prov;
+      substr(($id_kab = vali_id_kab($_POST["id_kab"])), 0, 3) === "<h1" ? $pesan = $id_kab : $id_kab = $id_kab;
+      substr(($id_kec = vali_id_kec($_POST["id_kec"])), 0, 3) === "<h1" ? $pesan = $id_kec : $id_kec = $id_kec;
+      substr(($id_kel = vali_id_kel($_POST["id_kel"])), 0, 3) === "<h1" ? $pesan = $id_kel : $id_kel = $id_kel;
+    } else {
+      $id_prov = "0"; $id_kab = "0"; $id_kec = "0"; $id_kel = "0";
+    }
+
     if (!$username || !$nama_lengkap || !$email || !$no_hp || !$password) {
       $pesan = "<h1>Register gagal, harap isi data dengan lengkap</h1>";
     } else if(!$pesan) {
@@ -29,7 +37,7 @@
       ];
       $password = password_hash($password, PASSWORD_BCRYPT, $options);
       $stmt = $mysqli->prepare("INSERT INTO users (username, fullname, password, email, no_hp, dp, sampul, id_prov, id_kab, id_kec, id_kel) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-      $stmt->bind_param("sssssssssss", $username, $nama_lengkap, $password, $email, $no_hp, $dp, $sampul, $lokasi, $lokasi, $lokasi, $lokasi);
+      $stmt->bind_param("sssssssssss", $username, $nama_lengkap, $password, $email, $no_hp, $dp, $sampul, $id_prov, $id_kab, $id_kec, $id_kel);
       $stmt->execute();
       $affected_rows = $stmt->affected_rows;
       $stmt->close();
@@ -42,6 +50,10 @@
         $pesan = "<h1 class='success'>Registrasi Berhasil, Silahkan Login :)</h1>";
       } else if($affected_rows == -1) {
         $pesan = "<h1>Registrasi Gagal, Username sudah ada yang punya</h1>";
+      }
+
+      if($pesan && isset($_POST["adm"])) {
+        echo $pesan;
       }
     }
   }

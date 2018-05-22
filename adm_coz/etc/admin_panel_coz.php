@@ -66,8 +66,8 @@
             </select>
           </div>
           <div class="add-data text-right">
-            <small>page 1-3/3</small>
-            <small>add data <i class="fas fa-plus"></i> </small>
+            <small class="pagination">page 1-3/3</small>
+            <small class="add-data-user">add data <i class="fas fa-plus"></i> </small>
           </div>
         </div>
         <table class="adm_table">
@@ -77,7 +77,7 @@
             <th val="email">Email <i class="fas fa-chevron-circle-up"></i><i class="fas fa-chevron-circle-down"></i></th>
             <th val="no_hp">No.HP <i class="fas fa-chevron-circle-up"></i><i class="fas fa-chevron-circle-down"></i></th>
             <th val="alamat">Alamat <i class="fas fa-chevron-circle-up"></i><i class="fas fa-chevron-circle-down"></i></th>
-            <th>Ganti Password</th>
+            <th>Password</th>
             <th>Delete</th>
           </tr>
         <?php
@@ -96,7 +96,7 @@
             $arrData[$ind++]["nama_prov"] = $nama_prov;
             ?>
               <tr id="id<?php echo $ind-1; ?>" class="getUser">
-                <td class="td_edit"><?php echo $fullname ?></td><td class="td_edit"><?php echo $username ?></td><td class="td_edit"><?php echo $email ?></td><td class="td_edit"><?php echo $no_hp ?></td><td class="td_alamat" prov="<?php echo $id_prov ?>" kab="<?php echo $id_kab ?>" kec="<?php echo $id_kec ?>" kel="<?php echo $id_kel ?>" kelnam="<?php echo $nama_kel ?>" aleng="<?php echo $alamat_lengkap ?>"><?php echo "$nama_prov, $nama_kab, $nama_kec, $nama_kel, $alamat_lengkap"; ?> </td>
+                <td class="td_edit"><?php echo $fullname ?></td><td class="read"><?php echo $username ?></td><td class="td_edit"><?php echo $email ?></td><td class="td_edit"><?php echo $no_hp ?></td><td class="td_alamat" prov="<?php echo $id_prov ?>" kab="<?php echo $id_kab ?>" kec="<?php echo $id_kec ?>" kel="<?php echo $id_kel ?>" kelnam="<?php echo $nama_kel ?>" aleng="<?php echo $alamat_lengkap ?>"><?php echo "$nama_prov, $nama_kab, $nama_kec, $nama_kel, $alamat_lengkap"; ?> </td>
                 <td class="text-center bkn-text td_pass td_edit"> <i class="fas fa-key"></i> </td> <td class="text-center bkn-text trash-del"> <i class="fas fa-trash-alt"></i> </td>
               </tr>
             <?php
@@ -133,9 +133,17 @@
          }
          $(document).on("click", ".td_alamat", function(){
            flushModalAlamat();
+           var trId = $(this).parents("tr").attr("id");
            var reg = /^([^0-9,]+), ([^0-9,]+), ([^0-9,]+), (.+)$/;
            var a = $(this).text();
            var arrMatch = a.match(reg);
+
+           if (trId === "newdata") {
+             $(".modal-alamat label[for='isiAlamatAuto']").hide();
+           } else {
+             $(".modal-alamat label[for='isiAlamatAuto']").show();
+           }
+
            if(arrMatch !== null) {
              $("#hidden_id_prov").val($(this).attr("prov"));
              $("#hidden_id_kab").val($(this).attr("kab"));
@@ -160,7 +168,10 @@
            $(".alamat-form").slideDown(800);
          });
          $(document).on("click", ".modal-alamat", function(e){
-           if (e.target === this) {
+           if ($(".modal-alamat label[for='isiAlamatAuto']").css("display") === "none" && e.target === this) {
+             $(".alamat-form").slideUp(800);
+             $(".modal-alamat").slideUp(800);
+           } else if (e.target === this) {
              flushModalAlamat();
              $(".alamat-form").slideUp(800);
              $(".modal-alamat").slideUp(800);
@@ -306,15 +317,18 @@
          });
 
          // update inline
-         var funcMess = function(teks) {
+         var funcMess = function(teks, length = 1800) {
              $(".pesanE h1").text(teks);
              $(".pesanE").fadeIn(800);
              setTimeout(function(){
                $(".pesanE").fadeOut(800);
-             }, 1800);
+             }, length);
              $(".adm_table").trigger("click");
          }
          $(document).on("keyup", "input[class='inp_edit'][type='text'], input[class='inp_edit'][type='password']", function(e){
+           if ($(this).parents(".td_pass").hasClass("td_pass_add")) {
+             return 0;
+           }
            var tridp = $(this).parents("tr").attr("id");
            var index = $(this).parents(".td_edit[val='editing']").index();
            var col = "";
@@ -387,8 +401,50 @@
            } else {
              alert("Data Gagal Dihapus");
            }
-
          });
+         // pagination
+         $(document).ready(function(){
+           var dataCount = $(".adm_table tr").length - 1;
+           var teks = "1-"+dataCount+"/"+dataCount;
+           $(".pagination").text(teks);
+         });
+         // add data
+         $(document).on("click", ".trash-temp", function(){
+           var tr = $(this).parents("tr");
+           tr.remove();
+           flushModalAlamat();
+         });
+         $(document).on("click", ".add-data-user", function(e){
+           var tagInp = "<tr id='newdata'><td><input class='inp_edit_plus' type='text' placeholder='Fullname'></td><td><input class='inp_edit_plus' type='text' placeholder='Username'></td><td><input class='inp_edit_plus' type='email' placeholder='Email'></td><td><input class='inp_edit_plus' type='text' placeholder='No.HP'></td><td class='td_alamat'>Isi Alamat (Klik Disini)</td><td class='text-center bkn-text td_pass td_edit td_pass_add'> <i class='fas fa-key'></i> </td> <td class='text-center bkn-text trash-temp'> <i class='fas fa-trash-alt'></i> </td></tr>";
+           $(".adm_table tr").eq(1).before(tagInp );
+           funcMess("Isi semua field, lalu tekan Enter pada Field Password Untuk Menambahkan Data", 4000);
+         });
+         $(document).on("keyup", ".td_pass_add .inp_edit", function(e){
+           if (e.keyCode === 13) {
+             var tr = $(this).parents("tr");
+             var username = tr.find("td input.inp_edit_plus").eq(0).val();
+             var nama_lengkap = tr.find("td input.inp_edit_plus").eq(1).val();
+             var email = tr.find("td input.inp_edit_plus").eq(2).val();
+             var no_hp = tr.find("td input.inp_edit_plus").eq(3).val();
+             var password = $(this).val();
+             var id_prov = $("#hidden_id_prov").val();
+             var id_kab = $("#hidden_id_kab").val();
+             var id_kec = $("#hidden_id_kec").val();
+             var id_kel = $("#hidden_id_kel").val();
+             var prov_text = $("#prov-text-id").val();
+             var kab_text = $("#kab-text-id").val();
+             var kec_text = $("#kec-text-id").val();
+             var kel_text = $("#kel-text-id").val();
+             var alamat_lengkap = $("#alamat_lengkap").val();
+             var register = "Regist";
+             $.post("<?php echo $coz_domain ?>source/etc/sign.php", {username:username, nama_lengkap:nama_lengkap, email:email, no_hp:no_hp, password:password, id_prov:id_prov, id_kab:id_kab, id_kec:id_kec, id_kel:id_kel, alamat_lengkap, register:register}, function(result){
+               var res = result.slice(20, -5);
+               funcMess(res);
+               $("#cozUserData").click();
+             });
+           }
+         });
+
        </script>
       </div>
       <?php

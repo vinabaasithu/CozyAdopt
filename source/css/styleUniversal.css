@@ -151,3 +151,8 @@ form .fa-check, form .fa-times {
 .PasswordCheck .fa-check, .PasswordCheck .fa-times {
   top: -35px;
 }
+tr td.read {
+  cursor: not-allowed;
+  /* background-color: #eee; */
+  color: #555;
+}

@@ -51,7 +51,7 @@
        <div class="menu-container-fixed">
          <div class="left-menu" val="show">
            <ul>
-             <li class="TitlePage"> <p class="h2 text-center"> <u>CozyAdopt</u> </p> </li>
+             <li class="TitlePage"> <p class="h2 text-center"> <u> <a href="<?php echo $coz_domain; ?>">CozyAdopt</a></u> </p> </li>
              <li id="dashboard"> <i class="fas fa-tachometer-alt"></i> Dashboard </li>
              <li class="li-penghover" val="data"> <i class="fas fa-database"></i> Cozy Data </li>
              <li class="li-dihover" val="data">
@@ -292,7 +292,7 @@
             return 0;
           }
           $.post("<?php echo $coz_domain ?>adm_coz/etc/admin_panel_coz.php", {val:val}, function(result){
-            $("div.panel > div:not(.head)").html("");
+            $("div.panel > div:not(.head)").remove();
             $("div.panel .head").hide().after(result).fadeIn(800);
             if (val === "dashboard") {
               graphFunc();

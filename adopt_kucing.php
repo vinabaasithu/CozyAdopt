@@ -154,10 +154,18 @@
           var bulu_kucing = $(".bulu-kucing").val();
           var warna_kucing = $(".warna-kucing").val();
           var jk_kucing = $(".jk-kucing").val();
-          var id_prov = $("#hidden_id_prov").val();
-          var id_kab = $("#hidden_id_kab").val();
-          var id_kec = $("#hidden_id_kec").val();
-          var id_kel = $("#hidden_id_kel").val();
+          if ($("#hidden_id_prov").val() === undefined && $("#hidden_id_kab").val() === undefined && $("#hidden_id_kec").val() === undefined && $("#hidden_id_kel").val() === undefined) {
+            var id_prov = "";
+            var id_kab = "";
+            var id_kec = "";
+            var id_kel = "";
+          } else {
+            var id_prov = $("#hidden_id_prov").val();
+            var id_kab = $("#hidden_id_kab").val();
+            var id_kec = $("#hidden_id_kec").val();
+            var id_kel = $("#hidden_id_kel").val();  
+          }
+
           var urut = $(".urut-berdasarkan").val();
 
           var cari = "true";
