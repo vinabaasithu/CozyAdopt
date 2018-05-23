@@ -357,5 +357,14 @@
           });
         })
       </script>
+      <!-- SCRIPT admin_panel_coz.php -->
+      <script type="text/javascript">
+      $(document).on("click", ".add-data-user", function(e){
+        var tagInp = "<tr id='newdata'><td><input class='inp_edit_plus' type='text' placeholder='Fullname'></td><td><input class='inp_edit_plus' type='text' placeholder='Username'></td><td><input class='inp_edit_plus' type='email' placeholder='Email'></td><td><input class='inp_edit_plus' type='text' placeholder='No.HP'></td><td class='td_alamat'>Isi Alamat (Klik Disini)</td><td class='text-center bkn-text td_pass td_edit td_pass_add'> <i class='fas fa-key'></i> </td> <td class='text-center bkn-text trash-temp'> <i class='fas fa-trash-alt'></i> </td></tr>";
+        $(".adm_table tr").eq(1).before(tagInp);
+        funcMess("Isi semua field, lalu tekan Enter pada Field Password Untuk Menambahkan Data", 4000);
+      });
+      </script>
+      
    </body>
  </html>

@@ -5,22 +5,10 @@
   ];
   $password = password_hash($password, PASSWORD_BCRYPT, $options);
   echo $password. "<br>";
-  $pesan = "";
-  include 'source/etc/vali.php';
-  include 'source/etc/db.php';
 
-  function removeDirectory($path) {
-  	$files = glob($path . '/*');
-  	foreach ($files as $file) {
-  		is_dir($file) ? removeDirectory($file) : unlink($file);
-  	}
-  	rmdir($path);
-  	return;
+  $r = "";
+  if (!isset($_GET['r'])) {
+    $r = $_GET['r'];
   }
-  removeDirectory("userData/sasa/dp/");
-  removeDirectory("userData/sasa/kucing/img1/");
-  removeDirectory("userData/sasa/kucing/img2/");
-  removeDirectory("userData/sasa/kucing/img3/");
-  removeDirectory("userData/sasa/kucing/");
-  removeDirectory("userData/sasa/sampul/");
+  echo $r;
 ?>
